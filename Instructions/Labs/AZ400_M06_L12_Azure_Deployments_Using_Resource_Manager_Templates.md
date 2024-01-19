@@ -10,13 +10,13 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
 - Identifique uma assinatura existente do Azure ou crie uma.
 
-- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função Proprietário na assinatura do Azure e a função Administrador Global no locatário do Microsoft Entra associado à assinatura do Azure. Para obter detalhes, veja [Listar atribuições de função do Azure usando o portal do Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e atribuir funções de administrador no Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal).
+- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função Proprietário na assinatura do Azure e a função Administrador Global no locatário do Microsoft Entra associado à assinatura do Azure. Para obter detalhes, veja [Listar designações de função do Azure usando o portal do Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e designar funções de administrador no Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal).
 
 ## Visão geral do laboratório
 
@@ -181,7 +181,7 @@ Neste laboratório, você criará uma conexão de serviço e a usará em um pipe
 
 Nesta tarefa, você criará uma entidade de serviço usando a CLI do Azure, que permitirá ao Azure DevOps:
 
-- Implantar recursos na sua assinatura do Azure.
+- Implantar recursos na assinatura do Azure
 - Ter acesso de leitura sobre os segredos do Key Vault criados posteriormente.
 
 > **Observação**: se você já tiver uma entidade de serviço, poderá prosseguir diretamente para a próxima tarefa.
@@ -242,7 +242,7 @@ Uma entidade de serviço é criada automaticamente pelo Azure Pipelines quando v
 1. **No painel Selecionar um repositório**, clique em **EShopOnWeb**.
 1. No painel **Configurar seu pipeline**, role para baixo e selecione **Arquivo YAML existente do Azure Pipelines**.
 1. Na folha **Selecionar um arquivo YAML existente** , especifique os seguintes parâmetros:
-   - Branch: **principal**
+   - Ramificação: **principal**
    - Caminho: **.ado/eshoponweb-cd-windows-cm.yml**
 1. Clique em **Continuar** para salvar essas configurações.
 1. Na seção de variáveis, escolha um nome para seu grupo de recursos, defina o local desejado e substitua o valor da conexão de serviço por uma de suas conexões de serviço existentes criadas anteriormente.

@@ -10,9 +10,9 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador compatível com o Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
 
-- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Pré-requisitos do laboratório AZ-400](https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização do Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Pré-requisitos do laboratório AZ-400](https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html).
 
 - **Configurar o projeto de amostra do EShopOnWeb:** se você ainda não tiver um projeto de exemplo do EShopOnWeb que possa usar para este laboratório, crie um seguindo as instruções disponíveis em [Pré-requisitos do laboratório AZ-400](https://microsoftlearning.github.io/AZ400-DesigningandImplementingMicrosoftDevOpsSolutions/Instructions/Labs/AZ400_M00_Validate_lab_environment.html).
 
@@ -34,7 +34,7 @@ Após concluir este Laboratório, você poderá:
 
 ### Exercício 0: configurar os pré-requisitos do laboratório
 
-Neste exercício, revisaremos como validar os pré-requisitos de laboratório tendo uma organização do Azure DevOps pronta e o projeto EShopOnWeb criado. Consulte as instruções acima para obter mais detalhes.
+Neste exercício, queremos lembrar você sobre como validar os pré-requisitos de laboratório, ter preparado uma Organização de do Azure DevOps, bem como ter criado o projeto EShopOnWeb. Consulte as instruções acima para obter mais detalhes.
 
 ### Exercício 1: publicar código como wiki
 

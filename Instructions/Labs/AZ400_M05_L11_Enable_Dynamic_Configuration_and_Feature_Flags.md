@@ -12,15 +12,15 @@ lab:
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://learn.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
 - Identifique uma assinatura existente do Azure ou crie uma.
 
-- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função de Colaborador ou Proprietário na assinatura do Azure. Para obter detalhes, veja [Listar atribuições de função do Azure usando o portal do Azure](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e atribuir funções de administrador no Azure Active Directory](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal).
+- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função de Colaborador ou Proprietário na assinatura do Azure. Para obter detalhes, veja [Listar designações de função do Azure usando o portal do Azure](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e designar funções de administrador no Azure Active Directory](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal).
 
 ## Visão geral do laboratório
 
-A [Configuração de Aplicativos do Azure](https://learn.microsoft.com/azure/azure-app-configuration/overview) fornece um serviço para gerenciar as configurações de aplicativo e os sinalizadores de recursos de maneira centralizada. Os programas modernos, especialmente aqueles em execução em uma nuvem, costumam ter muitos componentes distribuídos. A distribuição das definições de configuração entre esses componentes pode levar a erros difíceis de serem resolvidos durante uma implantação de aplicativo. Use a Configuração de Aplicativo para armazenar todas as configurações do aplicativo e proteger os acessos em um só lugar.
+A [Configuração de aplicativos do Azure](https://learn.microsoft.com/azure/azure-app-configuration/overview) fornece um serviço para gerenciar as configurações de aplicativo e os sinalizadores de recursos de maneira centralizada. Os programas modernos, especialmente aqueles em execução em uma nuvem, costumam ter muitos componentes distribuídos. A distribuição das definições de configuração entre esses componentes pode levar a erros difíceis de serem resolvidos durante uma implantação de aplicativo. Use a Configuração de aplicativos para armazenar todas as configurações do aplicativo e proteger os acessos em um só lugar.
 
 ## Objetivos
 
@@ -74,7 +74,7 @@ Vamos começar importando o pipeline de CI chamado [eshoponweb-ci.yml](https://g
 2. Clique no botão **Criar pipeline (se não houver pipelines)** ou no botão **Novo pipeline** (se já houver pipelines criados).
 3. Selecione **Git do Azure Repos** (Yaml).
 4. Selecione o repositório **eShopOnWeb**.
-5. Selecione **Arquivo YAML do Azure Pipelines existente**.
+5. Selecione **Arquivo YAML existente do Azure Pipelines**.
 6. Selecione o arquivo **/.ado/eshoponweb-ci.yml** e clique em **Continuar**.
 7. Clique no botão **Executar** para executar o pipeline.
 8. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeie-o **eshoponweb-ci** e clique em **Salvar**.
@@ -138,12 +138,12 @@ Vamos importar o pipeline de CD chamado [eshoponweb-cd-webapp-code.yml](https://
 
 1. Vá até **Pipelines>Pipelines**.
 2. Clique no botão **Novo pipeline**.
-3. Selecione **Git do Azure Repos** (Yaml).
+3. Selecione **Git do Azure Repos (Yaml)**.
 4. Selecione o repositório **eShopOnWeb**.
 5. Selecione **Arquivo YAML do Azure Pipelines existente**.
 6. Selecione o arquivo **/.ado/eshoponweb-cd-webapp-code.yml** e clique em **Continuar**.
 7. Na definição de pipeline YAML, personalize:
-   - **YOUR-SUBSCRIPTION-ID** pela sua ID de assinatura do Azure.
+   - **YOUR-SUBSCRIPTION-ID** com sua ID de assinatura do Azure.
    - **az400eshop-NAME** substitua NAMEpara torná-lo globalmente único.
    - **AZ400-EWebShop-NAME** pelo nome do grupo de recursos definido antes no laboratório.
 
@@ -152,10 +152,10 @@ Vamos importar o pipeline de CD chamado [eshoponweb-cd-webapp-code.yml](https://
     > **Observação**: a implantação pode levar alguns minutos para ser concluída.
 
     A definição de CD consiste nas seguintes tarefas:
-    - **Recursos**: está preparado para acionar automaticamente com base na conclusão do pipeline de CI. Ele também baixa o repositório para o arquivo bicep.
-    - **AzureResourceManagerTemplateDeployment**: implanta o Aplicativo Web do Azure usando o modelo bicep.
+    - **Recursos**: está preparado para acionar automaticamente com base na conclusão do pipeline de CI. Ele também baixa o repositório para o arquivo do Bicep.
+    - **AzureResourceManagerTemplateDeployment**: implanta o Aplicativo Web do Azure usando o modelo do Bicep.
 
-9. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeio como **eshoponweb-cd-webapp-code** e clique em **Salvar**.
+9. Seu pipeline assumirá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeio como **eshoponweb-cd-webapp-code** e clique em **Salvar**.
 
 ### Exercício 2: gerenciar a Configuração de Aplicativos do Azure.
 
@@ -195,7 +195,7 @@ Para se certificar de que seu site está acessando Configuração de Aplicativos
 3. Adicionar duas novas configurações de aplicativo:
     - Primeira configuração do aplicativo
         - **Name:** UseAppConfig
-        - **Valor: verdadeiro**
+        - **Valor:** true
     - Segunda configuração do aplicativo
         - **Name:** AppConfigEndpoint
         - **Valor:***o valor que você salvou/copiou anteriormente do Ponto de Extremidade de Configuração de Aplicativos. Deve ser algo como https://appcs-NAME-REGION.azconfig.io*

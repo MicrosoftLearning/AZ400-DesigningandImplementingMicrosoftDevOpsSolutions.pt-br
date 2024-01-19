@@ -22,7 +22,7 @@ lab:
 1. Na página **Precisamos de mais alguns detalhes**, selecione **Continuar**.
 1. Na caixa suspensa à esquerda, escolha **Diretório padrão**, em vez de "Conta Microsoft".
 1. Se solicitado (*"Precisamos de mais alguns detalhes"*), forneça seu nome, endereço de email e local e clique em **Continuar**.
-1. De volta em [https://aex.dev.azure.com](https://aex.dev.azure.com), com o **Diretório padrão** selecionado, clique no botão azul **Criar nova organização**.
+1. De volta a [https://aex.dev.azure.com](https://aex.dev.azure.com) com **Diretório padrão** selecionado, clique no botão azul **Criar nova organização**.
 1. Aceite os *Termos de Serviço* clicando em **Continuar**.
 1. Se solicitado (*"Quase concluído"*), deixe o nome da organização do Azure DevOps como padrão (ele precisa ser um nome globalmente exclusivo) e escolha um local de hospedagem próximo a você na lista.
 1. Quando a organização recém-criada abrir no **Azure DevOps**, clique em **Configurações da organização** no canto inferior esquerdo.
@@ -53,8 +53,8 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto as seguintes configurações:
     - nome: **eShopOnWeb**
-    - visibilidade: **Privada**
-    - Avançado: Controle de versão: **Git**
+    - visibilidade: **Particular**
+    - Avançado: Controle de Versão: **Git**
     - Avançado: Processo de Item de Trabalho: **Scrum**
 
 2. Clique em **Criar**.

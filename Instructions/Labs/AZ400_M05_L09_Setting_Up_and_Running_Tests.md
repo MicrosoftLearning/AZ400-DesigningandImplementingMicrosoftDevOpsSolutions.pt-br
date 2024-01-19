@@ -10,7 +10,7 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador compatível com o Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
 - **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/dotnet/architecture/modern-web-apps-azure/test-asp-net-core-mvc-apps).
 
@@ -38,9 +38,9 @@ Depois de concluir este laboratório, você poderá configurar um pipeline de CI
 
 Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Tarefa 1: (ignorar se concluído) criar e configurar o projeto de equipe
+#### Tarefa 1: (pular se feita) criar e configurar o projeto de equipe
 
-Nesta tarefa, você criará um projeto do Azure DevOps no **eShopOnWeb** para ser usado por vários laboratórios.
+Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser usado por vários laboratórios.
 
 1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto o nome **eShopOnWeb** e deixe os outros campos com padrões. Clique em **Criar**.
 
@@ -48,12 +48,12 @@ Nesta tarefa, você criará um projeto do Azure DevOps no **eShopOnWeb** para se
 
 Nesta tarefa, você importará o repositório Git do eShopOnWeb que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto criado anteriormente do **eShopOnWeb**. Clique em **Repositórios > Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela, **Importar um repositório Git**, cole a seguinte URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
-    - A pasta **.azure** contém a infraestrutura Bicep&ARM como modelos de código usados em alguns cenários do laboratório.
+    - A pasta **.azure** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
     - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
     - A pasta **src** contém o site .NET usado nos cenários do laboratório.
 
@@ -71,7 +71,7 @@ Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://g
 1. Clique no botão **Novo pipeline**.
 1. Selecione **Git do Azure Repos (YAML)**.
 1. Selecione o repositório **eShopOnWeb**.
-1. Selecione **Arquivo YAML do Azure Pipelines existente**.
+1. Selecione **Arquivo YAML existente do Azure Pipelines**.
 1. Selecione o arquivo **/.ado/eshoponWeb-ci.yml** e clique em **Continuar**.
 
     A definição de CI é composta pelas seguintes tarefas:

@@ -10,17 +10,17 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
 - Identifique uma assinatura existente do Azure ou crie uma.
 
-- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função Proprietário na assinatura do Azure e a função Administrador Global no locatário do Microsoft Entra associado à assinatura do Azure. Para obter detalhes, veja [Listar atribuições de função do Azure usando o portal do Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e atribuir funções de administrador no Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal).
+- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função Proprietário na assinatura do Azure e a função Administrador Global no locatário do Microsoft Entra associado à assinatura do Azure. Para obter detalhes, veja [Listar designações de função do Azure usando o portal do Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e designar funções de administrador no Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal).
 
 ## Visão geral do laboratório
 
-Muitas equipes preferem definir pipelines de build e lançamento usando YAML. Isso permite que elas acessem os mesmos recursos de pipeline que as pessoas que usam o designer visual, mas com um arquivo de marcação que pode ser gerenciado como qualquer outro arquivo de origem. Definições de build de YAML podem ser adicionadas a um projeto simplesmente adicionando os arquivos correspondentes à raiz do repositório. O Azure DevOps também fornece modelos padrão para tipos de projeto populares e um designer de YAML para simplificar o processo de definição de tarefas de build e lançamento.
+Muitas equipes preferem definir pipelines de compilação e lançamento usando YAML. Isso permite que elas acessem os mesmos recursos de pipeline que as pessoas que usam o designer visual, mas com um arquivo de marcação que pode ser gerenciado como qualquer outro arquivo de origem. Definições de compilação de YAML podem ser adicionadas a um projeto simplesmente adicionando os arquivos correspondentes à raiz do repositório. O Azure DevOps também fornece modelos padrão para tipos de projeto populares e um designer de YAML para simplificar o processo de definição de tarefas de compilação e lançamento.
 
 ## Objetivos
 
@@ -121,7 +121,7 @@ Nesta tarefa, você adicionará uma definição de compilação do YAML ao proje
 4. No painel **Selecionar um repositório**, clique em **eShopOnWeb_MultiStageYAML**.
 5. No painel **Configurar seu pipeline**, role para baixo e selecione **Arquivo YAML existente do Azure Pipelines**.
 6. Na folha **Selecionar um arquivo YAML existente** , especifique os seguintes parâmetros:
-   - Branch: **principal**
+   - Ramificação: **principal**
    - Caminho: **.ado/eshoponweb-ci.yml**
 7. Clique em **Continuar** para salvar essas configurações.
 8. Na tela **Revisar seu YAML de pipeline**, clique em **Executar** para iniciar o processo de Pipeline de build.

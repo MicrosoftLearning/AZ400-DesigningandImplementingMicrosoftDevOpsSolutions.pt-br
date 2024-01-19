@@ -12,15 +12,15 @@ lab:
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://learn.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
 - Identifique uma assinatura existente do Azure ou crie uma.
 
-- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função de Colaborador ou Proprietário na assinatura do Azure. Para obter detalhes, veja [Listar atribuições de função do Azure usando o portal do Azure](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e atribuir funções de administrador no Azure Active Directory](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal).
+- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função de Colaborador ou Proprietário na assinatura do Azure. Para obter detalhes, veja [Listar designações de função do Azure usando o portal do Azure](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e designar funções de administrador no Azure Active Directory](https://learn.microsoft.com/azure/active-directory/roles/manage-roles-portal).
 
 ## Visão geral do laboratório
 
-Neste laboratório, você aprenderá a usar um pipeline de CI/CD do Azure DevOps para criar uma imagem personalizada do Docker, efetuar push dela no Registro de Contêiner do Azure e implantá-la como um contêiner no Serviço de Aplicativo do Azure.
+Neste laboratório, você aprenderá a usar um pipeline de CI/CD do Azure DevOps para criar uma imagem personalizada do Docker, efetuar push dela no Registro de Contêiner do Azure e implantá-la como um contêiner no Azure App Service.
 
 ## Objetivos
 
@@ -28,7 +28,7 @@ Após concluir este laboratório, você poderá:
 
 - Criar uma imagem personalizada do Docker usando um agente do Linux hospedado pela Microsoft.
 - Enviar uma imagem por push para o Registro de Contêiner do Azure.
-- Implantar uma imagem do Docker como um contêiner no Serviço de Aplicativo do Azure usando o Azure DevOps.
+- Implantar uma imagem do Docker como um contêiner no Azure App Service usando o Azure DevOps.
 
 ## Tempo estimado: 30 minutos
 
@@ -172,7 +172,7 @@ Nesta tarefa, você adicionará uma nova atribuição de função para permitir 
 5. Depois de obter a ID da entidade de serviço e o nome da função, vamos criar a atribuição de função executando este comando (substitua **rg-az400-container-NAME** pelo nome do seu grupo de recursos)
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --resource-group "rg-az400-container-NAME"
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**g-az400-container-NAME**
     ```
 
 Agora você verá a saída JSON, que confirma o sucesso da execução do comando.
@@ -216,7 +216,7 @@ Nesta tarefa, você importará e executará o pipeline de CD.
 
 Parabéns! Neste exercício, você implantou um site usando uma imagem personalizada do Docker.
 
-### Exercício 4: Remover os recursos do laboratório do Azure
+### Exercício 4: remover os recursos do laboratório do Azure
 
 Neste exercício, você removerá os recursos do Azure provisionados neste laboratório para eliminar cobranças inesperadas.
 

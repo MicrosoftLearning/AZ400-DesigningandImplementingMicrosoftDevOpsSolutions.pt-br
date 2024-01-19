@@ -14,7 +14,7 @@ lab:
 
 - Identifique uma assinatura existente do Azure ou crie uma.
 
-- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função de Colaborador ou Proprietário na assinatura do Azure. Para obter detalhes, veja [Listar atribuições de função do Azure usando o portal do Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e atribuir funções de administrador no Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal).
+- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função de Colaborador ou Proprietário na assinatura do Azure. Para obter detalhes, veja [Listar designações de função do Azure usando o portal do Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e designar funções de administrador no Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal).
 
 - **Se você ainda não tem uma conta do GitHub** que possa usar para este laboratório, siga as instruções disponíveis em [Como se inscrever em uma nova conta do GitHub](https://github.com/join) para criar uma.
 
@@ -67,7 +67,7 @@ Nesta tarefa, você criará um repositório do GitHub público vazio e importar�
 
 4. Clique em **Começar importação** e espere o repositório ficar pronto.
 
-5. Na página do repositório, vá para **Configurações**, clique em **Ações > Geral** e escolha a opção **Permitir todas as ações e fluxos de trabalho reutilizáveis**. Clique em **Save**.
+5. Na página do repositório, vá para **Configurações**, clique em **Ações > Geral** e escolha a opção **Permitir todas as ações e fluxos de trabalho reutilizáveis**. Clique em **Salvar**.
 
     ![Habilitar o GitHub Actions](images/enable-actions.png)
 
@@ -170,7 +170,7 @@ Nesta tarefa, você usará ambientes do GitHub para solicitar aprovação manual
 
 8. Clique em **Revisar implantações**, marque **Desenvolvimento** e clique em **Aprovar e implantar**.
 
-    ![approval](images/gh-approve.png)
+    ![aprovação](images/gh-approve.png)
 
 9. O fluxo de trabalho seguirá a execução e a conclusão do trabalho de **implantação**.
 

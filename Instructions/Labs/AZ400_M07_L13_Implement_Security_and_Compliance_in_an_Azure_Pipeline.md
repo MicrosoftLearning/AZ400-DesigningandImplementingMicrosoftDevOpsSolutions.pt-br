@@ -12,13 +12,13 @@ lab:
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://learn.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
 ## Visão geral do laboratório
 
 Neste laboratório, você usará o **Mend Bolt (antigo WhiteSource)** para detectar automaticamente componentes de código aberto vulneráveis, bibliotecas desatualizadas e problemas de conformidade de licença no código. Você usará o WebGoat, um aplicativo Web intencionalmente não seguro, mantido pelo OWASP, projetado para ilustrar problemas comuns de segurança de aplicativos da Web.
 
-[O Mend](https://www.mend.io/) é líder em segurança contínua de software de código aberto e gerenciamento de conformidade. O WhiteSource se integra ao seu processo de construção, independentemente de suas linguagens de programação, ferramentas de construção ou ambientes de desenvolvimento. Ele funciona de forma automática, contínua e silenciosa em segundo plano, verificando a segurança, licenciamento e qualidade de seus componentes de código aberto em relação ao banco de dados definitivo atualizado constantemente do WhiteSource de repositórios de código aberto.
+A [Mend](https://www.mend.io/) é líder em segurança contínua de software de código aberto e gerenciamento de conformidade. O WhiteSource se integra ao seu processo de construção, independentemente de suas linguagens de programação, ferramentas de construção ou ambientes de desenvolvimento. Ele funciona de forma automática, contínua e silenciosa em segundo plano, verificando a segurança, licenciamento e qualidade de seus componentes de código aberto em relação ao banco de dados definitivo atualizado constantemente do WhiteSource de repositórios de código aberto.
 
 A Mend fornece o Mend Bolt, uma solução leve de gerenciamento e segurança de código aberto desenvolvida especificamente para integração com o Azure DevOps e o Azure DevOps Server. O Mend Bolt funciona por projeto e não oferece recursos de alerta em tempo real, o que requer uma **Platafoma completa**, geralmente recomendada para equipes de desenvolvimento maiores que desejam automatizar seu gerenciamento de código aberto em todo o ciclo de vida de desenvolvimento de software (dos repositórios aos estágios de pós-implantação) e em todos os projetos e produtos.
 
