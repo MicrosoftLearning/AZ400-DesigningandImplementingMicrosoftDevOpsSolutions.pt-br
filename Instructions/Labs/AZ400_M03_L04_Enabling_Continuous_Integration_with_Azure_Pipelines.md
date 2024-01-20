@@ -10,7 +10,7 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador compatível com o Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
 - **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
@@ -37,23 +37,23 @@ Após concluir este laboratório, você poderá:
 
 Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Tarefa 1: (ignorar se concluído) Criar e configurar o projeto de equipe
+#### Tarefa 1: (pular se feita) criar e configurar o projeto de equipe
 
-Nesta tarefa, você criará um projeto do **eShopOnWeb** do Azure DevOps para ser usado por vários laboratórios.
+Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser usado por vários laboratórios.
 
 1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto o nome **eShopOnWeb** e deixe os outros campos com padrões. Clique em **Criar**.
 
-#### Tarefa 2: (ignorar se concluído) Importar repositório Git do eShopOnWeb
+#### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
 
-Nesta tarefa, você importará o repositório Git eShopOnWeb que será usado por vários laboratórios.
+Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto eShopOnWeb** criado **anteriormente. Clique em **Repositório>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um Repositório Git**, cole a seguinte URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
 
 2. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
-    - **A pasta .azure** contém a infraestrutura Bicep&ARM como modelos de código usados em alguns cenários do laboratório.
-    - A pasta **.github** contém definições de fluxo de trabalho do YAML GitHub.
+    - A pasta **.azure** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
+    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
     - A pasta **src** contém o site do .NET usado nos cenários do laboratório.
 
 ### Exercício 1: Incluir a validação de build como parte de uma solicitação de pull
@@ -68,7 +68,7 @@ Vamos começar importando o pipeline de build chamado [eshoponWeb-ci-pr.yml](htt
 
 1. Vá para **Pipelines>Pipelines**
 2. Clique no botão **Criar Pipeline** ou **Novo Pipeline**
-3. Selecione **Azure Repos Git (YAML)**
+3. Selecione **Repositórios Git do Azure (YAML)**
 4. Selecione o repositório **eShopOnWeb**
 5. Selecione **Arquivo YAML do Azure Pipelines Atual**
 6. Selecione o arquivo **/.ado/eshoponWeb-ci-pr.yml** e clique em **Continuar**
@@ -80,7 +80,7 @@ Vamos começar importando o pipeline de build chamado [eshoponWeb-ci-pr.yml](htt
     - **DotNet Publish**: publica o aplicativo e suas dependências em uma pasta para implantação em um sistema de hospedagem. Nesse caso, é o **Build.ArtifactStagingDirectory**.
 
 7. Clique no botão **Salvar** para salvar a definição do pipeline.
-8. Seu pipeline terá um nome com base no nome do projeto. **Vamos renomeá-lo** para identificar melhor o pipeline. Vá para **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeio-o como **eshoponWeb-ci-pr** e clique em **Salvar**.
+8. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Mover**. Nomeio-o como **eshoponWeb-ci-pr** e clique em **Salvar**.
 
 #### Tarefa 2: Políticas de branch
 
@@ -107,7 +107,7 @@ Nesta tarefa, você usará o portal do Azure DevOps para criar uma solicitação
     ```
 
 6. Clique em **Confirmar > Confirmar** (deixar mensagem de confirmação padrão).
-7. Uma mensagem será exibida, propondo a criação de uma solicitação de pull (já que suo branch **Feature01** agora está à frente em alterações, em comparação com a **principal**). Clique em **Criar Solicitação de Pull**.
+7. Uma mensagem será exibida, propondo a criação de uma solicitação de pull (já que suo branch **Feature01** agora está à frente em alterações, em comparação com a **principal**). Clique em **Criar solicitação de pull**.
 8. Na guia **Nova solicitação de pull**, deixe os padrões e clique em **Criar**.
 9. A solicitação de pull mostrará alguns requisitos pendentes, com base nas políticas aplicadas à branch principal** de destino**.
     - Pelo menos 1 usuário deve revisar e aprovar as alterações.
@@ -128,12 +128,12 @@ Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://g
 
 1. Vá para **Pipelines>Pipelines**.
 2. Clique no botão **Novo pipeline**.
-3. Selecione **Azure Repos Git (YAML)**.
+3. Selecione **Git do Azure Repos (YAML)**.
 4. Selecione o repositório **eShopOnWeb**.
-5. Selecione **Arquivo YAML do Azure Pipelines existente**.
-6. Selecione o **arquivo /.ado/eshoponWeb-ci.yml** e clique em **Continuar**.
+5. Selecione **Arquivo YAML existente do Azure Pipelines**.
+6. Selecione o arquivo **/.ado/eshoponWeb-ci.yml** e clique em **Continuar**.
 
-    A definição de CI consiste nas seguintes tarefas:
+    A definição de CI é composta pelas seguintes tarefas:
     - **DotNet Restore**: com a Restauração de Pacotes NuGet, você pode instalar todas as dependências de seu projeto sem precisar armazená-las no controle do código-fonte.
     - **DotNet Build**: compila um projeto e todas as suas dependências.
     - **DotNet Test**: driver de teste do .NET usado para executar testes de unidade.
@@ -167,7 +167,7 @@ A definição de pipeline de build padrão não habilita a Integração Contínu
 4. Selecione **Criar novo branch para esta confirmação **
 5. Mantenha o nome do branch padrão e **Iniciar uma solicitação de pull** verificada.
 6. Clique em **Salvar**
-7. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomeá-lo** para identificar melhor o pipeline. Vá para **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeio-o como **eshoponWeb-ci** e clique em Salvar.****
+7. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Mover**. Nomeie-o **eshoponweb-ci** e clique em **Salvar**.
 8. Ir para **Repositórios > solicitações pull**
 9. Clique na solicitação de pull ** "Update eshoponWeb-ci.yml for Azure Pipelines"** 
 10. Depois que todas as validações forem bem-sucedidas, no canto superior direito clique em **Aprovar**. Agora você pode clicar em **Concluir**.
@@ -189,7 +189,7 @@ Nesta tarefa, você criará uma solicitação de pull usando uma novo branch par
 
 6. Clique em **Confirmar > Confirmar** (deixar mensagem de confirmação padrão).
 7. Uma mensagem será exibida, propondo a criação de uma solicitação de pull (já que suo branch do **Feature02** agora está à frente em alterações, em comparação com a **principal**).
-8. Clique em **Criar Solicitação de Pull**.
+8. Clique em **Criar solicitação de Pull**.
 9. Na guia **Nova solicitação de pull**, deixe os padrões e clique em **Criar**.
 10. A solicitação de pull mostrará alguns requisitos pendentes, com base nas políticas aplicadas à branch principal** de destino**.
 11. Depois que todas as validações forem bem-sucedidas, no canto superior direito clique em **Aprovar**. Agora, na lista suspensa Definir preenchimento** automático, **você pode clicar em **Concluir**.

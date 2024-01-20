@@ -10,13 +10,13 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
 ## Visão geral do laboratório
 
-No contexto do Azure DevOps, o **termo dívida técnica** representa meios subótimos de atingir metas táticas, o que afeta negativamente a capacidade de atingir objetivos estratégicos no desenvolvimento e implantação de software. A dívida técnica afeta a produtividade, tornando o código difícil de entender, propenso a falhas, demorado para mudar e difícil de validar. Sem supervisão e gerenciamento adequados, a dívida técnica pode se acumular ao longo do tempo e afetar significativamente a qualidade geral do software e a produtividade das equipes de desenvolvimento a longo prazo.
+No contexto do Azure DevOps, o termo **dívida técnica** representa os meios menos eficientes usados para atingir metas táticas, os quais prejudicam a capacidade de atingir objetivos estratégicos no desenvolvimento e implantação de software. A dívida técnica afeta a produtividade, tornando o código difícil de entender, propenso a falhas, demorado para mudar e difícil de validar. Sem supervisão e gerenciamento adequados, a dívida técnica pode se acumular ao longo do tempo e afetar significativamente a qualidade geral do software e a produtividade das equipes de desenvolvimento a longo prazo.
 
 O [SonarCloud](https://sonarcloud.io/){:target="\_blank"} é um serviço de segurança e qualidade de código baseado em nuvem. Os principais recursos do SonarCloud incluem:
 
@@ -54,7 +54,7 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
     ![Criar Projeto](images/create-project.png)
 
-#### Tarefa 2: (pular se feita) importar o repositório eShopOnWeb do Git
+#### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
@@ -136,7 +136,7 @@ Nesta tarefa, você instalará e configurará a extensão SonarCloud Azure DevOp
 
     > **Observação**: em seguida, dentro da organização recém-criada, você criará um projeto do SonarCloud que espelhará o projeto do Azure DevOps **SonarExamples**.
 
-11. Na página **Analisar projetos – Selecionar repositórios**, na lista de projetos do Azure DevOps, marque a caixa de seleção ao lado da entrada **eshoponweb / eshoponweb** e clique em **Configurar**.
+11. Na página **Analisar projetos – Selecionar repositórios**, na lista de projetos do Azure DevOps, marque a caixa de seleção ao lado da entrada **eshoponweb/eshoponweb** e clique em **Configurar**.
 12. Na página **Escolher seu Método de Análise**, clique no  bloco **Com Pipelines do Azure DevOps**.
 
     ![Com Pipelines do Azure DevOps ](images/sonar-setup.png)
