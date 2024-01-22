@@ -1,10 +1,10 @@
 ---
 lab:
-  title: Gerenciamento de Pacotes com o Azure Artifacts
+  title: Package Management with Azure Artifacts
   module: 'Module 08: Design and implement a dependency management strategy'
 ---
 
-# Gerenciamento de Pacotes com o Azure Artifacts
+# Package Management with Azure Artifacts
 
 ## Manual de laboratório do aluno
 
@@ -20,7 +20,7 @@ lab:
 
 ## Visão geral do laboratório
 
-O Azure Artifacts facilita a descoberta, a instalação e a publicação de pacotes NuGet, npm e Maven no Azure DevOps. Está profundamente integrado com outros recursos do Azure DevOps, como Build, tornando o gerenciamento de pacotes uma parte perfeita de seus fluxos de trabalho existentes.
+O Azure Artifacts facilita a descoberta, a instalação e a publicação de pacotes NuGet, npm e Maven no Azure DevOps. Está profundamente integrado com outros recursos do Azure DevOps, como Compilação, tornando o gerenciamento de pacotes uma parte perfeita de seus fluxos de trabalho existentes.
 
 ## Objetivos
 
@@ -100,9 +100,9 @@ Nesta tarefa, você criará e publicará um pacote NuGet personalizado desenvolv
     | Configuração | Valor |
     | --- | --- |
     | Nome do projeto | **EShopOnWeb.Shared** |
-    | Location | aceitar o valor padrão |
+    | Localização | aceitar o valor padrão |
     | Solução | **Criar nova solução** |
-    | Nome da solução | **EShopOnWeb.Shared** |
+    | Solução nome | **EShopOnWeb.Shared** |
 
     Deixe a configuração **Colocar a solução e o projeto no mesmo diretório** ativada.
 

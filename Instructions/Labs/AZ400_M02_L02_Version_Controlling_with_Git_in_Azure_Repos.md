@@ -10,9 +10,9 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
 - Se você não tiver o Git 2.29.2 ou posterior instalado, inicie um navegador da Web, navegue até a [página de download do Git para Windows](https://gitforwindows.org/), baixe-o e instale-o.
 - Se você ainda não tiver o Visual Studio Code instalado, navegue até a [página de download do Visual Studio Code](https://code.visualstudio.com/) na janela do navegador da Web, baixe-o e instale-o.
@@ -22,13 +22,13 @@ lab:
 
 O Azure DevOps dá suporte a dois tipos de controle de versão, Git e TFVC (Controle de Versão do Team Foundation). Observe a visão geral rápida dos dois sistemas de controle de versão:
 
-- **TFVC (Controle de Versão do Team Foundation):** o TFVC é um sistema de controle de versão centralizado. Normalmente, os membros da equipe têm somente uma versão de cada arquivo nos computadores de desenvolvimento. Os dados históricos são mantidos somente no servidor. As ramificações são baseadas em caminho e criadas no servidor.
+- **TFVC (Controle de Versão do Team Foundation):** o TFVC é um sistema de controle de versão centralizado. Normalmente, os membros da equipe têm somente uma versão de cada arquivo nos computadores de desenvolvimento. Os dados históricos são mantidos somente no servidor. As branches são baseadas em caminho e criadas no servidor.
 
 - **Git:** o Git é um sistema de controle de versão distribuído. Os repositórios Git podem ser posicionados localmente (no computador de um desenvolvedor). Cada desenvolvedor tem uma cópia do repositório de origem em seu computador de desenvolvimento. Os desenvolvedores podem confirmar cada conjunto de alterações em seu computador de desenvolvimento e executar operações de controle de versão, como histórico e comparação, sem uma conexão de rede.
 
 O Git é o provedor de controle de versão padrão para novos projetos. Você deve usar o Git para controle de versão em seus projetos, a menos que precise de recursos centralizados de controle de versão no TFVC.
 
-Neste laboratório, você aprenderá a estabelecer um repositório Git local, que pode ser sincronizado facilmente com um repositório Git centralizado no Azure DevOps. Além disso, você aprenderá sobre o suporte de ramificação e mesclagem do Git. Você usará o Visual Studio Code, mas os mesmos processos se aplicam ao uso de qualquer cliente compatível com Git.
+Neste laboratório, você aprenderá a estabelecer um repositório Git local, que pode ser sincronizado facilmente com um repositório Git centralizado no Azure DevOps. Além disso, você aprenderá sobre o suporte de branch e mesclagem do Git. Você usará o Visual Studio Code, mas os mesmos processos se aplicam ao uso de qualquer cliente compatível com Git.
 
 ## Objetivos
 
@@ -55,7 +55,7 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
     ![Criar Projeto](images/create-project.png)
 
-#### Tarefa 2: (pular se feita) importar o repositório eShopOnWeb do Git
+#### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
@@ -142,7 +142,7 @@ Quando você fizer alterações em seus arquivos, o Git registrará as alteraç�
 As confirmações do Git consistem no seguinte:
 
 - No(s) arquivo(s) alterado(s) na confirmação. O Git mantém o conteúdo de todas as alterações de arquivo em seu repositório nas confirmações. Isso o mantém rápido e permite a fusão inteligente.
-- Uma referência ao commit pai. O Git gerencia seu histórico de código usando essas referências.
+- Uma referência à confirmação pai. O Git gerencia seu histórico de código usando essas referências.
 - Uma mensagem descrevendo uma confirmação. Você dá essa mensagem ao Git quando cria a confirmação. É uma boa ideia manter essa mensagem descritiva, mas direta.
 
 #### Tarefa 1: confirmar alterações
@@ -390,6 +390,24 @@ A equipe de produto decidiu que a versão atual do site deve ser lançada como v
 3. No painel **Criar uma marca**, na caixa de texto **Nome**, digite **v1.1.0-beta**. Na lista suspensa **Baseado em**, deixe a entrada **main** selecionada. Na caixa de texto **Descrição**, digite **Versão beta v1.1.0** e clique em **Criar**.
 
     > **Observação**: agora você marcou o repositório nesta versão (a confirmação mais recente é vinculada à marca). Você pode marcar confirmações por vários motivos, e o Azure DevOps oferece a flexibilidade de editá-las e excluí-las, bem como gerenciar suas permissões.
+
+### Exercício 5: Remover as políticas de branch
+
+Ao percorrer os diferentes laboratórios de curso na ordem em que são apresentados, a política de branch configurada durante esse laboratório bloqueará os exercícios em laboratórios futuros. Portanto, queremos que você remova as políticas de branch configuradas.
+
+1. Na exibição do Projeto **EShopOnWeb** do Azure DevOps, navegue até **Repos** e selecione **Branches**. Selecione a guia **Minerar** do painel **Branches**.
+2. Na guia **Minerar** do painel **Branches**, passe o ponteiro do mouse sobre a entrada do branch **principal** para revelar o símbolo de reticências (o “...“) no lado direito.
+3. Clique nas reticências e, no menu pop-up, selecione **Políticas de branch**.
+
+    ![Configurações de política](images/policy-settings.png)
+
+4. Na guia **principal** das configurações do repositório, desabilite a opção para **Exigir número mínimo de revisores**.
+5. Na guia **principal** das configurações do repositório, desabilite a opção para **Verificar se há itens de trabalho vinculados**.
+
+    ![Políticas de branch](images/branch-policies.png)
+
+6. Agora você desabilitou/removeu as políticas de branch do branch principal.
+    
 
 ## Revisão
 

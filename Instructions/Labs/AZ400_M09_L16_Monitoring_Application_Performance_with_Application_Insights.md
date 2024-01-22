@@ -10,19 +10,19 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
 - Identifique uma assinatura existente do Azure ou crie uma.
 
-- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função Proprietário na assinatura do Azure e a função Administrador Global no locatário do Microsoft Entra associado à assinatura do Azure. Para obter detalhes, veja [Listar atribuições de função do Azure usando o portal do Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e atribuir funções de administrador no Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal#view-my-roles).
+- Verifique se você tem uma conta Microsoft ou uma conta do Microsoft Entra com a função Proprietário na assinatura do Azure e a função Administrador Global no locatário do Microsoft Entra associado à assinatura do Azure. Para obter detalhes, veja [Listar designações de função do Azure usando o portal do Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal) e [Exibir e designar funções de administrador no Azure Active Directory](https://docs.microsoft.com/azure/active-directory/roles/manage-roles-portal#view-my-roles).
 
 ## Visão geral do laboratório
 
 O **Teste de Carga do Azure** é um serviço de teste de carga totalmente gerenciado que permite gerar cargas de alta escala. O serviço simula o tráfego para seus aplicativos, independentemente de onde estão hospedados. Desenvolvedores, testadores e engenheiros de QA (garantia de qualidade) podem usá-lo para otimizar o desempenho, a escalabilidade ou a capacidade do aplicativo.
 Crie rapidamente um teste de carga para seu aplicativo Web usando uma URL e sem conhecimento prévio das ferramentas de teste. O Teste de Carga do Azure abstrai a complexidade e a infraestrutura para executar seu teste de carga em escala.
-Para cenários mais avançados de teste de carga, você pode criar um teste de carga reutilizando um script de teste do Apache JMeter existente, uma ferramenta de desempenho e carga de software livre popular. Por exemplo, o plano de teste pode consistir em várias solicitações de aplicativo, você deseja chamar pontos de extremidade que não sejam HTTP ou está usando dados e parâmetros de entrada para que o teste fique mais dinâmico.
+Para cenários mais avançados de teste de carga, você pode criar um teste de carga reutilizando um script de teste do Apache JMeter existente, uma ferramenta de desempenho e carga de código aberto popular. Por exemplo, o plano de teste pode consistir em várias solicitações de aplicativo, você deseja chamar pontos de extremidade que não sejam HTTP ou está usando dados e parâmetros de entrada para que o teste fique mais dinâmico.
 
 Neste laboratório, você aprenderá sobre como usar o Teste de Carga do Azure para simular teste de desempenho em um aplicativo Web em execução em tempo real com diferentes cenários de carga. Por fim, você aprenderá a integrar o Teste de Carga do Azure em seus pipelines de CI/CD. 
 
@@ -30,7 +30,7 @@ Neste laboratório, você aprenderá sobre como usar o Teste de Carga do Azure p
 
 Após concluir este laboratório, você poderá:
 
-- Implantar aplicativos Web do Serviço de Aplicativo do Azure.
+- Implantar aplicativos Web do Azure App Service.
 - Compor e executar um pipeline de CI/CD baseado em YAML.
 - Implantar o Teste de carga do Azure
 - Investigar o desempenho do aplicativo Web do Azure usando o Teste de Carga do Azure.
@@ -52,7 +52,7 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
     ![Criar Projeto](images/create-project.png)
 
-#### Tarefa 2: (pular se feita) importar o repositório eShopOnWeb do Git
+#### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
@@ -95,7 +95,7 @@ Nesta tarefa, você criará um aplicativo Web do Azure usando o Cloud Shell no p
 6. Crie um aplicativo Web com um nome exclusivo.
 
     ```bash
-    WEBAPPNAME=partsunlimited$RANDOM$RANDOM
+    WEBAPPNAME=az400eshoponweb$RANDOM$RANDOM
     az webapp create --resource-group $RESOURCEGROUPNAME --plan $SERVICEPLANNAME --name $WEBAPPNAME 
     ```
 
@@ -110,7 +110,7 @@ Neste exercício, você vai configurar pipelines de CI/CD como código com YAML 
 Nesta tarefa, você adicionará uma definição de compilação do YAML ao projeto existente.
 
 1. Navegue de volta ao painel **Pipelines** no hub **Pipelines**.
-2. Na janela **Criar seu primeiro pipeline**, clique em **Criar pipeline**.
+2. Clique em **Novo pipeline** (ou em Criar Pipeline se este for o primeiro que você criar).
 
     > **Observação**: usaremos o assistente para criar uma nova definição de pipeline do YAML com base em nosso projeto.
 
@@ -179,21 +179,22 @@ stages:
         downloadPath: '$(Build.ArtifactStagingDirectory)'
 
 ```
-4. Defina o cursor em uma nova linha no final da definição YAML (linha 69).
+8. Coloque o cursor em uma nova linha no final da definição do YAML. **Posicione o cursor no recuo do nível de tarefa anterior**.
 
     > **Observação**: este será o local onde novas tarefas serão adicionadas.
 
-5. Na lista de tarefas no lado direito do painel de código, procure e selecione a tarefa ** Implantação do Serviço de Aplicativo do Azure**.
-6. No painel **Implantação do Serviço de Aplicativo do Azure**, especifique as seguintes configurações e clique em **Adicionar**:
+9. Clique em **Mostrar Assistente** do lado direito do portal. Na lista de tarefas, pesquise e selecione a tarefa **Implantação do Serviço de Aplicativo do Azure**.
+10. No painel **Implantação do Serviço de Aplicativo do Azure**, especifique as seguintes configurações e clique em **Adicionar**:
 
-    - na lista suspensa **Assinatura do Azure**, selecione a assinatura do Azure na qual você implantou os recursos do Azure anteriormente no laboratório, clique em **Autorizar** e, quando solicitado, autentique-se usando a mesma conta de usuário usada durante a implantação de recursos do Azure.
-    - na lista suspensa **Nome do Serviço de Aplicativo**, selecione o nome do aplicativo Web implantado anteriormente no laboratório.
+    - Na lista suspensa **Assinatura do Azure**, selecione a assinatura do Azure na qual você implantou os recursos do Azure anteriormente no laboratório, se necessário (somente quando este for seu primeiro pipeline criado) clique em **Autorizar** e, quando solicitado, autentique usando a mesma conta de usuário usada durante a implantação dos recursos do Azure.
+    - Valide que o **Tipo de Serviço de Aplicativo** aponta para o Aplicativo Web no Windows.
+    - Na lista suspensa **Nome do Serviço de Aplicativo**, selecione o nome do aplicativo Web implantado anteriormente no laboratório (**az400eshoponweb...).
     - na caixa de texto **Pacote ou pasta**, **atualize** o Valor Padrão para `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-7. Confirme as configurações no painel Assistente clicando no botão **Adicionar** .
+11. Confirme as configurações no painel Assistente clicando no botão **Adicionar** .
 
     > **Observação**: isso adicionará automaticamente a tarefa de implantação à definição de pipeline YAML.
 
-8. O snippet de código adicionado ao editor deve ser semelhante ao abaixo, refletindo seu nome para os parâmetros azureSubscription e WebappName:
+12. O snippet de código adicionado ao editor deve ser semelhante ao abaixo, refletindo seu nome para os parâmetros azureSubscription e WebappName:
 
 > **Observação**: o parâmetro **packageForLinux** é enganoso no contexto deste laboratório, mas é válido para Windows ou Linux.
 
@@ -203,28 +204,37 @@ stages:
             ConnectionType: 'AzureRM'
             azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
             appType: 'webApp'
-            WebAppName: 'eshoponWebYAML369825031'
+            WebAppName: 'az400eshoponWeb369825031'
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
     ```
-9. Clique em **Salvar**, no painel **Salvar**, clique em **Salvar** novamente para confirmar a alteração diretamente no branch principal.
+13. Antes de salvar as atualizações no arquivo yml, dê a ele um nome mais claro. Na parte superior da janela do editor yaml, ele mostra **EShopOnweb/azure-pipelines-#.yml**. (em que # é um número, normalmente 1, mas pode ser diferente em sua configuração.) Selecione **esse nome de arquivo** e renomeie-o para **m09l16-pipeline.yml**
+
+14. Clique em **Salvar**, no painel **Salvar**, clique em **Salvar** novamente para confirmar a alteração diretamente no branch principal.
 
     > **Observação**: como nosso CI-YAML original não foi configurado para acionar automaticamente uma nova compilação, temos que iniciar esta manualmente.
 
-10. No menu Azure DevOps à esquerda, navegue até **Pipelines** e selecione **Pipelines** novamente.
-11. Abra o Pipeline **EShopOnWeb_MultiStageYAML** e clique em **Executar Pipeline**.
-12. Confirme a opção **Executar** no painel exibido.
-13. Duas fases diferentes são exibidas, **Compilar solução .Net Core** e **Implantar no aplicativo Web do Azure**.
-14. Aguarde até que o pipeline seja iniciado e conclua a fase Compilar.
-15. Quando a Fase Implantar quiser iniciar, será solicitado as **Permissões Necessárias**, e aparecerá uma barra laranja dizendo:
+15. No menu Azure DevOps à esquerda, navegue até **Pipelines** e selecione **Pipelines** novamente. Em seguida, selecione **Todos** para abrir todas as definições de pipeline, não apenas as recentes.
+
+(Observação: se você manteve todos os pipelines anteriores de exercícios de laboratório anteriores, esse novo pipeline pode ter reutilizado um padrão **EShopOnWeb (#)** nome da sequência para o pipeline, conforme mostrado na captura de tela abaixo.) Selecione um pipeline (provavelmente aquele com o número de sequência mais alto, selecione Editar e valide-o aponta para o arquivo de código m09l16-pipeline.yml) 
+
+![](images/m3/eshoponweb-m9l16-pipeline.png)
+
+11. Confirme para executar esse pipeline clicando em **Executar** no painel exibido e confirme clicando em **Executar** mais uma vez.
+12. Duas fases diferentes são exibidas, **Compilar solução .Net Core** e **Implantar no aplicativo Web do Azure**.
+13. Aguarde a conclusão da execução de pipeline. 
+
+16. **Ignore** avisos exibidos durante o Estágio de Build. Aguarde até que ele conclua o Estágio de Build com êxito. (Você pode selecionar o estágio de build real para ver mais detalhes nos logs.)
+
+17. Quando a Fase Implantar quiser iniciar, será solicitado as **Permissões Necessárias**, e aparecerá uma barra laranja dizendo:
 
     ```text
     This pipeline needs permission to access a resource before this run can continue to Deploy to an Azure Web App
     ```
 
-16. Clique em **Exibição**.
-17. No painel **Aguardando revisão**, clique em **Permitir**.
-18. Valide a mensagem na janela **pop-up Permitir** e confirme clicando em **Permitir**.
-19. Isso inicia a Fase Implantar. Aguarde a conclusão.
+18. Clique em **Exibição**.
+19. No painel **Aguardando revisão**, clique em **Permitir**.
+20. Valide a mensagem na janela **pop-up Permitir** e confirme clicando em **Permitir**.
+21. Isso inicia a Fase Implantar. Aguarde a conclusão.
 
 #### Tarefa 2: revisar o site implantado
 
@@ -263,26 +273,26 @@ Nesta tarefa, você implantará um novo recurso de Teste de Carga do Azure em su
 
 Nesta tarefa, você criará diferentes testes de Teste de Carga do Azure, usando diferentes definições de configuração de carga. 
 
-10. Na folha Recurso Teste de Carga do Azure **EShopOnWebLoadTesting**, observe **Introdução a um teste rápido** e clique no botão **Teste rápido**.
-11. Conclua os seguintes parâmetros e configurações para criar um teste de carga:
-- **URL de teste:** insira a URL do Serviço de Aplicativo do Azure implantado no exercício anterior (EShopOnWeb...azurewebsites.net), **including https://**
+1. De dentro da folha do Recurso de Teste de Carga do Azure **EShopOnWebLoadTesting**, navegue até **Testes**. Clique na opção de menu **+Criar** e selecione **Criar um teste baseado em URL**. 
+2. Conclua os seguintes parâmetros e configurações para criar um teste de carga:
+- **URL de Teste**: Insira a URL do Serviço de Aplicativo do Azure que você implantou no exercício anterior (az400eshoponweb...azurewebsites.net), **incluindo https://**
 - **Especificar carga**: usuários virtuais
 - **Número de usuários virtuais**: 50
-- **Duração do teste (segundos):** 120
-- **Tempo de crescimento (segundos):** 0
-12. Confirme a configuração do teste clicando em **Executar teste**.
-13. O teste será executado por cerca de dois minutos. 
-14. Com o teste em execução, navegue de volta para a página Recurso Teste de Carga do Azure  **EShopOnWebLoadTesting** e navegue até **Testes**, selecione **Testes** e veja um teste **Get_eshoponweb...**
-15. No menu superior, clique em **Criar**, **Criar um teste rápido**, para criar um segundo teste de carga.
-16. Conclua os seguintes parâmetros e configurações para criar outro teste de carga:
+- **Duração do Teste (minutos)**: 5
+- **Tempo de espera (minutos)**:  1
+3. Confirme a configuração do teste clicando em **Examinar e Criar**(não faça nenhuma alteração nas outras guias). Clique em **Criar** mais uma vez.
+4. Isso inicia os Testes de Carga, que serão executados. O teste será executado por 5 minutos. 
+5. Com o teste em execução, navegue de volta para a página Recurso Teste de Carga do Azure  **EShopOnWebLoadTesting** e navegue até **Testes**, selecione **Testes** e veja um teste **Get_eshoponweb...**
+6. No menu superior, clique em **Criar**, **Criar um teste baseado em URL**, para criar um segundo teste de carga.
+7. Conclua os seguintes parâmetros e configurações para criar outro teste de carga:
 - **URL de teste:** insira a URL do Serviço de Aplicativo do Azure implantado no exercício anterior (EShopOnWeb...azurewebsites.net), **including https://**
 - **Especificar carga**: solicitações por segundo (RPS)
 - **Solicitações por segundo (RPS)**: 100
 - **Tempo de resposta (milissegundos)**: 500
-- **Duração do teste (segundos)**: 120
-- **Tempo de crescimento (segundos):** 0
-17. Confirme a configuração do teste clicando em **Executar teste**.
-18. O teste será executado por cerca de dois minutos.
+- **Duração do Teste (minutos)**: 5
+- **Tempo de espera (minutos)**:  1
+8. Confirme a configuração do teste clicando mais uma vez em **Examinar + criar**e **Criar**.
+9. O teste será executado por cerca de cinco minutos.
 
 #### Tarefa 3: validar os resultados do Teste de Carga do Azure
 
@@ -290,22 +300,14 @@ Nesta tarefa, você validará o resultado de um TestRun de Teste de Carga do Azu
 
 Com ambos os testes rápidos concluídos, vamos fazer algumas alterações neles e validar os resultados.
 
-19. Na folha folha **EShopOnWebLoadTesting**, navegue até **Testes** e selecione o primeiro teste Get_eshoponwebyaml... No menu superior, clique em **Editar**.
-20. Aqui, o portal permite que você altere o **Nome do Teste** do padrão gerado para um mais descritivo. Ele também permite que você ainda faça alterações em qualquer um dos parâmetros definidos anteriormente.
-21. Na folha **Editar teste**, navegue até a guia **Plano de teste**. 
-22. É aqui que você pode gerenciar o arquivo de script de teste de carga do **Apache JMeter**, que é o que o Teste de Carga do Azure está usando como uma estrutura. Observe o arquivo **quick_test.jmx**. Para **Abrir** o arquivo na máquina virtual do laboratório, selecione-o. Na janela pop-up, selecione **Visual Studio Code** como o editor para abrir o arquivo.
-23. Observe a estrutura de linguagem XML do arquivo.
-
-    > Observação: para obter informações adicionais e entender a sintaxe mais avançada do Apache JMeter, confira o link [Teste de Carga do Azure – Jmeter](https://learn.microsoft.com/en-us/azure/load-testing/how-to-create-and-run-load-test-with-jmeter-script).
-
-24. De volta à exibição **Testes**, onde aparece ambos os testes, selecione um deles para abrir uma visualização mais detalhada **clicando** em um dos testes. Isso redireciona você para a página de teste mais detalhada. Nela, você pode validar os detalhes das execuções reais selecionando o **TestRun_mm/dd/yy-hh:hh** na lista resultante.
-25. Na página **TestRun** detalhada, identifique o resultado real da simulação do Teste de Carga do Azure. Alguns dos valores são:
+1. Em **Teste de Carga do Azure**, navegue até **Testes**. Para abrir uma exibição mais detalhada, selecione qualquer uma das definições de teste **clicando** em um dos testes. Isso redireciona você para a página de teste mais detalhada. Nela, você pode validar os detalhes das execuções reais selecionando o **TestRun_mm/dd/yy-hh:hh** na lista resultante.
+2. Na página **TestRun** detalhada, identifique o resultado real da simulação do Teste de Carga do Azure. Alguns dos valores são:
 - Carga/total de solicitações
-- Duration
+- Duração
 - Tempo de Resposta (mostra o resultado em segundos, refletindo o percentil 90 do tempo de resposta – isso significa que, para 90% das solicitações, o tempo de resposta estará dentro dos resultados fornecidos)
 - Taxa de transferência em solicitações por segundo
-26. Mais abaixo, vários desses valores são representados usando visualizações de linhas e gráficos de painel.
-27. Reserve alguns minutos para **comparar os resultados** de ambos os testes simulados entre si e **identificar o impacto** de mais usuários no desempenho do Serviço de Aplicativo.
+3. Mais abaixo, vários desses valores são representados usando visualizações de linhas e gráficos de painel.
+4. Reserve alguns minutos para **comparar os resultados** de ambos os testes simulados entre si e **identificar o impacto** de mais usuários no desempenho do Serviço de Aplicativo.
 
 ### Exercício 2: automatizar um teste de carga com CI/CD em pipelines Azure DevOps
 
@@ -327,7 +329,7 @@ Nesta tarefa, você concederá as permissões necessárias à entidade de servi�
 
 #### Tarefa 2: conceder permissões para a entidade de serviço
 
-O Teste de Carga do Azure usa o RBAC do Azure para conceder permissões e executar atividades específicas no recurso de teste de carga. Para executar um teste de carga a partir do pipeline de CI/CD, conceda a função **Colaborador de Teste de Carga** à entidade de serviço.
+O Teste de Carga do Azure usa o Azure RBAC para conceder permissões e executar atividades específicas no recurso de teste de carga. Para executar um teste de carga a partir do pipeline de CI/CD, conceda a função **Colaborador de Teste de Carga** à entidade de serviço.
 
 1. No **portal do Azure**, acesse seu recurso **Teste de Carga do Azure**.
 2. Selecione **Controle de acesso (IAM)** > Adicionar atribuição de função.
@@ -336,7 +338,7 @@ O Teste de Carga do Azure usa o RBAC do Azure para conceder permissões e execut
 5. Selecione a **entidade de serviço** e, em seguida, selecione **Selecionar**.
 6. Na **guia Examinar + atribuir**, selecione **Examinar + atribuir** para adicionar a atribuição de função.
 
-Agora você pode usar a conexão de serviço na definição do fluxo de trabalho do Azure Pipelines para acessar o recurso de teste de carga do Azure.
+Agora você pode usar a conexão de serviço na definição de fluxo de trabalho do Azure Pipelines para acessar o recurso de teste de carga do Azure.
 
 #### Tarefa 3: exportar arquivos de entrada de teste de carga e Importar para o Controle do código-fonte do Azure DevOps
 
@@ -350,7 +352,7 @@ Execute as etapas a seguir para baixar os arquivos de entrada de um teste de car
 4. O navegador baixa uma pasta compactada que contém os arquivos de entrada do teste de carga.
 5. Use qualquer ferramenta zip para extrair os arquivos de entrada. A pasta contém os seguintes arquivos:
 
-- *config.yaml*: o arquivo de configuração YAML de teste de carga. Faça referência a esse arquivo na definição do fluxo de trabalho de CI/CD.
+- *config.yaml*: o arquivo de configuração YAML de teste de carga. Faça referência a esse arquivo na definição de fluxo de trabalho de CI/CD.
 - *quick_test.jmx*: o script de teste do JMeter
 
 6. Confirme todos os arquivos de entrada extraídos no repositório de controle do código-fonte. Para fazer isso, navegue até o **Portal do Azure DevOps(https://dev.azure.com) e navegue até o ****Projeto DevOps EShopOnWeb**. 
@@ -365,7 +367,7 @@ Execute as etapas a seguir para baixar os arquivos de entrada de um teste de car
 
 Nesta tarefa, você importará a extensão do Teste de Carga do Azure —  Marketplace do Azure DevOps, bem como atualizará o pipeline de CI/CD existente com a tarefa AzureLoadTest.
 
-1. Para criar e executar um teste de carga, a definição do fluxo de trabalho do Azure Pipelines usa a extensão **Tarefa de Teste de Carga do Azure** do Azure DevOps Marketplace. Abra a [extensão de tarefa do Teste de Carga do Azure](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) no Azure DevOps Marketplace e selecione **Obter gratuitamente**.
+1. Para criar e executar um teste de carga, a definição de fluxo de trabalho do Azure Pipelines usa a extensão **Tarefa de Teste de Carga do Azure** do Azure DevOps Marketplace. Abra a [extensão de tarefa do Teste de Carga do Azure](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) no Azure DevOps Marketplace e selecione **Obter gratuitamente**.
 2. Selecione sua organização do Azure DevOps e escolha **Instalar** a extensão.
 3. No Portal e Projeto do Azure DevOps, navegue até **Pipelines** e selecione o pipeline criado no início deste exercício. Clique em **Editar**.
 4. No script YAML, navegue até a **linha 56** e pressione ENTER/RETURN para adicionar uma nova linha vazia. (isso é logo antes da Fase Implantar do arquivo YAML).

@@ -10,17 +10,17 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps](https://docs.microsoft.com/azure/devops/server/compatibility).
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
-- **Configurar uma organização de Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
+- **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
-- Página de download do [Git para Windows](https://gitforwindows.org/). Ele será instalado como parte dos pré-requisitos deste laboratório.
+- [Página de download do Git for Windows](https://gitforwindows.org/). Ele será instalado como parte dos pré-requisitos deste laboratório.
 
 - [Visual Studio Code](https://code.visualstudio.com/). Ele será instalado como parte dos pré-requisitos deste laboratório.
 
 ## Visão geral do laboratório
 
-Os pipelines baseados em YAML permitem que você implemente totalmente CI/CD como código, em que as definições de pipeline residem no mesmo repositório que o código que faz parte do seu projeto do Azure DevOps. Os pipelines baseados em YAML dão suporte a uma ampla variedade de recursos que fazem parte dos pipelines clássicos, como solicitações de pull, revisões de código, histórico, ramificação e modelos.
+Os pipelines baseados em YAML permitem que você implemente totalmente CI/CD como código, em que as definições de pipeline residem no mesmo repositório que o código que faz parte do seu projeto do Azure DevOps. Os pipelines baseados em YAML dão suporte a uma ampla variedade de recursos que fazem parte dos pipelines clássicos, como solicitações de pull, revisões de código, histórico, branch e modelos.
 
 Independentemente da escolha do estilo de pipeline, para criar seu código ou implantar sua solução usando o Azure Pipelines, você precisa de um agente. Um agente hospeda recursos de computação que executam um trabalho por vez. Os trabalhos podem ser executados diretamente no computador host do agente ou em um contêiner. Você pode executar seus trabalhos usando agentes hospedados pela Microsoft, que são gerenciados para você, ou implementar um agente auto-hospedado que você configura e gerencia por conta própria.
 
@@ -69,7 +69,8 @@ Neste exercício, você criará um pipeline de build do ciclo de vida do aplicat
 Nesta tarefa, você criará um pipeline YAML do Azure DevOps baseado em modelo.
 
 1. No navegador da Web que exibe o portal do Azure DevOps com o projeto **EShopOnWeb** aberto, no painel de navegação vertical no lado esquerdo, clique em **Pipelines**.
-2. Na guia **Recentes** do painel **Pipelines**, clique em **Novo pipeline**.
+2. Clique no botão **Criar pipeline** se você ainda não tiver nenhum outro pipeline criado ou clique em **Novo pipeline** para criar um novo. 
+
 3. Na página **Onde está seu código?**, clique em **Azure Repos Git **.
 4. **No painel Selecionar um repositório**, clique em **EShopOnWeb**.
 5. Na tela **Configurar o pipeline**, selecione **Arquivo YAML existente do Azure Pipelines**.
@@ -150,20 +151,20 @@ Nesta tarefa, você configurará sua Máquina Virtual de laboratório como um ag
     | Inserir o nome do agente | **az400m03-vm0** |
     | Inserir pasta de trabalho (pressione Enter para _work) | **Enter** |
     | **(Somente se exibida)** Inserir Executar um descompactamento para tarefas para cada etapa. (pressione Enter para N) | **AVISO**: aperte **Enter** somente se a mensagem for exibida|
-    | Inserir o agente de execução como serviço? (S/N) (pressione Enter para N) | **Y** |
+    | Inserir agente de execução como serviço? (S/N) (pressione Enter para N) | **Y** |
     | inserir habilitar SERVICE_SID_TYPE_UNRESTRICTED (Y/N) (aperte enter para N) | **Y** |
     | Inserir Conta de usuário a ser usada para o serviço (pressione Enter para NT AUTHORITY\NETWORK SERVICE) | **Enter** |
-    | Inserir se o serviço deve ser iniciado imediatamente após a conclusão da configuração? (S/N) (pressione Enter para N) | **Enter** |
+    | Digite se deseja impedir que o serviço seja iniciado imediatamente após a conclusão da configuração? (S/N) (pressione Enter para N) | **Enter** |
 
     > **Observação**: você pode executar seu agente auto-hospedado como um serviço ou um processo interativo. Talvez você queira começar com o modo interativo, pois isso simplifica a verificação da funcionalidade do agente. Para uso em produção, você deve considerar a execução do agente como um serviço ou como um processo interativo com logon automático habilitado, já que ambos mantêm o estado de execução e garantem que o agente seja iniciado automaticamente se o sistema operacional for reiniciado.
 
 16. Mude para a janela do navegador que exibe o portal do Azure DevOps e feche o painel **Obter o agente**.
 17. De volta à guia **Agentes** do painel **az400m03l03a-pool**, observe que o agente recém-configurado é listado com o status **Online**.
 18. Na janela do navegador da Web que exibe o portal do Azure DevOps, no canto superior esquerdo, clique na etiqueta **Azure DevOps**.
-19. Na janela do navegador que exibe a lista de projetos, clique no bloco que representa o seu projeto **Configurar pools de agentes e entender estilos de pipeline**.
+19. Na lista de projetos, clique no bloco que representa o projeto **EShopOnWeb**.
 20. No painel **EShopOnWeb**, no painel de navegação vertical do lado esquerdo, na seção **Pipelines**, clique em **Pipelines**.
 21. Na guia **Recente** do painel **Pipelines**, selecione **EShopOnWeb** e, no painel **EShopOnWeb**, selecione **Editar**.
-22. No painel de edição **EShopOnWeb**, no pipeline existente baseado em YAML, substitua a linha 13 que diz `vmImage: ubuntu-latest` designando o pool de agentes de destino com o seguinte conteúdo, designando o pool de agentes auto-hospedado recém-criado:
+22. No painel de edição **EShopOnWeb**, no pipeline existente baseado em YAML, substitua a linha 13 que diz `vmImage: windows-latest` designando o pool de agentes de destino com o seguinte conteúdo, designando o pool de agentes auto-hospedado recém-criado:
 
     ```yaml
     name: az400m03l03a-pool
@@ -173,8 +174,10 @@ Nesta tarefa, você configurará sua Máquina Virtual de laboratório como um ag
 
     > **AVISO**: tenha cuidado com copiar/colar. Confirme se o recuo é o mesmo mostrado acima.
 
-23. No painel de edição **EShopOnWeb**, no canto superior direito do painel, clique em **Salvar** e, no painel **Salvar**, clique em **Salvar** novamente. Isso vai disparar automaticamente o build com base nesse pipeline.
-24. No portal de DevOps do Azure, no painel de navegação vertical no lado esquerdo, na seção **Pipelines**, clique em **Pipelines**.
+    ![Sintaxe do pool do Yaml](images/m3/eshoponweb-ci-pr-pool_v1.png)
+
+23. No painel editar **EShopOnWeb**, no canto superior direito do painel, clique em **Salvar e Executar**. Isso vai disparar automaticamente o build com base nesse pipeline.
+24. No portal de DevOps do Azure, no painel de navegação vertical no lado esquerdo, na seção **Pipelines**, clique em **Pipelines**. Dependendo da configuração do laboratório, o pipeline pode solicitar permissões. Clique em **Permitir** para permitir que o pipeline seja executado. 
 25. Na guia **Recente** do painel **Pipelines**, clique na entrada **EShopOnWeb**. Na guia **Execuções** do painel **EShopOnWeb**, selecione a execução mais recente. No painel **Resumo da execução**, role para baixo até a parte inferior. Na seção **Trabalhos**, clique em **Fase 1** e monitore o trabalho até sua conclusão bem-sucedida.
 
 ### Exercício 3: remover os recursos usados neste laboratório
@@ -182,6 +185,9 @@ Nesta tarefa, você configurará sua Máquina Virtual de laboratório como um ag
 1. Interrompa e remova o serviço do agente executando `.\config.cmd remove` a partir do prompt de comando.
 2. Exclua o pool de agentes.
 3. Revogue o token PAT.
+4. Reverta as alterações no arquivo **eshoponweb-ci-pr.yml** navegando até ele de Repos/.ado/eshoponweb-ci-pr.yml, selecionando **Editar** e removendo as linhas 13-15 (o snippet de pool do agente) e voltando para `vmImage: windows-latest` como era originalmente. (Isso ocorre porque você usará o mesmo arquivo de pipeline de exemplo em um exercício de laboratório futuro.) 
+
+![Reverter o pool de pipelines de volta para as configurações de vmImage](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 
 ## Revisão
 

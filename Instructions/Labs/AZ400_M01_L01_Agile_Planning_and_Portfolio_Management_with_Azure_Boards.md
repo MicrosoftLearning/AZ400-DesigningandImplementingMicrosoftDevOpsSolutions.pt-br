@@ -10,7 +10,7 @@ lab:
 
 ## Requisitos do laboratório
 
-- Este laboratório requer o **Microsoft Edge** ou um [navegador compatível com o Azure DevOps.](https://docs.microsoft.com/en-us/azure/devops/server/compatibility?view=azure-devops#web-portal-supported-browsers)
+- Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/en-us/azure/devops/server/compatibility?view=azure-devops#web-portal-supported-browsers)
 
 - **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/create-organization?view=azure-devops).
 
@@ -39,9 +39,9 @@ Após concluir este laboratório, você poderá:
 
 Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Tarefa 1: (ignorar se concluído) criar e configurar o projeto de equipe
+#### Tarefa 1: (pular se já feita) criar e configurar o projeto de equipe
 
-Nesta tarefa, você criará um **projeto do Azure DevOps eShopOnWeb** para ser usado por vários laboratórios.
+Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser usado por vários laboratórios.
 
 1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo Projeto**. Dê ao projeto o nome **eShopOnWeb**. Defina **Privado** como opção de Visibilidade.
 2. Clique em **Avançado** e especifique **Scrum** como **Processo de Item de Trabalho**.
@@ -98,7 +98,10 @@ Cada novo projeto é configurado com uma equipe padrão, cujo nome corresponde a
 
     ![Faça o mesmo para os Sprints 2 e 3, certifique-se de que eles sejam criados para a equipe "EShop-Web"](images/m1/EShop-WEB-3sprints_v1.png)
 
-11. De volta ao **painel Boards** , na parte superior do painel, selecione a **guia Áreas** . Você encontrará lá uma área gerada automaticamente com o nome correspondente ao nome da equipe.
+11. Ainda no painel **Configurações do Projeto / Boards / Configuração da Equipe**, na parte superior do painel, selecione a guia **Áreas**. Você encontrará uma área gerada automaticamente com o nome correspondente ao nome da equipe.
+
+![Em Áreas, selecione EShopOnWeb\EShop-Web](images/m1/EShop-WEB-areas_v1.png)
+
 12. Clique no símbolo de reticências (...) ao lado da entrada de **área** padrão e, na lista suspensa, selecione **Incluir subáreas**.
 
     ![Na guia "Áreas", clique no ícone de reticências (...) para a área "EShop-WEB" e selecione "Incluir subáreas"](images/m1/EShop-WEB-sub_areas_v1.png)
@@ -136,11 +139,13 @@ Os itens de trabalho desempenham um papel importante no Azure DevOps. Seja descr
 8. Na seção **Trabalho relacionado** no canto inferior direito, selecione a entrada **Adicionar link** e, na lista suspensa, selecione **Novo item**.
 9. No painel **Adicionar link** na lista suspensa **Tipo de link** **selecione Filho**. Em seguida, na lista suspensa **Tipo de item de trabalho** selecione **Recurso**, na caixa de texto **Título** digite **Dashboard de treinamento** e clique em **OK**.
 
-    ![Inclua o título "Dashboard de treinamento" e clique em "OK"](images/m1/EShop-WEB-child_feature_v1.png)
+    ![Inclua o título "Dashboard de treinamento" e clique em "OK"](images/m1/EShop-WEB-create_child_feature.png)
 
     > **Observação**: no painel **Dashboard de treinamento** observe que a atribuição, **a área**e a **Iteração** já estão definidas com os mesmos valores do épico no qual o recurso se baseia. Além disso, o recurso é vinculado automaticamente ao item pai a partir do qual foi criado.
 
-10. No painel **Dashboard de treinamento**, clique em **Salvar e Fechar**.
+10. Clique em **Adicionar link** para salvar o item Filho. No painel do **dashboard Treinamento** (Novo Recurso), clique em **Salvar e Fechar**.
+
+![Epic com item filho vinculado](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
 11. No painel de navegação vertical do portal do Azure DevOps, na lista de itens Boards****, selecione **Boards**.
 12. **No painel Boards**, selecione a **entrada Boards** EShop-WEB. Isso abrirá o board para aquela equipe em particular.
@@ -217,23 +222,27 @@ O planejamento de reuniões normalmente consiste em duas partes. Na primeira par
 A lista de pendências do sprint deverá conter todas as informações de que a equipe precisa para concluir o trabalho com êxito dentro do tempo alocado sem precisar se apressar no final. Antes de planejar o sprint, você gostaria de ter criado, priorizado e estimado a lista de pendências e definido as sprints.
 
 1. No painel de navegação vertical do portal do Azure DevOps, selecione o ícone **Boards** e, na lista de itens **Boards**, selecione **Sprints**.
-2. Na guia **Quadro de Tarefas ** do modo de exibição **Sprints** na barra de ferramentas, no lado direito, selecione o **símbolo Opções de exibição** (diretamente à esquerda do ícone do funil) e, na lista suspensa **Opções de exibição** selecione a entrada **Detalhes do trabalho**.
+2. Na guia **Quadro de Tarefas ** do modo de exibição **Sprints** na barra de ferramentas, no lado direito, selecione o **símbolo Opções de exibição** (diretamente à esquerda do ícone do funil) e, na lista suspensa **Opções de exibição** selecione a entrada **Detalhes do trabalho**. Selecione **Sprint 2** como filtro.
 
     ![Na janela "Boards">"Sprints", equipe "EShop-WEB", selecione o ícone "Opções de exibição" e clique em "Detalhes do trabalho"](images/m1/EShop-WEB-work_details_v1.png)
 
     > **Observação**: o sprint atual tem um escopo bastante limitado. Há duas tarefas na **etapa Fazer** . Até o momento, nenhuma tarefa foi atribuída. Ambos mostram um valor numérico à direita da entrada Não atribuída** que representa a estimativa de**trabalho restante.
 
-3. No retângulo que representa a **página Adicionar para os tutoriais** mais recentes, clique na **entrada Não atribuído** e, na lista de contas de usuário, selecione sua conta para atribuir a tarefa a si mesmo.
+3. Na coluna **ToDo**, observe que o item da tarefa **Adicionar página para obter os tutoriais mais recentes**, clique na entrada **Não atribuído** e, na lista de contas de usuário, selecione sua conta para atribuir a tarefa a você mesmo.
 
 4. Selecione a **guia Capacidade** do modo de **** exibição Sprints.
 
-    > **Observação**: essa exibição permite definir quais atividades um usuário pode realizar e em que nível de capacidade.
+![Exibição de capacidade do Sprint](images/m1/EShop-WEB-capacity_v1.png)
 
-5. Na guia **Capacidade do modo de ** exibição **Sprints** diretamente sob o **rótulo** Atividade, na lista suspensa **Não atribuído** selecione **Desenvolvimento** e, na caixa de texto **Capacidade por dia**, digite **1**.
+    > **Note**: This view enables you to define what activities a user can take on and at what level of capacity.
+
+5. Na guia **Capacidade** da exibição **Sprints**, clique em **+Adicionar usuário** e selecione sua conta de usuário. Para esse usuário, defina o campo **Atividade** como **Desenvolvimento** e, na caixa de texto **Capacidade por dia**, digite **1**.
 
     > **Observação**: isso representa 1 hora de trabalho de desenvolvimento por dia. Observe que você pode adicionar atividades adicionais por usuário caso eles façam mais do que apenas desenvolvimento.
 
-    > **Observação**: vamos supor que você vai tirar férias.
+![Definir capacidade de desenvolvimento para um usuário](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
+
+    > **Note**: Let's assume you're also going to take some vacation. Which should be added to the capacity view too.
 
 6. Na guia **Capacidade** do modo de exibição **Sprints**, diretamente ao lado da entrada que representa sua conta de usuário, na**a coluna Dias de folga,** clique na entrada **0 dias**. Isso exibirá um painel onde você pode definir seus dias de folga.
 7. No painel exibido, use o modo de exibição de calendário para definir suas férias para abranger cinco dias úteis durante a sprint atual (nas próximas três semanas) e, depois de concluído, clique em **OK.**
@@ -257,7 +266,7 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
 
     > **Observação**: uma maneira de resolver esse problema de capacidade seria mover a tarefa para uma iteração futura. Ele pode ser feito de várias maneiras. Você pode, por exemplo, abrir a tarefa aqui e editá-la no painel fornecendo acesso aos detalhes da tarefa. Outra abordagem seria usar a **visualização da lista de pendências** , que fornece uma opção de menu em linha para movê-la. Neste ponto, porém, não mova a tarefa ainda.
 
-11. Na guia **Quadro de Tarefas ** do modo de exibição **Sprints** na barra de ferramentas, no lado direito, selecione o **símbolo Opções de exibição** (diretamente à esquerda do ícone do funil) e, na lista suspensa **Opções de exibição** selecione a entrada **Pessoas**.
+11. Na guia **Quadro de tarefas** da exibição **Sprints**, na barra de ferramentas, no lado direito, selecione o símbolo **Exibir opções** (diretamente à esquerda do ícone de funil) e, na lista suspensa **Exibir opções**, selecione a entrada **Atribuído a=**.
 
     > **Observação**: isso ajusta sua exibição de forma que você possa revisar o andamento das tarefas por pessoa, em vez de por item de lista de pendências.
 
@@ -273,6 +282,8 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
     ![Janela "Configurações", verifique se todos os campos mencionaram as informações](images/m1/EShop-WEB-styles_v1.png)
 
     > **Observação**: isso definirá todos os cartões atribuídos às atividades de **desenvolvimento** em verde.
+
+    ![Estilos de tarefas de Sprint](images/m1/EShop-WEB-sprint-green_v1.png)
 
 15. Na página **Configurações**, selecione a guia **Lista de pendências**.
 
@@ -297,7 +308,7 @@ Nesta tarefa, você passará pelo processo de personalização de quadros Kanban
 Para maximizar a capacidade de uma equipe de fornecer consistentemente software de alta qualidade, o Kanban enfatiza duas práticas principais. A primeira, visualização do fluxo de trabalho, requer que você mapeie as etapas de fluxo de trabalho da sua equipe e configure um quadro Kanban para corresponder. A segunda, restrição da quantidade de trabalho em andamento, exige que você defina limites de WIP (Trabalho em andamento). Em seguida, você já poderá acompanhar o progresso em seu quadro Kanban e monitorar as principais métricas para reduzir o tempo de lead ou de ciclo. Seu quadro Kanban transforma sua lista de pendências em uma placa de sinalização interativa, fornecendo um fluxo visual de trabalho. À medida que o trabalho progride da ideia para a conclusão, você atualiza os itens no quadro. Cada coluna representa uma etapa de trabalho e cada cartão representa uma história de usuário (cartões azuis) ou um bug (cartões vermelhos) nessa etapa do trabalho. No entanto, cada equipe desenvolve seu próprio processo ao longo do tempo, portanto, a capacidade de personalizar o quadro Kanban para corresponder à maneira como sua equipe trabalha é fundamental para a entrega bem-sucedida.
 
 1. No painel de navegação vertical do portal do Azure DevOps, na lista de itens Boards****, selecione **Boards**.
-2. No painel **Boards**, clique no ícone de engrenagem **Configurar configurações da equipe** (diretamente à direita do ícone do funil).
+2. No painel **Boards**, clique no ícone de engrenagem **Definir configurações do quadro** (diretamente à direita do ícone de funil).
 
     > **Observação**: a equipe está enfatizando o trabalho feito com dados, portanto, há atenção especial dada a qualquer tarefa associada ao acesso ou armazenamento de dados.
 
@@ -307,7 +318,7 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
 
     > **Observação**: sempre que um item de lista de pendências ou bug for marcado com **dados**, essa marcação será realçada.
 
-4. Na página **Configurações**, selecione a guia **Lista de Anotações**.
+4. Na engrenagem **Definir configurações do quadro**, no painel **Configurações**, selecione a guia **Anotações**.
 
     > **Observação**: você pode especificar quais **anotações** você gostaria de incluir nos cartões para torná-los mais fáceis de ler e navegar. Quando uma anotação é habilitada, os itens de trabalho filho desse tipo são facilmente acessíveis clicando na visualização em cada cartão.
 
@@ -316,17 +327,17 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
     > **Observação**: a guia **Testes** o habilitam a configurar como você deseja que os testes apareçam e se comportem nos cartões
 
 6. No painel **Configurações**, clique em **Salvar e fechar** para salvar a regra de estilo.
-7. Na guia **Board** do painel **EShop-WEB**, clique com o botão direito no item de trabalho representando o item de lista de pendência **Como um cliente, desejo ver os novos tutoriais** e selecione **Abrir**.
-8. No painel **Como cliente, desejo exibir novos tutoriais**, na parte superior do painel, à direita da entrada 0 **comentários**, clique em **Adicionar marcação**.
+7. Na guia **Quadro** do painel **EShop-WEB**, abra o Item de trabalho que representa o item da lista de pendências do produto **Como cliente, quero exibir novos tutoriais**.
+8. Na exibição de item detalhado, na parte superior do painel, à direita da entrada **0 comentários**, clique em **Adicionar marca**.
 9. Na caixa de texto resultante, digite **dados** e pressione a **tecla Enter** .
 10. Repita a etapa anterior para adicionar a **marcação experiência do usuário** .
-11. No painel **Como cliente, desejo exibir novos tutoriais**, clique em **Salvar & Fechar**.
+11. Salve essas edições clicando em **Salvar e Fechar**.
 
     ![No painel Como cliente, desejo exibir novos tutoriais, clique em Salvar & Fechar.](images/m1/EShop-WEB-tags_v1.png)
 
     > **Observação**: as duas marcações agora estão visíveis no cartão, com a marcações de dados** realçada **em amarelo conforme configurado.
 
-12. No painel **Boards**, clique no ícone de engrenagem **Configurar configurações da equipe** (diretamente à direita do ícone do funil).
+12. No painel **Boards**, clique no ícone de engrenagem **Definir configurações do quadro** (diretamente à direita do ícone de funil).
 13. Na página **Configurações**, selecione a guia **Lista de Colunas**.
 
     > **Observação**: Esta seção permite que você adicione novas etapas ao fluxo de trabalho.
@@ -335,14 +346,12 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
 
     > **Observação**: o limite de trabalho em andamento de 1 indica que apenas um item de trabalho deve estar nesta etapa por vez. Normalmente, você definiria isso mais alto, mas há apenas dois itens de trabalho para demonstrar o recurso.
 
-15. **No painel Configurações**, na **guia Colunas**, arraste e solte a guia recém-criada entre **Confirmado** e **Concluído**.
-16. No painel **Configurações**, clique em **Salvar e fechar**.
-
     ![No painel Configurações, clique em “Salvar e fechar”.](images/m1/EShop-WEB-qa_column_v1.png)
 
-    > **Observação**: verifique se agora você vê a nova etapa o fluxo de trabalho.
+15. No painel **Configurações**, selecione a guia **Colunas** novamente. Observe as reticências ao lado da coluna **Garantia de qualidade aprovada** que você criou. Selecione **Mover para a direita** duas vezes, para que a coluna Garantia de qualidade aprovada seja posicionada entre **Confirmada** e **Concluída**.
+16. No painel **Configurações**, clique em **Salvar**.
 
-17. **Atualize** o **portal Boards**, para que a **coluna Aprovado por QA**4 esteja visível na visualização do quadro Kanban agora.
+17. **Atualize** o **portal Boards**, de modo que a coluna **Garantia de qualidade aprovada** esteja visível na exibição do quadro Kanban agora.
 18. Arraste o item de trabalho **Como cliente, quero desejo os tutoriais que visualizei recentemente** da etapa **Confirmado** para a **etapa QA Aprovado**.
 19. Arraste o item de trabalho **Como cliente, desejo visualizar novos tutoriais** da etapa **Confirmado** para a **etapa Aprovado para o Controle de Qualidade**.
 
@@ -351,7 +360,7 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
     > **Observação**: a etapa agora excede seu limite **WIP** e é colorida de vermelho como um aviso.
 
 20. Mova o item de lista de pendência ** Como cliente, quero ver os tutoriais que visualizei recentemente** de volta para **Confirmado**.
-21. No painel **Boards**, clique no ícone de engrenagem **Configurar configurações da equipe** (diretamente à direita do ícone do funil).
+21. No painel **Boards**, clique no ícone de engrenagem **Definir configurações do quadro** (diretamente à direita do ícone de funil).
 22. No painel ** Configurações**, retorne à **guia Colunas** e selecione a **guia Aprovado** por controle de qualidade.
 
     > **Observação**: geralmente existe um atraso entre quando o trabalho é movido para uma coluna e quando o trabalho realmente é iniciado. Para combater esse atraso e revelar o estado real do trabalho em andamento, você pode ativar colunas divididas. Quando são divididas, cada coluna contém duas subcolunas, **Fazendo** e **Concluído**. As colunas divididas permitem que sua equipe implemente um modelo de pull. Sem dividir colunas, as equipes efetuam push do trabalho para a frente, para sinalizar que concluíram a etapa de trabalho. No entanto, empurrá-lo para a próxima etapa não significa necessariamente que um membro da equipe comece imediatamente a trabalhar nesse item.
@@ -367,19 +376,19 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
 
     > **Observação**: a **etapa Aprovado** pelo QA agora tem **as colunas Fazendo** e **Concluído** . Você também pode clicar no símbolo informativo (com a letra **i** em um círculo) ao lado do cabeçalho da coluna para ler a **Definição de concluído**.
 
-26. No painel **Boards**, clique no ícone de engrenagem **Configurar configurações da equipe** (diretamente à direita do ícone do funil).
+![Dividir as Colunas da Garantia de qualidade aprovada](images/m1/EShop-WEB-qa_2columns_v1.png)
+
+26. No painel **Boards**, clique no ícone de engrenagem **Definir configurações dos quadros** (diretamente à direita do ícone de funil).
 
     > **Observação**: seu quadro Kanban suporta sua capacidade de visualizar o fluxo de trabalho à medida que ele passa do novo para o concluído. Ao adicionar **raias**, você também pode visualizar o status de trabalho que dá suporte a diferentes classes de nível de serviço. Você pode criar uma raia para representar qualquer outra dimensão que dê suporte às suas necessidades de acompanhamento.
 
 27. No painel **Configurações,** selecione a guia **Raias**.
 28. Na guia **Raias** clique em **+ Raia**, diretamente sob a etiqueta **Nome da raia, ** na caixa de texto **Nome** digite**Expedite**.
-29. No painel **Configurações**, clique em **Salvar e fechar**.
+29. No painel **Configurações**, clique em **Salvar**.
 
-    ![No painel “Configurações”, reveja a informação clique em “Salvar e fechar”.](images/m1/EShop-WEB-swimlane_v1.png)
+    ![No painel "Configurações", examine as informações e clique em "Salvar"](images/m1/EShop-WEB-swimlane_v1.png)
 
 30. De volta à guia **Board** do painel **Boards** arraste e solte o item de trabalho **Comprometido** na etapa **Fazendo Aprovado \| por QA** da raia **Expedite** para que ele seja reconhecido como tendo prioridade quando a largura de banda de QA estiver disponível.
-
-    > **Observação**: se você quiser rever um board mais sofisticado com muito mais itens, na guia trabalho,**Board** do painel **Boards**, no canto superior esquerdo, selecione **EShop-WEB** e, na lista suspensa de equipes, selecione a equipe **eShopOnWeb **. Este board fornece um playground para você experimentar e revisar os resultados.
 
 #### Tarefa 5: personalizar processos da equipe
 
@@ -484,12 +493,24 @@ Os dashboards permitem que as equipes visualizem o status e monitorem o progress
     ![Na guia “Editor” de “Consultas” > painel Minhas Consultas, na segunda linha, na coluna Campo, selecione Caminho da Área e, na lista suspensa Valor correspondente, selecione “eShopOnWeb\\EShop-WEB”.](images/m1/EShop-WEB-query_v1.png)
 
 16. No painel **Nova consulta**, na caixa de texto**Inserir nome** digite **tarefas da Web **, na lista suspensa **Pasta**, selecione **Consultas compartilhadas**, e clique em **OK**.
-17. Selecione a **guia Gráficos** e clique em **+ Novo gráfico**.
-18. No painel **Configurar gráfico**, na caixa de texto **Nome**, digite **Tarefas da Web - Por atribuição**, na lista suspensa **Agrupar por**, selecione **Atribuído a**, e clique em **OK** para salvar as alterações.
+17. Na exibição **Consultas > Consultas Compartilhadas**, selecione a guia **Gráficos** e clique em **+ Novo gráfico**.
+18. No painel **Configurar gráfico**, na caixa de texto **Nome**, digite**Tarefas da Web – Por atribuição**, na lista suspensa **Agrupar por**, selecione**Atribuído a** e clique em **Salvar gráfico** para salvar as alterações.
 
     ![No painel "Configurar gráfico", na caixa de texto "Nome", digite "Tarefas da Web - Por atribuição", na lista suspensa "Agrupar por", selecione "Atribuído a" e clique em "OK" para salvar as alterações](images/m1/EShop-WEB-chart_v1.png)
 
     > **Observação**: agora você pode adicionar esse gráfico a um dashboard.
+
+19. Retorne à seção **Dashboards** no menu **Visão geral**. Na seção **EShop-Web**, selecione o painel **Treinamento de produto** usado anteriormente para abri-lo. 
+
+20. No menu superior, clique em **Editar**. Na lista **Adicionar widget**, pesquise **Gráfico** e selecione **Gráfico de itens de trabalho**. Clique em **Adicionar** para adicionar esse widget ao dashboard do EShop-Web. 
+
+21. Clique na **configuração** (engrenagem) no **Gráfico de itens de trabalho** para abrir as configurações do widget. 
+
+22. Aceite o título como está. Em **Consulta**, selecione **Consultas compartilhadas / Tarefas da Web**. Mantenha o Tipo de gráfico como **Pizza**. Em **Agrupar por**, selecione **Atribuído a**. Mantenha os padrões de Agregação (Contagem) e Classificação (Valor/Crescente). 
+
+23. Confirme a configuração clicando em **Salvar**. 
+
+24. Observe que o gráfico de pizza dos resultados da consulta é mostrado no dashboard. **Salve** as alterações pressionando o botão **Edição concluída** na parte superior.
 
 ## Revisão
 

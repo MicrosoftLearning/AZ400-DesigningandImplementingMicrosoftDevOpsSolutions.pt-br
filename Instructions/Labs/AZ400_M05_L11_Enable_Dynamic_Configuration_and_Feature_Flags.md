@@ -43,7 +43,7 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto o nome **eShopOnWeb** e escolha **Scrum** na lista suspensa **Processo de item de trabalho**. Clique em **Criar**.
 
-#### Tarefa 2: (pular se feita) importar o repositório eShopOnWeb do Git
+#### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
