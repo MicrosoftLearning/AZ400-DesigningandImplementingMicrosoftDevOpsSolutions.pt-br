@@ -4,7 +4,7 @@ lab:
   module: 'Module 09: Implement continuous feedback'
 ---
 
-# Monitoramento do desempenho do aplicativo com o Application Insights e o Teste de Carga do Azure
+# Monitoramento do desempenho do aplicativo com o Teste de Carga do Azure
 
 ## Manual de laboratório do aluno
 
