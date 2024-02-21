@@ -51,16 +51,16 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
     ![Importar repositório](images/import-repo.png)
 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
-    - A pasta **.azure** contém a infraestrutura Bicep&ARM como modelos de código usados em alguns cenários de laboratório.
-    - A pasta **.github** contém definições de YAML do fluxo de trabalho do GitHub.
-    - A pasta **src** contém o site do .NET 6 usado nos cenários do laboratório.
+    - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
+    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
+    - A pasta **src** contém o site do .NET 8 usado nos cenários de laboratório.
 
 ### Exercício 1: compreender um modelo do Azure Bicep e simplificá-lo usando um módulo reutilizável
 
@@ -233,13 +233,14 @@ Uma entidade de serviço é criada automaticamente pelo Azure Pipelines quando v
 1. Clique em **Verificar e Salvar**.
 
 #### Tarefa 2: implantar recursos no Azure por pipelines YAML
+
 1. Navegue de volta ao painel **Pipelines** no hub **Pipelines**.
 1. Na janela **Criar seu primeiro pipeline**, clique em **Criar pipeline**.
 
     > **Observação**: usaremos o assistente para criar uma nova definição de pipeline do YAML com base em nosso projeto.
 
 1. No painel **Onde está seu código?**, clique na opção **Git do Azure Repos (YAML).**
-1. **No painel Selecionar um repositório**, clique em **EShopOnWeb**.
+1. No painel **Selecionar um repositório**, clique em **eShopOnWeb**.
 1. No painel **Configurar seu pipeline**, role para baixo e selecione **Arquivo YAML existente do Azure Pipelines**.
 1. Na folha **Selecionar um arquivo YAML existente** , especifique os seguintes parâmetros:
    - Ramificação: **principal**
@@ -250,7 +251,7 @@ Uma entidade de serviço é criada automaticamente pelo Azure Pipelines quando v
 
    ![Salvar e executar o pipeline YAML depois de fazer alterações](./images/m06/saveandrun.png)
 
-1. Aguarde a conclusão da implantação e analise os resultados.
+1. Aguarde até que a implantação seja concluída e veja os resultados.
    ![Implantação bem-sucedida de recursos no Azure usando pipelines YAML](./images/m06/deploy.png)
 
 #### Exercício 3: remover os recursos de laboratório do Azure

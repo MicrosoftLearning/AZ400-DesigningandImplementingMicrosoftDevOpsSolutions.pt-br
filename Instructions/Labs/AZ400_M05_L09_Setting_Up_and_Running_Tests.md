@@ -48,12 +48,12 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 Nesta tarefa, você importará o repositório Git do eShopOnWeb que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
-    - A pasta **.azure** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
+    - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
     - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
     - A pasta **src** contém o site .NET usado nos cenários do laboratório.
 
@@ -115,7 +115,7 @@ Você pode notar que a tarefa Testes de Unidade já faz parte do pipeline.
 
     > Os **Testes funcionais** são escritos da perspectiva do usuário e verificam a correção do sistema com base em seus requisitos. Diferente dos testes de integração que são escritos da perspectiva do desenvolvedor, para verificar se alguns componentes do sistema funcionam corretamente juntos.
 
-16. Clique em **Salvar**, no painel **Salvar**, clique em **Salva**r novamente para confirmar as mudanças diretamente no branch principal.
+1. Clique em **Salvar**, no painel **Salvar**, clique em **Salva**r novamente para confirmar as mudanças diretamente no branch principal.
 
 #### Tarefa 4: verificar o resumo dos testes
 
