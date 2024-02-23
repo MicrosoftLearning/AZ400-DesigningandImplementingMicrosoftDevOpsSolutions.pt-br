@@ -56,16 +56,16 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos** , **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos** , **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
     ![Importar repositório](images/import-repo.png)
 
-2. O repositório está organizado da seguinte forma:
+1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
-    - A pasta **.azure** contém a infraestrutura Bicep&ARM como modelos de código usados em alguns cenários de laboratório.
-    - A pasta **.github** contém definições de YAML do fluxo de trabalho do GitHub.
-    - A pasta **src** contém o site do .NET 6 usado nos cenários do laboratório.
+    - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
+    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
+    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
 ### Exercício 1: implementar segurança e conformidade em um pipeline do Azure DevOps usando o Mend Bolt
 
@@ -79,17 +79,17 @@ Nesta tarefa, você ativará o WhiteSource Bolt no projeto do Azure Devops recé
 
     ![Navegar no Marketplace](images/browse-marketplace.png)
 
-2. No MarketPlace, procure **Mend Bolt (antigo WhiteSource)** e abra-o. O Mend Bolt é a versão gratuita da ferramenta WhiteSource anteriormente conhecida, que verifica todos os seus projetos e detecta componentes de código aberto, a respectiva licença e vulnerabilidades conhecidas.
+1. No MarketPlace, procure **Mend Bolt (antigo WhiteSource)** e abra-o. O Mend Bolt é a versão gratuita da ferramenta WhiteSource anteriormente conhecida, que verifica todos os seus projetos e detecta componentes de código aberto, a respectiva licença e vulnerabilidades conhecidas.
 
     > Atenção: certifique-se de selecionar a opção Mend **Bolt** (a **gratuita**)!
 
-3. Na página do **Mend Bolt (antigo WhiteSource),** clique em **Obter gratuitamente**.
+1. Na página do **Mend Bolt (antigo WhiteSource),** clique em **Obter gratuitamente**.
 
     ![Obter o Mend Bolt](images/mend-bolt.png)
 
-4. Na próxima página, selecione a organização do Azure DevOps desejada e **Instale**. **Prossiga para a organização** depois da instalação.
+1. Na próxima página, selecione a organização do Azure DevOps desejada e **Instale**. **Prossiga para a organização** depois da instalação.
 
-5. Em seu Azure DevOps, navegue até **Configurações da Organização** e selecione **Mend** em **Extensões**. Forneça seu e-mail de trabalho (**sua conta pessoal de laboratório**, por exemplo, usando AZ400learner@outlook.com em vez de student@microsoft.com), Nome da empresa e outros detalhes e clique no botão **Criar conta** para começar a usar a Versão gratuita.
+1. Em seu Azure DevOps, navegue até **Configurações da Organização** e selecione **Mend** em **Extensões**. Forneça seu e-mail de trabalho (**sua conta pessoal de laboratório**, por exemplo, usando <AZ400learner@outlook.com> em vez de <student@microsoft.com>), Nome da empresa e outros detalhes e clique no botão **Criar conta** para começar a usar a Versão gratuita.
 
     ![Obter conta do Mend](images/mend-account.png)
 
@@ -99,25 +99,25 @@ Nesta tarefa, você criará e disparará um pipeline de build de CI no projeto d
 
 1. No computador do laboratório, no projeto do Azure DevOps **eShopOnWeb**, na barra de menu vertical no lado esquerdo, navegue até a seção **Pipelines>Pipelines**, clique em **Criar Pipeline** (ou **Novo Pipeline**).
 
-2. Na janela **Onde está seu código?**, selecione **Git do Azure Repos (YAML)** e selecione o repositório **eShopOnWeb**.
+1. Na janela **Onde está seu código?**, selecione **Git do Azure Repos (YAML)** e selecione o repositório **eShopOnWeb**.
 
-3. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Informe o caminho **/.ado/eshoponweb-ci-mend.yml** e clique em **Continuar**.
+1. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Informe o caminho **/.ado/eshoponweb-ci-mend.yml** e clique em **Continuar**.
 
     ![Selecionar Pipeline](images/select-pipeline.png)
 
-4. Revise o pipeline e clique em **Executar**. A execução levará alguns minutos.
+1. Revise o pipeline e clique em **Executar**. A execução levará alguns minutos.
     > **Observação**: o build poderá levar alguns minutos para ser concluído. A definição de build consiste nas seguintes tarefas:
     - Tarefa **DotnetCLI** para restaurar, construir, testar e publicar o projeto dotnet.
     - Tarefa **whitesource** (ainda mantém o nome antigo), para executar a análise da ferramenta do Mend das bibliotecas OSS.
     - **Publicar artefatos** os agentes que executam esse pipeline carregarão o projeto da Web publicado.
 
-5. Enquanto o pipeline está em execução, vamos **renomeá-lo** para identificá-lo mais facilmente (já que o projeto pode ser usado para vários laboratórios). Vá para a seção **Pipelines/Pipelines** no projeto do Azure DevOps, clique no nome do Pipeline em execução (ele receberá um nome padrão) e procure a opção **Renomear/mover** no ícone de reticências. Renomeie-o para **eshoponweb-ci-mend** e clique em **Salvar**.
+1. Enquanto o pipeline está em execução, vamos **renomeá-lo** para identificá-lo mais facilmente (já que o projeto pode ser usado para vários laboratórios). Vá para a seção **Pipelines/Pipelines** no projeto do Azure DevOps, clique no nome do Pipeline em execução (ele receberá um nome padrão) e procure a opção **Renomear/mover** no ícone de reticências. Renomeie-o para **eshoponweb-ci-mend** e clique em **Salvar**.
 
     ![Renomear o pipeline](images/rename-pipeline.png)
 
-6. Depois que a execução do pipeline for concluída, você poderá revisar os resultados. Abra a execução mais recente do pipeline **eshoponweb-ci-mend**. A guia de resumo mostrará os logs da execução, juntamente com detalhes relacionados, como a versão do repositório (commit) usada, tipo de gatilho, artefatos publicados, cobertura de teste etc.
+1. Depois que a execução do pipeline for concluída, você poderá revisar os resultados. Abra a execução mais recente do pipeline **eshoponweb-ci-mend**. A guia de resumo mostrará os logs da execução, juntamente com detalhes relacionados, como a versão do repositório (commit) usada, tipo de gatilho, artefatos publicados, cobertura de teste etc.
 
-7. Na guia **Mend Bolt**, você pode revisar a análise de segurança do OSS. Ela mostrará detalhes sobre o inventário usado, vulnerabilidades encontradas (e como resolvê-las) e um relatório interessante sobre licenças relacionadas à biblioteca. Reserve um momento para analisar o relatório.
+1. Na guia **Mend Bolt**, você pode revisar a análise de segurança do OSS. Ela mostrará detalhes sobre o inventário usado, vulnerabilidades encontradas (e como resolvê-las) e um relatório interessante sobre licenças relacionadas à biblioteca. Reserve um momento para analisar o relatório.
 
     ![Resultados do Mend](images/mend-results.png)
 
