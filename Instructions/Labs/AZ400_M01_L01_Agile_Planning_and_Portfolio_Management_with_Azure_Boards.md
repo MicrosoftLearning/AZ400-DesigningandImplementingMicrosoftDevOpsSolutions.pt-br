@@ -125,7 +125,7 @@ Os itens de trabalho desempenham um papel importante no Azure DevOps. Seja descr
     ![Na janela "Boards">"Itens de trabalho", clique em + Novo Item de Trabalho > Épico](images/m1/EShop-WEB-create_epic_v1.png)
 
 1. **Na caixa de texto Inserir título**, digite **Treinamento do**produto.
-1. No canto superior esquerdo, selecione a entrada **Não atribuída** e, na lista suspensa, selecione sua conta de usuário para atribuir o novo item de trabalho a você mesmo.
+1. No canto superior esquerdo, selecione a entrada **Não atribuída** e, na lista suspensa, selecione sua conta de usuário para atribuir o novo item de trabalho a você mesmo. Se o seu nome não aparecer para começar, comece a digitar o seu nome e clique em **Pesquisar**.
 1. Ao lado da **entrada Área** , selecione a **entrada eShopOnWeb** e, na lista suspensa, selecione **EShop-WEB**. Isso definirá a **Área** como **eShopOnWeb\EShop-WEB.**
 1. Ao lado da **entrada Interação** , selecione a **entrada eShopOnWeb** e, na lista suspensa, selecione **Sprint 2**. Isso definirá a **Interação** como **eShopOnWeb\Sprint 2**
 1. Clique em **Salvar** para finalizar suas alterações. **Não o feche**.
