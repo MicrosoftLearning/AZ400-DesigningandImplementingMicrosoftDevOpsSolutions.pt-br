@@ -70,7 +70,7 @@ Neste laboratório, você analisará um modelo do Azure Bicep e o simplificará 
 
 Nesta tarefa, você usará o Visual Studio Code para criar um modelo do Azure Bicep
 
-1. Na guia do navegador com seu projeto do Azure DevOps aberto, navegue até **Repositórios** e **Arquivos**. Abra a pasta `.azure\bicep` e localize o arquivo `simple-windows-vm.bicep`.
+1. Na guia do navegador com seu projeto do Azure DevOps aberto, navegue até **Repositórios** e **Arquivos**. Abra a pasta `infra` e localize o arquivo `simple-windows-vm.bicep`.
 
    ![Arquivo simple-windows-vm.bicep](./images/m06/browsebicepfile.png)
 
