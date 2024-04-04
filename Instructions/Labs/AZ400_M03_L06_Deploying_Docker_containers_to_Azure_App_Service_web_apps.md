@@ -55,7 +55,7 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
     - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
     - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
-    - A pasta **src** contém o site do .NET 8 usado nos cenários de laboratório.
+    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
 #### Tarefa 3: (pular se feita) definir o branch main como branch padrão
 
@@ -125,8 +125,8 @@ Nexte exercício, você importará e executará o pipeline de CI.
 #### Tarefa 1: importar e executar o pipeline de CI
 
 1. Acesse **Pipelines>Pipelines**
-1. Clique no botão **Novo pipeline**
-1. Selecione **Git do Azure Repos** (YAML)
+1. Clique no botão **Novo pipeline** (ou **Criar pipeline** se você não tiver outros pipelines criados anteriormente)
+1. Selecione **Repositórios Git do Azure (YAML)**
 1. Selecione o repositório **eShopOnWeb**
 1. Selecione **Arquivo YAML do Azure Pipelines existente**
 1. Selecione o arquivo **/.ado/eshoponweb-ci-docker.yml** e clique em **Continuar**
@@ -171,10 +171,10 @@ Nesta tarefa, você adicionará uma nova atribuição de função para permitir 
     echo $roleName
     ```
 
-1. Depois de obter a ID da entidade de serviço e o nome da função, vamos criar a atribuição de função executando este comando (substitua **rg-az400-container-NAME** pelo nome do seu grupo de recursos)
+1. Depois de obter a ID da entidade de serviço e o nome da função, vamos criar a atribuição de função executando este comando (substitua **&lt;rg-az400-container-NAME&gt;** pelo nome do seu grupo de recursos)
 
     ```sh
-    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/**rg-az400-container-NAME**
+    az role assignment create --assignee $spId --role $roleName --scope /subscriptions/$subscriptionId/resourceGroups/<rg-az400-container-NAME>
     ```
 
 Agora você verá a saída JSON, que confirma o sucesso da execução do comando.
