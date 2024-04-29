@@ -110,7 +110,7 @@ Nesta tarefa, você criará e publicará um pacote NuGet personalizado desenvolv
 
     Marque a caixa de seleção para **colocar a solução e o projeto no mesmo diretório**.
 
-1. Clique em Avançar. Aceite o **.NET 8.0** como a opção de estrutura.
+1. Clique em Avançar. Aceite o **.NET 8** como a opção do Framework.
 1. Confirme a criação do projeto pressionando botão **Criar**.
 1. Na interface do Visual Studio, no painel **Gerenciador de Soluções**, clique com o botão direito do mouse em **Class1.cs**. No menu de contexto, selecione **Excluir** e, quando for solicitada a confirmação, clique em **OK.**
 1. Pressione **Ctrl+Shift+B** ou **Clique com o botão direito do mouse no projeto EShopOnWeb.Shared** e selecione **Compilar** para compilar o projeto.
