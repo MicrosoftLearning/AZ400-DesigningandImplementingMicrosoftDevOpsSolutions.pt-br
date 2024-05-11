@@ -105,7 +105,62 @@ Nesta tarefa, você criará um aplicativo Web do Azure usando o Cloud Shell no p
 
 Neste exercício, você vai configurar pipelines de CI/CD como código com YAML no Azure DevOps.
 
-#### Tarefa 1: adicionar uma definição de compilação e implantação do YAML
+#### Tarefa 1: (pular se feita) criar uma conexão de serviço para implantação
+
+Nesta tarefa, você criará uma entidade de serviço usando a CLI do Azure, que permitirá ao Azure DevOps:
+
+- Implantar recursos na assinatura do Azure
+- Ter acesso de leitura sobre os segredos do Key Vault criados posteriormente.
+
+> **Observação**: se você já tiver uma entidade de serviço, poderá prosseguir diretamente para a próxima tarefa.
+
+Você precisará de uma entidade de serviço para implantar recursos do Azure a partir do Azure Pipelines. Como vamos recuperar segredos em um pipeline, precisaremos conceder permissão ao serviço quando criarmos o Azure Key Vault.
+
+Uma entidade de serviço é criada automaticamente pelo Azure Pipelines quando você se conecta a uma assinatura do Azure de dentro de uma definição de pipeline ou quando cria uma nova Conexão de Serviço na página de configurações do projeto (opção automática). Você também pode criar manualmente a entidade de serviço a partir do portal ou usando a CLI do Azure e reutilizá-la em projetos.
+
+1. No computador do laboratório, inicie um navegador da Web, navegue até o [**Portal do Azure**](https://portal.azure.com) e entre com a conta de usuário que tem a função Proprietário na assinatura do Azure que você usará neste laboratório e tem a função de Administrador global no locatário do Microsoft Entra associado a essa assinatura.
+1. No portal do Azure, clique no ícone do **Cloud Shell**, localizado diretamente à direita da caixa de texto de pesquisa na parte superior da página.
+1. Se for solicitado que você selecione **Bash** ou **PowerShell**, selecione **Bash**.
+
+   >**Observação**: se esta for a primeira vez que você está iniciando o **Cloud Shell** e você receber a mensagem **Você não tem nenhum armazenamento montado**, selecione a assinatura que você está usando no laboratório e selecione **Criar armazenamento**.
+
+1. No prompt **Bash**, no painel **Cloud Shell**, execute os seguintes comandos para recuperar os valores da ID de assinatura do Azure e dos atributos de nome de assinatura:
+
+    ```bash
+    az account show --query id --output tsv
+    az account show --query name --output tsv
+    ```
+
+    > **Observação**: copie ambos os valores para um arquivo de texto. Você precisará deles adiante neste laboratório.
+
+1. No prompt **Bash**, no painel **Cloud Shell**, execute o seguinte comando para criar uma entidade de serviço (substitua **myServicePrincipalName** por qualquer cadeia de caracteres exclusiva que consista em letras e dígitos) e **mySubscriptionID** pela sua subscriptionId do Azure:
+
+    ```bash
+    az ad sp create-for-rbac --name myServicePrincipalName \
+                         --role contributor \
+                         --scopes /subscriptions/mySubscriptionID
+    ```
+
+    > **Observação**: o comando irá gerar uma saída JSON. Copie a saída para um arquivo de texto. Você precisará dela posteriormente neste laboratório.
+
+1. Em seguida, no computador do laboratório, inicie um navegador da Web, navegue até o projeto ** eShopOnWeb** do Azure DevOps. Clique em **Configurações do Projeto>Conexões de Serviço (em Pipelines)** e **Nova Conexão de Serviço**.
+
+    ![Nova conexão de serviço](images/new-service-connection.png)
+
+1. Na tela **Nova conexão de serviço**, escolha **Azure Resource Manager** e **Avançar** (talvez você precise rolar para baixo).
+
+1. **Escolha Service Principal (manual)** e clique em **Next**.
+
+1. Preencha os campos vazios usando as informações coletadas durante as etapas anteriores:
+    - ID e nome da assinatura.
+    - ID da entidade de serviço (appId), chave da entidade de serviço (senha) e ID do locatário (locatário).
+    - Em **Nome da conexão de serviço**, digite **azure subs**. Esse nome será referenciado em pipelines YAML quando precisar de uma Conexão de Serviço do Azure DevOps para se comunicar com sua assinatura do Azure.
+
+    ![Conexão de serviço do Azure](images/azure-service-connection.png)
+
+1. Clique em **Verificar e Salvar**.
+
+#### Tarefa 2: Adicionar uma definição de compilação e implantação YAML
 
 Nesta tarefa, você adicionará uma definição de compilação do YAML ao projeto existente.
 
@@ -188,7 +243,7 @@ Nesta tarefa, você adicionará uma definição de compilação do YAML ao proje
 1. Clique em **Mostrar Assistente** do lado direito do portal. Na lista de tarefas, pesquise e selecione a tarefa **Implantação do Serviço de Aplicativo do Azure**.
 1. No painel **Implantação do Serviço de Aplicativo do Azure**, especifique as seguintes configurações e clique em **Adicionar**:
 
-    - Na lista suspensa **Assinatura do Azure**, selecione a assinatura do Azure na qual você implantou os recursos do Azure anteriormente no laboratório, se necessário (somente quando este for seu primeiro pipeline criado) clique em **Autorizar** e, quando solicitado, autentique usando a mesma conta de usuário usada durante a implantação dos recursos do Azure.
+    - Na lista suspensa **Assinatura do Azure**, selecione a conexão de serviço que você acabou de criar.
     - Valide que o **Tipo de Serviço de Aplicativo** aponta para o Aplicativo Web no Windows.
     - Na lista suspensa **Nome do Serviço de Aplicativo**, selecione o nome do aplicativo Web implantado anteriormente no laboratório (**az400eshoponweb...).
     - na caixa de texto **Pacote ou pasta**, **atualize** o Valor Padrão para `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
@@ -203,7 +258,7 @@ Nesta tarefa, você adicionará uma definição de compilação do YAML ao proje
         - task: AzureRmWebAppDeployment@4
           inputs:
             ConnectionType: 'AzureRM'
-            azureSubscription: 'AZURE SUBSCRIPTION HERE (b999999abc-1234-987a-a1e0-27fb2ea7f9f4)'
+            azureSubscription: 'SERVICE CONNECTION NAME'
             appType: 'webApp'
             WebAppName: 'az400eshoponWeb369825031'
             packageForLinux: '$(Build.ArtifactStagingDirectory)/**/Web.zip'
