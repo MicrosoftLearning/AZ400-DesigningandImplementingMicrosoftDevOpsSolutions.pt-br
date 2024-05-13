@@ -13,7 +13,6 @@ lab:
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://learn.microsoft.com/azure/devops/server/compatibility)
 
 - **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
-
 - Identifique uma assinatura existente do Azure ou crie uma.
 
 ## Visão geral do laboratório
@@ -137,7 +136,7 @@ Nesta tarefa, você importará, modificará e executará uma definição de pipe
 
 1. Na janela **Onde está seu código?**, selecione **Git do Azure Repos (YAML)** e selecione o repositório **eShopOnWeb**.
 
-1. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Forneça o seguinte caminho **/.ado/eshoponweb-ci-dockercompose.yml** e clique em **Continuar**.
+1. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Selecione branch: **principal**, forneça o seguinte caminho **/.ado/eshoponweb-ci-dockercompose.yml** e clique em **Continuar**.
 
     ![Selecionar Pipeline](images/select-ci-container-compose.png)
 
@@ -235,7 +234,7 @@ Nesta tarefa, você importará, personalizará e executará um pipeline de CD pa
 
 1. Na janela **Onde está seu código?**, selecione **Git do Azure Repos (YAML)** e selecione o repositório **eShopOnWeb**.
 
-1. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Forneça o seguinte caminho **/.ado/eshoponweb-cd-aci.yml** e clique em **Continuar**.
+1. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Selecione branch: **principal**, forneça o seguinte caminho **/.ado/eshoponweb-cd-aci.yml** e clique em **Continuar**.
 
 1. Na definição de pipeline YAML, personalize:
 

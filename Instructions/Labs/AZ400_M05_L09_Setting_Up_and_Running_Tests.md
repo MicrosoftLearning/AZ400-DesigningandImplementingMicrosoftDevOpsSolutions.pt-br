@@ -53,7 +53,7 @@ Nesta tarefa, você importará o repositório Git do eShopOnWeb que será usado 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
-    - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
+    - A pasta **infra** contém modelos de infraestrutura como código Bicep e ARM usados em alguns cenários de laboratório.
     - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
     - A pasta **src** contém o site .NET usado nos cenários do laboratório.
 
@@ -71,8 +71,8 @@ Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://g
 1. Clique no botão **Novo pipeline**.
 1. Selecione **Git do Azure Repos (YAML)**.
 1. Selecione o repositório **eShopOnWeb**.
-1. Selecione **Arquivo YAML existente do Azure Pipelines**.
-1. Selecione o arquivo **/.ado/eshoponWeb-ci.yml** e clique em **Continuar**.
+1. Selecione **Arquivo YAML do Azure Pipelines existente**.
+1. Selecione o branch **principal** e o arquivo **/.ado/eshoponweb-ci.yml** e clique em **Continuar**.
 
     A definição de CI é composta pelas seguintes tarefas:
     - **DotNet Restore**: com a Restauração de Pacotes NuGet, você pode instalar todas as dependências de seu projeto sem precisar armazená-las no controle do código-fonte.

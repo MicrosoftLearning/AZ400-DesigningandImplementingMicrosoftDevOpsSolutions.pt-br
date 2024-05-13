@@ -101,7 +101,7 @@ Nesta tarefa, você criará e disparará um pipeline de build de CI no projeto d
 
 1. Na janela **Onde está seu código?**, selecione **Git do Azure Repos (YAML)** e selecione o repositório **eShopOnWeb**.
 
-1. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Informe o caminho **/.ado/eshoponweb-ci-mend.yml** e clique em **Continuar**.
+1. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Selecione branch: **principal**, forneça o seguinte caminho **/.ado/eshoponweb-ci-mend.yml** e clique em **Continuar**.
 
     ![Selecionar Pipeline](images/select-pipeline.png)
 

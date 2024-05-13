@@ -34,8 +34,6 @@ lab:
 1. Alterne a opção para **Desativado** para **Desabilitar a criação de pipelines de compilação clássicos** e **Desabilitar a criação de pipelines de lançamento clássicos**.
     > Observação: a opção **Desativar a criação de pipelines de lançamento clássicos definida como **Ativado** oculta as opções de criação de pipelines de lançamento clássicos, como o menu **Lançamento** na seção **Pipeline** do DevOps Projects**.
 1. Em **Configurações da Organização**, vá para a seção **Segurança** e clique em **Políticas**.
-1. Alterne a opção para **Ativado** para **Acesso a aplicativos de terceiros através do OAuth**
-    > Observação: a configuração do OAuth ajuda a habilitar ferramentas como o DemoDevOpsGenerator para registrar extensões. Sem isso, vários laboratórios podem falhar devido à falta das extensões necessárias.
 1. Alterne a opção para **Ativado** para **Permitir projetos públicos**
     > Observação: as extensões usadas em alguns laboratórios podem exigir um projeto público para permitir o uso da versão gratuita.
 1. **Aguarde pelo menos três horas antes de usar os recursos de CI/CD** para que as novas configurações sejam refletidas no back-end. Caso contrário, você ainda verá a mensagem *"Nenhum paralelismo hospedado foi adquirido ou concedido"*.

@@ -56,8 +56,8 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
    - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
    - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
    - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
-   - A pasta **.github** contém definições de YAML do fluxo de trabalho do GitHub.
-   - A pasta **src** contém o site do .NET 6 usado nos cenários do laboratório.
+   - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
+   - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
 #### Tarefa 2: criar recursos do Azure
 

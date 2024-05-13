@@ -100,7 +100,7 @@ Cada novo projeto é configurado com uma equipe padrão, cujo nome corresponde a
 
 1. Ainda no painel **Configurações do Projeto / Boards / Configuração da Equipe**, na parte superior do painel, selecione a guia **Áreas**. Você encontrará uma área gerada automaticamente com o nome correspondente ao nome da equipe.
 
-![Em Áreas, selecione eShopOnWeb\EShop-Web](images/m1/EShop-WEB-areas_v1.png)
+    ![Em Áreas, selecione eShopOnWeb\EShop-Web](images/m1/EShop-WEB-areas_v1.png)
 
 1. Clique no símbolo de reticências (...) ao lado da entrada de **área** padrão e, na lista suspensa, selecione **Incluir subáreas**.
 
@@ -137,7 +137,7 @@ Os itens de trabalho desempenham um papel importante no Azure DevOps. Seja descr
     > **Observação**: o formulário de item de trabalho inclui todas as configurações de item de trabalho relevantes. Isso inclui detalhes sobre a quem ele está atribuído, seu status em muitos parâmetros e todas as informações associadas e histórico de como ele foi tratado desde a criação. Uma das principais áreas a serem focadas é o **Trabalho**relacionado. Vamos explorar uma das maneiras de adicionar um recurso a este épico.
 
 1. Na seção **Trabalho relacionado** no canto inferior direito, selecione a entrada **Adicionar link** e, na lista suspensa, selecione **Novo item**.
-1. No painel **Adicionar link** na lista suspensa **Tipo de link** **selecione Filho**. Em seguida, na lista suspensa **Tipo de item de trabalho** selecione **Recurso**, na caixa de texto **Título** digite **Dashboard de treinamento** e clique em **OK**.
+1. No painel **Adicionar link** na lista suspensa **Tipo de link** **selecione Filho**. Em seguida, na **lista suspensa tipo** item trabalho, selecione **Recurso**, na caixa de texto **Título**, digite **Painel de treinamento**.
 
     ![Inclua o título "Dashboard de treinamento" e clique em "OK"](images/m1/EShop-WEB-create_child_feature.png)
 
@@ -145,7 +145,7 @@ Os itens de trabalho desempenham um papel importante no Azure DevOps. Seja descr
 
 1. Clique em **Adicionar link** para salvar o item Filho. No painel do **dashboard Treinamento** (Novo Recurso), clique em **Salvar e Fechar**.
 
-![Epic com item filho vinculado](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
+    ![Epic com item filho vinculado](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
 1. No painel de navegação vertical do portal do Azure DevOps, na lista de itens Boards****, selecione **Boards**.
 1. **No painel Boards**, selecione a **entrada Boards** EShop-WEB. Isso abrirá o board para aquela equipe em particular.
@@ -232,17 +232,17 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
 
 1. Selecione a **guia Capacidade** do modo de **** exibição Sprints.
 
-![Exibição de capacidade do Sprint](images/m1/EShop-WEB-capacity_v1.png)
+    ![Exibição de capacidade do Sprint](images/m1/EShop-WEB-capacity_v1.png)
 
-    > **Note**: This view enables you to define what activities a user can take on and at what level of capacity.
+    > **Observação**: essa exibição permite definir quais atividades um usuário pode realizar e em que nível de capacidade.
 
 1. Na guia **Capacidade** da exibição **Sprints**, clique em **+Adicionar usuário** e selecione sua conta de usuário. Para esse usuário, defina o campo **Atividade** como **Desenvolvimento** e, na caixa de texto **Capacidade por dia**, digite **1**.
 
     > **Observação**: isso representa 1 hora de trabalho de desenvolvimento por dia. Observe que você pode adicionar atividades adicionais por usuário caso eles façam mais do que apenas desenvolvimento.
 
-![Definir capacidade de desenvolvimento para um usuário](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
+    ![Definir capacidade de desenvolvimento para um usuário](images/m1/EShop-WEB-capacity-setdevelopment_v1.png)
 
-    > **Note**: Let's assume you're also going to take some vacation. Which should be added to the capacity view too.
+    > **Observação**: Vamos supor que você também vai tirar algumas férias. O que também deve ser adicionado ao modo de exibição de capacidade.
 
 1. Na guia **Capacidade** do modo de exibição **Sprints**, diretamente ao lado da entrada que representa sua conta de usuário, na**a coluna Dias de folga,** clique na entrada **0 dias**. Isso exibirá um painel onde você pode definir seus dias de folga.
 1. No painel exibido, use o modo de exibição de calendário para definir suas férias para abranger cinco dias úteis durante a sprint atual (nas próximas três semanas) e, depois de concluído, clique em **OK.**
@@ -376,7 +376,7 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
 
     > **Observação**: a **etapa Aprovado** pelo QA agora tem **as colunas Fazendo** e **Concluído** . Você também pode clicar no símbolo informativo (com a letra **i** em um círculo) ao lado do cabeçalho da coluna para ler a **Definição de concluído**.
 
-![Dividir as Colunas da Garantia de qualidade aprovada](images/m1/EShop-WEB-qa_2columns_v1.png)
+    ![Dividir as Colunas da Garantia de qualidade aprovada](images/m1/EShop-WEB-qa_2columns_v1.png)
 
 1. No painel **Boards**, clique no ícone de engrenagem **Definir configurações dos quadros** (diretamente à direita do ícone de funil).
 
