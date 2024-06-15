@@ -32,10 +32,14 @@ lab:
 1. Depois que a tela mostrar a ID de Assinatura do Azure vinculada na parte superior, altere o número de **Trabalhos paralelos pagos** de **CI/CD hospedado pela MS** de 0 para **1**. Em seguida, clique no botão **SALVAR** na parte inferior.
 1. Em **Configurações da Organização**, vá para a seção **Pipelines** e clique em **Configurações**.
 1. Alterne a opção para **Desativado** para **Desabilitar a criação de pipelines de compilação clássicos** e **Desabilitar a criação de pipelines de lançamento clássicos**.
+
     > Observação: a opção **Desativar a criação de pipelines de lançamento clássicos definida como **Ativado** oculta as opções de criação de pipelines de lançamento clássicos, como o menu **Lançamento** na seção **Pipeline** do DevOps Projects**.
+
 1. Em **Configurações da Organização**, vá para a seção **Segurança** e clique em **Políticas**.
 1. Alterne a opção para **Ativado** para **Permitir projetos públicos**
+
     > Observação: as extensões usadas em alguns laboratórios podem exigir um projeto público para permitir o uso da versão gratuita.
+
 1. **Aguarde pelo menos três horas antes de usar os recursos de CI/CD** para que as novas configurações sejam refletidas no back-end. Caso contrário, você ainda verá a mensagem *"Nenhum paralelismo hospedado foi adquirido ou concedido"*.
 
 ## Instruções para criar o Projeto do Azure DevOps de exemplo (você precisa fazer isso apenas uma vez)
