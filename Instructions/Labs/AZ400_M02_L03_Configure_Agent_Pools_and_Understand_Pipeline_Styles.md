@@ -165,7 +165,7 @@ Nesta tarefa, você configurará sua Máquina Virtual de laboratório como um ag
 1. Na lista de projetos, clique no bloco que representa seu projeto **eShopOnWeb**.
 1. No painel **eShopOnWeb**, no painel de navegação vertical do lado esquerdo, na seção **Pipelines**, clique em **Pipelines**.
 1. Na guia **Recentes** do painel **Pipelines**, selecione **eShopOnWeb** e, no painel **eShopOnWeb**, selecione **Editar**.
-1. Na guia de edição **eShopOnWeb**, no pipeline existente baseado em YAML, substitua a linha 13 que diz `vmImage: windows-latest`, designando o pool de agentes de destino pelo seguinte conteúdo, designando o pool de agentes auto-hospedado recém-criado:
+1. Na guia de edição **eShopOnWeb**, no pipeline existente baseado em YAML, substitua a linha 13 que diz `vmImage: ubuntu-latest`, designando o pool de agentes de destino pelo seguinte conteúdo, designando o pool de agentes auto-hospedado recém-criado:
 
     ```yaml
     name: az400m03l03a-pool
@@ -173,11 +173,11 @@ Nesta tarefa, você configurará sua Máquina Virtual de laboratório como um ag
     - Agent.Name -equals az400m03-vm0
     ```
 
-    > **AVISO**: tenha cuidado com copiar/colar. Confirme se o recuo é o mesmo mostrado acima.
+    > **AVISO**: Tenha cuidado ao copiar/colar, certifique-se de ter o mesmo recuo mostrado acima.
 
     ![Sintaxe do pool do Yaml](images/m3/eshoponweb-ci-pr-pool_v1.png)
 
-1. No painel de edição **eShopOnWeb**, no canto superior direito do painel, clique em **Salvar e Executar**. Isso vai disparar automaticamente o build com base nesse pipeline.
+1. No painel de edição do **eShopOnWeb**, no canto superior direito do painel, clique em **Validar e salvar**. Isso vai disparar automaticamente o build com base nesse pipeline.
 1. No portal de DevOps do Azure, no painel de navegação vertical no lado esquerdo, na seção **Pipelines**, clique em **Pipelines**. Dependendo da configuração do laboratório, o pipeline pode solicitar permissões. Clique em **Permitir** para permitir que o pipeline seja executado. 
 1. Na guia **Recente** do painel **Pipelines**, clique na entrada **eShopOnWeb**, na guia **Execuções** do painel **eShopOnWeb**, selecione a execução mais recente, no painel **Resumo** da execução, role para baixo até a parte inferior, na seção **Trabalhos**, clique em **Fase 1** e monitore o trabalho até que ele seja concluído com êxito.
 
@@ -186,7 +186,7 @@ Nesta tarefa, você configurará sua Máquina Virtual de laboratório como um ag
 1. Interrompa e remova o serviço do agente executando `.\config.cmd remove` a partir do prompt de comando.
 1. Exclua o pool de agentes.
 1. Revogue o token PAT.
-1. Reverta as alterações no arquivo **eshoponweb-ci-pr.yml** navegando até ele de Repos/.ado/eshoponweb-ci-pr.yml, selecionando **Editar** e removendo as linhas 13-15 (o snippet de pool do agente) e voltando para `vmImage: windows-latest` como era originalmente. (Isso ocorre porque você usará o mesmo arquivo de pipeline de exemplo em um exercício de laboratório futuro.)
+1. Reverta as alterações no arquivo **eshoponweb-ci-pr.yml** navegando até ele de Repos/.ado/eshoponweb-ci-pr.yml, selecionando **Editar** e removendo as linhas 13-15 (o snippet de pool do agente) e voltando para `vmImage: ubuntu-latest` como era originalmente. (Isso ocorre porque você usará o mesmo arquivo de pipeline de exemplo em um exercício de laboratório futuro.)
 
 ![Reverter o pool de pipelines de volta para as configurações de vmImage](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
 
