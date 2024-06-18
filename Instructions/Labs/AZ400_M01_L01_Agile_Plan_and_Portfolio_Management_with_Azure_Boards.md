@@ -143,7 +143,7 @@ Os itens de trabalho desempenham um papel importante no Azure DevOps. Seja descr
 
     > **Observação**: no painel **Dashboard de treinamento** observe que a atribuição, **a área**e a **Iteração** já estão definidas com os mesmos valores do épico no qual o recurso se baseia. Além disso, o recurso é vinculado automaticamente ao item pai a partir do qual foi criado.
 
-1. Clique em **Adicionar link** para salvar o item Filho. No painel do **dashboard Treinamento** (Novo Recurso), clique em **Salvar e Fechar**.
+1. Clique em **OK** para salvar o item Filho. No painel do **dashboard Treinamento** (Novo Recurso), clique em **Salvar e Fechar**.
 
     ![Epic com item filho vinculado](images/m1/EShop-WEB-epic_with_linked_item_v1.png)
 
@@ -182,7 +182,7 @@ Os itens de trabalho desempenham um papel importante no Azure DevOps. Seja descr
     > **Observação**: você também pode expandir cartões de item de trabalho para obter detalhes convenientemente editáveis.
 
 1. Passe o ponteiro do mouse sobre o retângulo que representa o item de trabalho movido para o **etapa Aprovado** . Isso revelará o símbolo do acento circunflexo voltado para baixo.
-1. Clique no símbolo de acento circunflexo virado para baixo para expandir o cartão de item de trabalho, selecione a entrada Não atribuído** e, na lista de contas de usuário, selecione sua conta para atribuir o PBI movido a **si mesmo.
+1. Clique no símbolo de acento circunflexo voltado para baixo para expandir o cartão de item de trabalho. Substitua a entrada **Não atribuído** pelo seu nome e selecione sua conta para atribuir o PBI movido a você mesmo.
 1. **Na guia Board** do **painel EShop-WEB**, arraste o segundo item de trabalho chamado **Como cliente, desejo visualizar novos tutoriais** da **etapa Novo** para **Confirmado**.
 1. **Na guia Board** do **painel EShop-WEB**, arraste o terceiro item de trabalho chamado **Como cliente, desejo solicitar novos tutoriais** da **etapa Novo** para **Pronto**.
 
@@ -198,7 +198,7 @@ Os itens de trabalho desempenham um papel importante no Azure DevOps. Seja descr
 
     > **Observação**: você pode usar o segundo sinal de adição diretamente à esquerda para o primeiro item de lista de pendências para adicionar uma nova tarefa a ele.
 
-1. **Na guia Lista de pendências** do painel EShop-WEB **, no canto superior esquerdo do painel, clique no segundo sinal de adição na parte superior, aquele ao lado do **primeiro item de trabalho. Isso exibirá o **painel NOVA TAREFA** .
+1. Na guia **Backlog** do painel **EShop-WEB**, no canto superior esquerdo do painel, clique no sinal de adição ao lado do primeiro item de trabalho. Isso exibirá o **painel NOVA TAREFA** .
 
     ![Clique em "+" para criar a Tarefa](images/m1/new_task_v1.png)
 
@@ -236,7 +236,7 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
 
     > **Observação**: essa exibição permite definir quais atividades um usuário pode realizar e em que nível de capacidade.
 
-1. Na guia **Capacidade** da exibição **Sprints**, clique em **+Adicionar usuário** e selecione sua conta de usuário. Para esse usuário, defina o campo **Atividade** como **Desenvolvimento** e, na caixa de texto **Capacidade por dia**, digite **1**.
+1. Na guia **Capacidade** da exibição **Sprints**, para sua conta de usuário, defina o campo **Atividade** como **Desenvolvimento** e, na caixa de texto **Capacidade por dia**, digite **1**. Em seguida, clique em **Salvar**.
 
     > **Observação**: isso representa 1 hora de trabalho de desenvolvimento por dia. Observe que você pode adicionar atividades adicionais por usuário caso eles façam mais do que apenas desenvolvimento.
 
@@ -266,7 +266,7 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
 
     > **Observação**: uma maneira de resolver esse problema de capacidade seria mover a tarefa para uma iteração futura. Ele pode ser feito de várias maneiras. Você pode, por exemplo, abrir a tarefa aqui e editá-la no painel fornecendo acesso aos detalhes da tarefa. Outra abordagem seria usar a **visualização da lista de pendências** , que fornece uma opção de menu em linha para movê-la. Neste ponto, porém, não mova a tarefa ainda.
 
-1. Na guia **Quadro de tarefas** da exibição **Sprints**, na barra de ferramentas, no lado direito, selecione o símbolo **Exibir opções** (diretamente à esquerda do ícone de funil) e, na lista suspensa **Exibir opções**, selecione a entrada **Atribuído a=**.
+1. Na guia **Quadro de Tarefas ** do modo de exibição **Sprints** na barra de ferramentas, no lado direito, selecione o **símbolo Opções de exibição** (diretamente à esquerda do ícone do funil) e, na lista suspensa **Opções de exibição** selecione a entrada **Pessoas**.
 
     > **Observação**: isso ajusta sua exibição de forma que você possa revisar o andamento das tarefas por pessoa, em vez de por item de lista de pendências.
 
@@ -277,7 +277,7 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
 
     > **Observação**: isso colorirá todos os cartões de verde se eles atenderem aos critérios de regra definidos diretamente abaixo, na seção Critérios de **regra** .
 
-1. Na seção **Critérios de** regra, na **lista suspensa**, selecione **Atividade **, na lista suspensa**Operador**, selecione**=**, e, na lista suspensa **Valor** selecione **Desenvolvimento**.
+1. Na seção **Critérios da regra**, selecione **+ Adicionar nova cláusula**, na lista suspensa **Campo**, selecione **Atividade**, na lista suspensa **Operador**, selecione **=** e, na lista suspensa **Valor**, selecione **Desenvolvimento**.
 
     ![Janela "Configurações", verifique se todos os campos mencionaram as informações](images/m1/EShop-WEB-styles_v1.png)
 
@@ -349,9 +349,9 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
     ![No painel Configurações, clique em “Salvar e fechar”.](images/m1/EShop-WEB-qa_column_v1.png)
 
 1. No painel **Configurações**, selecione a guia **Colunas** novamente. Observe as reticências ao lado da coluna **Garantia de qualidade aprovada** que você criou. Selecione **Mover para a direita** duas vezes, para que a coluna Garantia de qualidade aprovada seja posicionada entre **Confirmada** e **Concluída**.
-1. No painel **Configurações**, clique em **Salvar**.
+1. No painel **Configurações**, clique em **Salvar e fechar**.
 
-1. **Atualize** o **portal Boards**, de modo que a coluna **Garantia de qualidade aprovada** esteja visível na exibição do quadro Kanban agora.
+1. No **portal do Boards**, a coluna **Garantia de qualidade aprovada** agora está visível na exibição do quadro Kanban.
 1. Arraste o item de trabalho **Como cliente, quero desejo os tutoriais que visualizei recentemente** da etapa **Confirmado** para a **etapa QA Aprovado**.
 1. Arraste o item de trabalho **Como cliente, desejo visualizar novos tutoriais** da etapa **Confirmado** para a **etapa Aprovado para o Controle de Qualidade**.
 
@@ -374,7 +374,7 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
 
     ![No painel “Configurações”, reveja a informação clique em “Salvar e fechar”.](images/m1/dd_v1.png)
 
-    > **Observação**: a **etapa Aprovado** pelo QA agora tem **as colunas Fazendo** e **Concluído** . Você também pode clicar no símbolo informativo (com a letra **i** em um círculo) ao lado do cabeçalho da coluna para ler a **Definição de concluído**.
+    > **Observação**: a **etapa Aprovado** pelo QA agora tem **as colunas Fazendo** e **Concluído** . Você também pode clicar no símbolo informativo (com a letra **i** em um círculo) ao lado do cabeçalho da coluna para ler a **Definição de concluído**. Talvez seja necessário atualizar o navegador para ver as alterações.
 
     ![Dividir as Colunas da Garantia de qualidade aprovada](images/m1/EShop-WEB-qa_2columns_v1.png)
 
@@ -384,11 +384,13 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
 
 1. No painel **Configurações,** selecione a guia **Raias**.
 1. Na guia **Raias** clique em **+ Raia**, diretamente sob a etiqueta **Nome da raia, ** na caixa de texto **Nome** digite**Expedite**.
-1. No painel **Configurações**, clique em **Salvar**.
+1. No painel **Configurações**, clique em **Salvar e fechar**.
 
     ![No painel "Configurações", examine as informações e clique em "Salvar"](images/m1/EShop-WEB-swimlane_v1.png)
 
 1. De volta à guia **Board** do painel **Boards** arraste e solte o item de trabalho **Comprometido** na etapa **Fazendo Aprovado \| por QA** da raia **Expedite** para que ele seja reconhecido como tendo prioridade quando a largura de banda de QA estiver disponível.
+
+    > **Observação**: Talvez seja necessário atualizar o navegador para tornar a raia visível.
 
 #### Tarefa 5: personalizar processos da equipe
 
@@ -460,7 +462,7 @@ Os dashboards permitem que as equipes visualizem o status e monitorem o progress
 
     ![Se necessário, no painel "Dashboards ", no canto superior esquerdo, na seção "Equipe eShopOnWeb", selecione "Equipe eShopOnWeb - Visão geral"](images/m1/EShop-WEB-dashboard_v1.png)
 
-1. **No painel Dashboards**, selecione o menu suspenso ao lado do **título Equipe eShopOnWeb - Visão geral** e selecione **+ Novo painel**.
+1. No painel **Painéis**, no canto superior direito, selecione **+ Novo painel**.
 
     ![No painel "Dashboards", no canto superior esquerdo, na seção "Equipe eShopOnWeb", selecione "+ Nova dashboard"](images/m1/new_dashboard_v1.png)
 
@@ -469,7 +471,7 @@ Os dashboards permitem que as equipes visualizem o status e monitorem o progress
     ![No painel “Criar um painel”, na caixa de texto Nome, digite “Treinamento do produto”, na lista suspensa Equipe, selecione a equipe do EShop-WEB e clique em “Criar”.](images/m1/EShop-WEB-create_dash_v1.png)
 
 1. No novo painel do dashboard, clique em **Adicionar um widget**.
-1. **No painel Adicionar widget**, na **caixa de texto Pesquisar**, digite **sprint** para localizar widgets existentes que se concentram em sprints. Na lista de resultados, selecione **Visão geral** da Sprint e clique em **Adicionar**.
+1. No painel **Adicionar Widget**, na caixa de texto **Pesquisar widgets**, digite **sprint** para encontrar widgets existentes que se concentram em sprints. Na lista de resultados, selecione **Visão geral** da Sprint e clique em **Adicionar**.
 1. No retângulo que representa o widget recém-adicionado, clique no ícone de engrenagem Configurações **** e revise o **painel Configuração**.
 
     > **Observação**: o nível de personalização varia de acordo com o widget.
@@ -494,7 +496,7 @@ Os dashboards permitem que as equipes visualizem o status e monitorem o progress
 
 1. No painel **Nova consulta**, na caixa de texto**Inserir nome** digite **tarefas da Web **, na lista suspensa **Pasta**, selecione **Consultas compartilhadas**, e clique em **OK**.
 1. Na exibição **Consultas > Consultas Compartilhadas**, selecione a guia **Gráficos** e clique em **+ Novo gráfico**.
-1. No painel **Configurar gráfico**, na caixa de texto **Nome**, digite**Tarefas da Web – Por atribuição**, na lista suspensa **Agrupar por**, selecione**Atribuído a** e clique em **Salvar gráfico** para salvar as alterações.
+1. No painel **Configurar gráfico**, na caixa de texto **Nome**, digite **Tarefas da Web - Por atribuição**, na lista suspensa **Agrupar por**, selecione **Atribuído a**, e clique em **OK** para salvar as alterações.
 
     ![No painel "Configurar gráfico", na caixa de texto "Nome", digite "Tarefas da Web - Por atribuição", na lista suspensa "Agrupar por", selecione "Atribuído a" e clique em "OK" para salvar as alterações](images/m1/EShop-WEB-chart_v1.png)
 
