@@ -127,7 +127,7 @@ Nesta tarefa, você passará pelo processo de clonagem de um repositório do Git
     > **Observação**: para ver todos os comandos relevantes, você pode começar digitando **Git**.
 
 1. Na caixa de texto **Fornecer URL do repositório ou escolher uma fonte de repositório**, cole a URL do clone de repositório copiada anteriormente nesta tarefa e pressione a tecla **Enter**.
-1. Na caixa de diálogo **Selecionar pasta**, navegue até a unidade C:, crie uma nova pasta chamada **Git**, selecione-a e clique em **Selecionar local do repositório**.
+1. Na caixa de diálogo **Selecionar Pasta**, navegue até a unidade C:, crie uma nova pasta chamada **Git**, selecione-a e clique em **Selecionar como Destino do Repositório**.
 1. Quando solicitado, entre em sua conta do Azure DevOps.
 1. Depois que o processo de clonagem for concluído, uma vez solicitado, no Visual Studio Code, clique em **Abrir** para abrir o repositório clonado.
 
@@ -255,8 +255,8 @@ Nesta tarefa, você criará um branch usando o Visual Studio Code.
 
     ![Criar branch](images/create-branch.png)
 
+1. Na caixa de texto **Selecionar uma referência para criar um branch**, selecione **principal** como a ramificação de referência.
 1. Na caixa de texto **Nome do branch**, digite **dev** para especificar o novo branch e pressione **Enter**.
-1. Na caixa de texto **Selecionar uma ref para criar o branch "dev" de**, selecione **main** como o branch de referência.
 
     > **Observação**: neste ponto, você muda automaticamente para o branch **dev** .
 
