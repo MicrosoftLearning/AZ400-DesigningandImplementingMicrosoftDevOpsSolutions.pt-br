@@ -109,7 +109,7 @@ Nesta tarefa, você criará um módulo de modelo de armazenamento **storage.bice
 
    ![Confirmar o arquivo](./images/m06/commit.png)
 
-1. Em seguida, passe o mouse sobre a pasta bicep e clique no ícone de reticências e selecione **Novo** e **Arquivo**. Insira **storage.bicep** como o nome e clique em **Criar**
+1. Em seguida, passe o mouse sobre a pasta `Infra` e clique no ícone de reticências, depois selecione **Novo** e **Arquivo**. Insira **storage.bicep** como o nome e clique em **Criar**
 
    ![Novo menu arquivo](./images/m06/newfile.png)
 
