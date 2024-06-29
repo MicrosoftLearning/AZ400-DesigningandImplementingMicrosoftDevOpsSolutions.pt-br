@@ -60,7 +60,13 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
     - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
     - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
-    - A pasta **src** contém o site do .NET 8 usado nos cenários de laboratório.
+    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
+
+#### Tarefa 3: (pular se feita) definir o branch main como branch padrão
+
+1. Vá para **Repos>Branches**.
+1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
+1. Clique em **Definir como branch padrão**.
 
 ### Exercício 1: compreender um modelo do Azure Bicep e simplificá-lo usando um módulo reutilizável
 
