@@ -59,6 +59,10 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
+1. Vá para **Repos>Branches**.
+1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
+1. Clique em **Definir como branch padrão**.
+
 #### Tarefa 2: criar recursos do Azure
 
 Nesta tarefa, você usará o portal do Azure para criar um aplicativo Web do Azure.
@@ -197,7 +201,7 @@ Nesta tarefa, você adicionará a entrega contínua à definição baseada em YA
 1. O trecho de código adicionado deve ser semelhante ao abaixo:
 
    ```yaml
-   - task: DownloadBuildArtifacts@0
+   - task: DownloadBuildArtifacts@1
      inputs:
        buildType: "current"
        downloadType: "single"
@@ -386,7 +390,7 @@ Os Pipelines do YAML como Código não têm Portões de Versão/Qualidade como t
            runOnce:
              deploy:
                steps:
-                 - task: DownloadBuildArtifacts@0
+                 - task: DownloadBuildArtifacts@1
                    inputs:
                      buildType: "current"
                      downloadType: "single"

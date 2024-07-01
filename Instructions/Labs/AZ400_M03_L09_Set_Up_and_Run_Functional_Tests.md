@@ -55,7 +55,13 @@ Nesta tarefa, você importará o repositório Git do eShopOnWeb que será usado 
     - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
     - A pasta **infra** contém modelos de infraestrutura como código Bicep e ARM usados em alguns cenários de laboratório.
     - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
-    - A pasta **src** contém o site .NET usado nos cenários do laboratório.
+    - A pasta **src** contém o site do .NET usado nos cenários do laboratório.
+
+#### Tarefa 3: (pular se feita) definir o branch main como branch padrão
+
+1. Vá para **Repos>Branches**.
+1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
+1. Clique em **Definir como branch padrão**.
 
 ### Exercício 1: configurar testes no pipeline de CI
 

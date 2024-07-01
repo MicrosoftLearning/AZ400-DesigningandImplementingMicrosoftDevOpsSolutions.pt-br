@@ -60,6 +60,12 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
     - A pasta **.github** contém definições de fluxo de trabalho do GitHub YAML.
     - A pasta **src** contém o site do .NET 8 usado nos cenários de laboratório.
 
+#### Tarefa 3: (pular se feita) definir o branch main como branch padrão
+
+1. Vá para **Repos>Branches**.
+1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
+1. Clique em **Definir como branch padrão**.
+
 ### Exercício 1: criar Azure Pipelines baseado em YAML
 
 Neste exercício, você criará um pipeline de build do ciclo de vida do aplicativo usando um modelo baseado em YAML.
