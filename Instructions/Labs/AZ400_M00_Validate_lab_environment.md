@@ -79,4 +79,10 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
     - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
     - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
+#### Tarefa 3: Definir a ramificação principal como ramificação padrão
+
+1. Vá para **Repos>Branches**.
+1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
+1. Clique em **Definir como branch padrão**.
+
 Agora você concluiu as etapas de pré-requisito necessárias para continuar com os diferentes laboratórios individuais para este curso AZ-400.
