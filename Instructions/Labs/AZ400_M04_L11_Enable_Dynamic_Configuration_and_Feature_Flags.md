@@ -191,7 +191,7 @@ Se você quiser saber como implementar isso em seu aplicativo, dê uma olhada ne
 Para se certificar de que seu site está acessando Configuração de Aplicativos, você precisa atualizar sua configuração.
 
 1. Volte para seu aplicativo Web.
-1. Na seção **Configurações**, clique em **Configuração**.
+1. Na seção **Configurações**, clique em **Variáveis de Ambiente**.
 1. Adicionar duas novas configurações de aplicativo:
     - Primeira configuração do aplicativo
         - **Name:** UseAppConfig
@@ -200,7 +200,7 @@ Para se certificar de que seu site está acessando Configuração de Aplicativos
         - **Name:** AppConfigEndpoint
         - **Valor:***o valor que você salvou/copiou anteriormente do Ponto de Extremidade de Configuração de Aplicativos. Deve ser algo como <https://appcs-NAME-REGION.azconfig.io>*
 
-1. Clique em **Ok** e em **Salvar** e aguarde até que as configurações sejam atualizadas.
+1. Clique em **Aplicar** e **Confirmar** e, então, aguarde a atualização das configurações.
 1. Vá até **Visão geral** e clique em **Procurar**
 1. Nesta etapa, você não verá alterações no site, já que a Configuração de Aplicativos não contém dados. Isso é o que você fará nas próximas tarefas.
 
