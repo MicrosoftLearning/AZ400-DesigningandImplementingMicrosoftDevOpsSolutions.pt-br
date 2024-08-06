@@ -330,7 +330,7 @@ Nesta tarefa, você usará o portal do Azure DevOps para testar a política e cr
 
 #### Tarefa 6: trabalhar com solicitações de pull
 
-Nesta tarefa, você usará o portal do Azure DevOps para criar uma Solicitação de pull, usando o branch **dev** para mesclar uma alteração no branch **main** protegido. Um item de trabalho do Azure DevOps deve ser vinculado às alterações para poder rastrear o trabalho pendente com a atividade de código.
+Nesta tarefa, você usará o portal do Azure DevOps para criar uma Solicitação de pull, usando o branch **dev** para mesclar uma alteração no branch **main** protegido. Um item de trabalho do Azure DevOps deve ser vinculado às alterações para poder rastrear trabalhos pendentes com a atividade de código.
 
 1. No painel de navegação vertical do portal do Azure DevOps, na seção **Boards**, selecione **Itens de trabalho**.
 1. Clique em **+ Novo Item de Trabalho > Item da Lista de Pendências do Produto**. No campo de título, escreva **Testando minha primeira PR** e clique em **Salvar**.
