@@ -190,6 +190,8 @@ Nesta tarefa, você configurará sua Máquina Virtual de laboratório como um ag
 ### Exercício 3: remover os recursos usados neste laboratório
 
 1. Interrompa e remova o serviço do agente executando `.\config.cmd remove` a partir do prompt de comando.
+   - Será solicitado que você insira o Token de Acesso Pessoal novamente para remover o agente da sua organização.
+   - Se você não tiver mais o Token de Acesso Pessoal, poderá continuar a regenerar o que criou inicialmente no Exercício 2, Tarefa 1, Etapa 2.
 1. Exclua o pool de agentes.
 1. Revogue o token PAT.
 1. Reverta as alterações no arquivo **eshoponweb-ci-pr.yml** navegando até ele de Repos/.ado/eshoponweb-ci-pr.yml, selecionando **Editar** e removendo as linhas 13-15 (o snippet de pool do agente) e voltando para `vmImage: ubuntu-latest` como era originalmente. (Isso ocorre porque você usará o mesmo arquivo de pipeline de exemplo em um exercício de laboratório futuro.)
