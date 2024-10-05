@@ -279,25 +279,25 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
 
 1. Na seção **Critérios da regra**, selecione **+ Adicionar nova cláusula**, na lista suspensa **Campo**, selecione **Atividade**, na lista suspensa **Operador**, selecione **=** e, na lista suspensa **Valor**, selecione **Desenvolvimento**.
 
-    ![Janela "Configurações", verifique se todos os campos mencionaram as informações](images/m1/EShop-WEB-styles_v1.png)
+    ![Janela "Configurações", verifique se todos os campos mencionaram as informações](images/m1/EShop-WEB-styles_v2.png)
 
     > **Observação**: isso definirá todos os cartões atribuídos às atividades de **desenvolvimento** em verde.
 
     ![Estilos de tarefas de Sprint](images/m1/EShop-WEB-sprint-green_v1.png)
 
-1. Na página **Configurações**, selecione a guia **Lista de pendências**.
+1. No painel **Configurações**, selecione a guia **Geral** e, na seção **Lista de pendências**, veja e configure os níveis de navegação.
 
-    > **Observação**: as entradas nesta guia permitem que você defina os níveis disponíveis para navegação. Épicos não são incluídos por padrão, mas você pode alterar isso.
+    > **Observação**: épicos não são incluídos por padrão, mas você pode alterar isso.
 
-1. Na página **Configurações**, selecione a guia **Número de dias úteis**.
+1. No painel **Configurações**, clique na guia **Geral** e, na seção **Dias úteis**, especifique os dias úteis que a equipe segue.
 
-    > **Observação**: as entradas nesta guia permitem que você especifique os **dias úteis** que a equipe segue. Isso se aplica aos cálculos de capacidade e burndown.
+    > **Observação**: isso se aplica aos cálculos de capacidade e burndown.
 
-1. Na página **Configurações**, selecione a guia **Trabalhando com bugs**.
+1. No painel **Configurações**, clique na guia **Geral** e, na seção **Trabalhando com bugs**, você pode especificar como gerenciar bugs em listas de pendências e quadros.
 
     > **Observação**: as entradas nesta guia permitem que você especifique como os bugs são apresentados no quadro.
 
-1. No painel **Configurações**, clique em **Salvar e fechar** para salvar a regra de estilo.
+1. No painel **Configurações**, clique em **Salvar** para salvar e fechar a regra de estilo.
 
     > **Observação**: a tarefa associada ao **Desenvolvimento** é agora verde e muito fácil de identificar.
 
