@@ -38,11 +38,11 @@ Após concluir este laboratório, você poderá:
 Neste exercício, você importará o código do repositório [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) existente para seu próprio repositório privado do GitHub.
 
 O repositório está organizado da seguinte forma:
-    - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
-    - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
-    - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
-    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
-    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
+- A pasta **.ado** contém os pipelines YAML do Azure DevOps.
+- O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces).
+- A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
+- A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
+- A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
 #### Tarefa 1: criar um repositório público no GitHub e importar o eShopOnWeb
 

@@ -86,9 +86,10 @@ Nesta tarefa, você criará um pipeline YAML do Azure DevOps baseado em modelo.
 
    - Um único estágio: Compilar
    - Um único trabalho: Build
-   - Três tarefas dentro trabalho de build:
+   - Quatro tarefas dentro do trabalho de build:
    - Dotnet Restore
    - Dotnet Build
+   - Dotnet Test
    - Dotnet Publish
 
 1. No painel **Revisar seu pipeline YAML**, clique no símbolo de acento circunflexo para baixo ao lado do botão **Executar**, clique em **Salvar**.
@@ -196,7 +197,7 @@ Nesta tarefa, você configurará sua Máquina Virtual de laboratório como um ag
 1. Revogue o token PAT.
 1. Reverta as alterações no arquivo **eshoponweb-ci-pr.yml** navegando até ele de Repos/.ado/eshoponweb-ci-pr.yml, selecionando **Editar** e removendo as linhas 13-15 (o snippet de pool do agente) e voltando para `vmImage: ubuntu-latest` como era originalmente. (Isso ocorre porque você usará o mesmo arquivo de pipeline de exemplo em um exercício de laboratório futuro.)
 
-![Reverter o pool de pipelines de volta para as configurações de vmImage](images/m3/eshoponweb-ci-pr-vmimage_v1.png)
+![Reverter o pool de pipelines de volta para as configurações de vmImage](images/m3/eshoponweb-ci-pr-vmimage_v2.png)
 
 ## Revisão
 
