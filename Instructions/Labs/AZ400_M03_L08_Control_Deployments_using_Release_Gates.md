@@ -160,15 +160,12 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
    | Grupo de recursos | **az400m04l09-RG**                                                                    |
    | Nome           | o nome do aplicativo Web DevTest que você registrou na tarefa anterior                     |
    | Região         | a mesma região do Azure na qual você implantou os aplicativos Web anteriormente na tarefa anterior |
-   | Modo de Recurso  | **Clássico**                                                                           |
-
-   > **Observação**: desconsidere a mensagem de substituição. Isso é necessário para evitar falhas da tarefa do DevOps Habilitar integração contínua que você usará posteriormente neste laboratório.
 
 1. Clique em **Revisar + criar** e em **Criar**.
 1. Aguarde o processo de provisionamento ser concluído.
 1. No portal do Azure, navegue até o grupo de recursos **az400m04l09-RG** que você criou na tarefa anterior.
 1. Na lista de recursos, clique no aplicativo Web **DevTest**.
-1. Na página do aplicativo Web **DevTest**, no menu vertical à esquerda, na seção **Configurações**, clique em **Application Insights**.
+1. Na página do aplicativo Web **DevTest**, no menu vertical à esquerda, na seção **Monitoramento**, clique em **Application Insights**.
 1. Na folha do **Application Insights**, clique em **Ativar o Application Insights**.
 1. Na seção **Alterar seu recurso**, clique na opção **Selecionar recurso existente**. Na lista de recursos existentes, selecione o recurso recém-criado do Application Insights, clique em **Aplicar** e, quando solicitado para confirmação, clique em **Sim**.
 1. Aguarde até que a alteração entre em vigor.
@@ -177,7 +174,7 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
 
 1. Na mesma opção do menu **Configurações** /  do **Application Insights** no Aplicativo Web, selecione **Exibir Dados do Application Insights**. A folha do Application Insights abre no portal do Azure.
 1. Na folha de recursos do Application Insights, na seção **Monitoramento**, clique em **Alertas** e em **Criar > Regra de alerta**.
-1. Na folha **Selecionar um sinal**, na caixa de texto **Pesquisar por nome de sinal**, digite **Solicitações**. Na lista de resultados, selecione **Solicitações com Falha**.
+1. Na folha **Criar uma Regra de Alerta**, na seção **Condição** , clique no link **Ver todos os sinais** e digite **Solicitações**. Na lista de resultados, selecione **Solicitações com Falha**.
 1. Na folha **Criar uma Regra de Alerta**, na seção **Condição**, deixe o **Limite** definido como **Estático**. Valide as outras configurações padrão da seguinte maneira:
 
    - Tipo de agregação: contagem
