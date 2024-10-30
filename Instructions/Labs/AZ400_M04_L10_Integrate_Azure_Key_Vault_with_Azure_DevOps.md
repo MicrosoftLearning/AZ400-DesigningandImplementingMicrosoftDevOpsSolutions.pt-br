@@ -6,8 +6,6 @@ lab:
 
 # Como integrar o Azure Key Vault ao Azure DevOps
 
-## Manual de laboratório do aluno
-
 ## Requisitos do laboratório
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://learn.microsoft.com/azure/devops/server/compatibility)
@@ -22,22 +20,24 @@ O Azure Key Vault fornece armazenamento seguro e gerenciamento de dados confiden
 Neste laboratório, você verá como integrar o Azure Key Vault a um Pipeline do Azure usando as seguintes etapas:
 
 - Criar um Azure Key Vault para armazenar uma senha do ACR como um segredo.
-- Criar uma entidade de serviço do Azure para fornecer acesso aos segredos do Azure Key Vault.
-- Configurar permissões para permitir que a entidade de serviço leia o segredo.
+- Fornecer acesso a segredos no Azure Key Vault.
+- Configure permissões para ler o segredo.
 - Configurar o pipeline para recuperar a senha do Azure Key Vault e passá-la para tarefas posteriores.
 
 ## Objetivos
 
 Após concluir este laboratório, você poderá:
 
-- Crie uma entidade de serviço do Microsoft Entra.
-- Crie um Azure Key Vault.
+- Criar um Azure Key Vault.
+- Recuperar um segredo do Azure Key Vault em um pipeline do Azure DevOps.
+- Usar o segredo em uma tarefa subsequente no pipeline.
+- Implantar uma imagem de contêiner na ACI (Instância de Contêiner do Azure) usando o segredo.
 
 ## Tempo estimado: 40 minutos
 
 ## Instruções
 
-### Exercício 0: configurar os pré-requisitos do laboratório
+### Exercício 0: (pular se já foi feito) Configurar os pré-requisitos do laboratório
 
 Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -47,15 +47,15 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto o nome **eShopOnWeb** e deixe os outros campos com padrões. Clique em **Criar**.
 
-    ![Criar Projeto](images/create-project.png)
+    ![Captura de tela do painel criar um novo projeto.](images/create-project.png)
 
 #### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos** , **Importar**. Na janela **Importar um repositório do Git**, cole a URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos > Arquivos**, **Importar**. Na janela **Importar um repositório do Git**, cole a URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
-    ![Importar repositório](images/import-repo.png)
+    ![Captura de tela do painel importar repositório.](images/import-repo.png)
 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
@@ -66,85 +66,25 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
 
 #### Tarefa 3: (pular se feita) definir o branch main como branch padrão
 
-1. Vá para **Repos>Branches**.
+1. Vá para **Repos > Branches**.
 1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
 1. Clique em **Definir como branch padrão**.
 
 ### Exercício 1: configurar o pipeline de CI para criar um contêiner eShopOnWeb
 
-Configurar o pipeline YAML de CI para:
+Neste exercício, você criará um pipeline de CI que cria e envia as imagens de contêiner do eShopOnWeb para um ACR (Registro de Contêiner do Azure). O pipeline usará o Docker Compose para criar as imagens e efetuar push delas no ACR.
 
-- Criar um Registro de Contêiner do Azure para manter as images do contêiner
-- Usar o Docker Compose para criar e enviar por push as  imagens de contêiner **eshoppublicapi** e **eshopwebmvc**. Somente o contêiner **eshopwebmvc** será implantado.
-
-#### Tarefa 1: (pular se feita) criar uma entidade de serviço
-
-Nesta tarefa, você criará uma entidade de serviço usando a CLI do Azure, que permitirá ao Azure DevOps:
-
-- Implantar recursos na assinatura do Azure
-- Ter acesso de leitura sobre os segredos do Key Vault criados posteriormente.
-
-> **Observação**: se você já tiver uma entidade de serviço, poderá prosseguir diretamente para a próxima tarefa.
-
-Você precisará de uma entidade de serviço para implantar recursos do Azure a partir do Azure Pipelines. Como vamos recuperar segredos em um pipeline, precisaremos conceder permissão ao serviço quando criarmos o Azure Key Vault.
-
-Uma entidade de serviço é criada automaticamente pelo Azure Pipelines quando você se conecta a uma assinatura do Azure de dentro de uma definição de pipeline ou quando cria uma nova Conexão de Serviço na página de configurações do projeto (opção automática). Você também pode criar manualmente a entidade de serviço a partir do portal ou usando a CLI do Azure e reutilizá-la em projetos.
-
-1. No computador do laboratório, inicie um navegador da Web, navegue até o [**Portal do Azure**](https://portal.azure.com) e entre com a conta de usuário que tem a função Proprietário na assinatura do Azure que você usará neste laboratório e tem a função de Administrador global no locatário do Microsoft Entra associado a essa assinatura.
-1. No portal do Azure, clique no ícone do **Cloud Shell**, localizado diretamente à direita da caixa de texto de pesquisa na parte superior da página.
-1. Se for solicitado que você selecione **Bash** ou **PowerShell**, selecione **Bash**.
-
-   >**Observação**: se esta for a primeira vez que você está iniciando o **Cloud Shell** e você receber a mensagem **Você não tem nenhum armazenamento montado**, selecione a assinatura que você está usando no laboratório e selecione **Criar armazenamento**.
-
-1. No prompt **Bash**, no painel **Cloud Shell**, execute os seguintes comandos para recuperar os valores da ID de assinatura do Azure e dos atributos de nome de assinatura:
-
-    ```bash
-    az account show --query id --output tsv
-    az account show --query name --output tsv
-    ```
-
-    > **Observação**: copie ambos os valores para um arquivo de texto. Você precisará deles adiante neste laboratório.
-
-1. No prompt **Bash**, no painel **Cloud Shell**, execute o seguinte comando para criar uma entidade de serviço (substitua **myServicePrincipalName** por qualquer cadeia de caracteres exclusiva que consista em letras e dígitos) e **mySubscriptionID** pela sua subscriptionId do Azure:
-
-    ```bash
-    az ad sp create-for-rbac --name myServicePrincipalName \
-                         --role contributor \
-                         --scopes /subscriptions/mySubscriptionID
-    ```
-
-    > **Observação**: o comando irá gerar uma saída JSON. Copie a saída para um arquivo de texto. Você precisará dela posteriormente neste laboratório.
-
-1. Em seguida, no computador do laboratório, inicie um navegador da Web, navegue até o projeto ** eShopOnWeb** do Azure DevOps. Clique em **Configurações do Projeto>Conexões de Serviço (em Pipelines)** e **Nova Conexão de Serviço**.
-
-    ![Nova conexão de serviço](images/new-service-connection.png)
-
-    > **Observação**: Se não houver conexões de serviço criadas anteriormente na página, o botão de criação da conexão de serviço estará localizado no centro da página e terá o rótulo **Criar conexão de serviço**
-
-1. Na folha **Nova conexão de serviço**, escolha **Azure Resource Manager** e **Avançar** (talvez seja necessário rolar para baixo).
-
-1. Em seguida, escolha a **Entidade de serviço (manual)** e clique em **Avançar**.
-
-1. Preencha os campos vazios usando as informações coletadas durante as etapas anteriores:
-    - ID e nome da assinatura.
-    - ID da entidade de serviço (appId), chave da entidade de serviço (senha) e ID do locatário (locatário).
-    - Em **Nome da conexão de serviço**, digite **azure subs**. Esse nome será referenciado em pipelines YAML quando precisar de uma Conexão de Serviço do Azure DevOps para se comunicar com sua assinatura do Azure.
-
-    ![Conexão de serviço do Azure](images/azure-service-connection.png)
-
-1. Clique em **Verificar e Salvar**.
-
-#### Tarefa 2: configurar e executar o pipeline de CI
+#### Tarefa 1: Configurar e executar o pipeline de CI
 
 Nesta tarefa, você importará, modificará e executará uma definição de pipeline YAML de CI existente. Será criado um novo Registro de Contêiner do Azure (ACR) e criará/publicará as imagens de contêiner eShopOnWeb.
 
-1. No computador do laboratório, inicie um navegador da Web e navegue até o projeto **eShopOnWeb** do Azure DevOps. Vá para **Pipelines>Pipelines** e clique em **Criar Pipeline** (ou **Novo pipeline**).
+1. No computador do laboratório, inicie um navegador da Web e navegue até o projeto **eShopOnWeb** do Azure DevOps. Vá para **Pipelines > Pipelines** e clique em **Criar pipeline** (ou **Novo pipeline**).
 
-1. Na janela **Onde está seu código?**, selecione **Git do Azure Repos (YAML)** e selecione o repositório **eShopOnWeb**.
+1. Na janela **Onde está seu código?**, selecione **Azure Repos Git (YAML)** e selecione o repositório **eShopOnWeb**.
 
 1. Na seção **Configurar**, escolha o **Arquivo YAML existente do Azure Pipelines**. Selecione branch: **principal**, forneça o seguinte caminho **/.ado/eshoponweb-ci-dockercompose.yml** e clique em **Continuar**.
 
-    ![Selecionar Pipeline](images/select-ci-container-compose.png)
+    ![Captura de tela do pipeline do YAML existente.](images/select-ci-container-compose.png)
 
 1. Na definição de pipeline YAML, personalize o nome do grupo de recursos substituindo **NOME** em **AZ400-EWebShop-NOME** por um valor exclusivo e substitua **ID-DA-ASSINATURA** pela sua subscriptionId do Azure.
 
@@ -157,15 +97,15 @@ Nesta tarefa, você importará, modificará e executará uma definição de pipe
     - A tarefa **PowerShell** obtém a saída do bicep (servidor de logon do acr) e cria a variável de pipeline.
     - A tarefa **DockerCompose** cria e envia as imagens de contêiner do eShopOnWeb para o Registro de Contêiner do Azure.
 
-1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeie-o **eshoponweb-ci-dockercompose** e clique em **Salvar**.
+1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeie-o **eshoponweb-ci-dockercompose** e clique em **Salvar**.
 
 1. Quando a execução for concluída, no Portal do Azure, abra o Grupo de Recursos definido anteriormente e você encontrará um Registro de Contêiner do Azure (ACR) com as imagens de contêiner criadas **eshoppublicapi** e **eshopwebmvc**. Você só usará **eshopwebmvc** na fase de implantação.
 
-    ![Imagens de contêiner no ACR](images/azure-container-registry.png)
+    ![Captura de tela de imagens de contêiner no ACR.](images/azure-container-registry.png)
 
 1. Clique em **Chaves de Acesso**, habilite o **usuário Administrador**, caso ainda não tenha feito isso, e copie o valor da **senha**. Ela será usada na tarefa a seguir, pois a manteremos como um segredo no Azure Key Vault.
 
-    ![Senha do ACR](images/acr-password.png)
+    ![Captura de tela do local da senha do ACR.](images/acr-password.png)
 
 #### Tarefa 2: criar um Azure Key Vault
 
@@ -173,8 +113,8 @@ Nesta tarefa, você criará um Azure Key Vault usando o portal do Azure.
 
 Para esse cenário de laboratório, teremos uma ACI (Instância de Contêiner) do Azure que extrai e executa uma imagem de contêiner armazenada no Registro de Contêiner do Azure (ACR). Pretendemos armazenar a senha do ACR como um segredo no Key Vault.
 
-1. No portal do Azure, na caixa de texto **Pesquisar recursos, serviços e documentos**, digite **Key Vault** e pressione a tecla **Enter**.
-1. Selecione a folha **Key Vault**, clique em **Criar>Key Vault**.
+1. No portal do Azure, na caixa de texto **Pesquisar recursos, serviços e documentos**, digite **`Key vault`** e pressione a tecla **Enter**.
+1. Selecione a folha **Cofres de chaves**, clique em **Criar > Cofre de chaves**.
 1. Na guia **Noções básicas** da folha **Criar um Key Vault**, especifique as seguintes configurações e clique em **Avançar**:
 
     | Configuração | Valor |
@@ -212,11 +152,11 @@ Para esse cenário de laboratório, teremos uma ACI (Instância de Contêiner) d
 
 #### Tarefa 3: criar um grupo de variáveis conectado ao Azure Key Vault
 
-Nesta tarefa, você criará um Grupo de Variáveis no Azure DevOps que recuperará o segredo de senha do ACR pelo Key Vault usando a Conexão de Serviço (entidade de serviço).
+Nesta tarefa, você criará um Grupo de Variáveis no Azure DevOps que recuperará o segredo de senha do ACR pelo Key Vault usando a Conexão de Serviço criada anteriormente.
 
 1. No computador do laboratório, inicie um navegador da Web e navegue até o projeto **eShopOnWeb** do Azure DevOps.
 
-1. No painel de navegação vertical do portal do Azure DevOps, selecione **Pipelines>Biblioteca**. Clique em **+ Grupo de Variáveis**.
+1. No painel de navegação vertical do portal do Azure DevOps, selecione **Pipelines > Biblioteca**. Clique em **+ Grupo de Variáveis**.
 
 1. Na folha **Novo grupo de variáveis**, especifique as seguintes configurações:
 
@@ -230,13 +170,13 @@ Nesta tarefa, você criará um Grupo de Variáveis no Azure DevOps que recuperar
 1. Em **Variáveis**, clique em **+ Adicionar** e selecione o segredo **acr-secret**. Clique em **OK**.
 1. Clique em **Salvar**.
 
-    ![Criar grupo de variáveis](images/vg-create.png)
+    ![Captura de tela da criação do grupo de variáveis.](images/vg-create.png)
 
 #### Tarefa 4: configurar o pipeline de CD para implantar o contêiner na ACI (Instância de Contêiner) do Azure
 
 Nesta tarefa, você importará, personalizará e executará um pipeline de CD para implantar a imagem de contêiner criada antes em uma Instância de Contêiner do Azure.
 
-1. No computador do laboratório, inicie um navegador da Web e navegue até o projeto **eShopOnWeb** do Azure DevOps. Vá para **Pipelines>Pipelines** e clique em **Novo Pipeline**.
+1. No computador do laboratório, inicie um navegador da Web e navegue até o projeto **eShopOnWeb** do Azure DevOps. Vá para **Pipelines > Pipelines** e clique em **Novo Pipeline**.
 
 1. Na janela **Onde está seu código?**, selecione **Git do Azure Repos (YAML)** e selecione o repositório **eShopOnWeb**.
 
@@ -245,8 +185,8 @@ Nesta tarefa, você importará, personalizará e executará um pipeline de CD pa
 1. Na definição de pipeline YAML, personalize:
 
     - **YOUR-SUBSCRIPTION-ID** com sua ID de assinatura do Azure.
-    - **az400eshop-NAME** substitua NAMEpara torná-lo globalmente único.
-    - **YOUR-ACR.azurecr.io** e **ACR-USERNAME** com seu servidor de login do ACR (ambos precisam do nome do ACR, pode ser encontrado em ACR>Chaves de Acesso).
+    - **az400eshop-NAME** substitua NAME para torná-lo globalmente único.
+    - **YOUR-ACR.azurecr.io** e **ACR-USERNAME** com seu servidor de login do ACR (ambos precisam do nome do ACR, pode ser revisado no ACR > Chaves de acesso).
     - **AZ400-EWebShop-NAME** pelo nome do grupo de recursos definido antes no laboratório.
 
 1. Clique em **Salvar e Executar**.
@@ -259,24 +199,18 @@ Nesta tarefa, você importará, personalizará e executará um pipeline de CD pa
     - **Variáveis (para o estágio Implantar)** se conecta ao grupo de variáveis para consumir o segredo **acr-secret** do Azure Key Vault.
     - **AzureResourceManagerTemplateDeployment** implanta a Instância de Contêiner do Azure (ACI) usando o modelo bicep e fornece os parâmetros de logon do ACR para permitir que a ACI baixe a imagem de contêiner criada anteriormente do Registro de Contêiner do Azure (ACR).
 
-1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeie-o **eshoponweb-cd-aci** e clique em **Salvar**.
+1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeie-o **eshoponweb-cd-aci** e clique em **Salvar**.
 
-### Exercício 2: remover os recursos do laboratório do Azure
-
-Neste exercício, você removerá os recursos do Azure provisionados neste laboratório para eliminar cobranças inesperadas.
-
->**Observação**: lembre-se de remover todos os recursos do Azure que acabam de ser criados e que você não usa mais. Remover recursos não utilizados garante que você não veja encargos inesperados.
-
-#### Tarefa 1: remover os recursos do laboratório do Azure
-
-Nesta tarefa, você usará o Azure Cloud Shell para remover os recursos do Azure provisionados neste laboratório para eliminar cobranças desnecessárias.
-
-1. No portal do Azure, abra o Grupo de recursos criado e clique em **Excluir grupo de recursos**.
+   > [!IMPORTANT]
+   > Lembre-se de excluir os recursos criados no portal do Azure para evitar cobranças desnecessárias.
 
 ## Revisão
 
 Neste laboratório, você integrou o Azure Key Vault a um pipeline do Azure DevOps usando as seguintes etapas:
 
-- Criou uma entidade de serviço do Azure para fornecer acesso a um segredo do Azure Key Vault e autenticar a implantação no Azure a partir do Azure DevOps.
-- Executou dois pipelines YAML importados de um repositório do Git.
-- Configurou um pipeline para recuperar a senha pelo Azure Key Vault usando um Grupo de Variáveis e usá-la em tarefas subsequentes.
+- Criou um Azure Key Vault para armazenar uma senha do ACR como um segredo.
+- Forneceu acesso aos segredos no Azure Key Vault.
+- Configurou permissões para ler o segredo.
+- Configurou o pipeline para recuperar a senha pelo Azure Key Vault e passá-la para tarefas posteriores.
+- Implantou uma imagem de contêiner na ACI (Instância de Contêiner do Azure) usando o segredo.
+- Criou um Grupo de Variáveis conectado ao Azure Key Vault.

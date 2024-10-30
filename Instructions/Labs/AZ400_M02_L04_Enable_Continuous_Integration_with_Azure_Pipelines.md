@@ -6,8 +6,6 @@ lab:
 
 # Habilitar a integração contínua com o Azure Pipelines
 
-## Manual de laboratório do aluno
-
 ## Requisitos do laboratório
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
@@ -29,11 +27,11 @@ Após concluir este laboratório, você poderá:
 - Incluir a validação de build como parte de uma solicitação de pull.
 - Configure o pipeline de CI como código com YAML.
 
-## Tempo estimado: 45 minutos
+## Tempo estimado: 30 minutos
 
 ## Instruções
 
-### Exercício 0: configurar os pré-requisitos do laboratório
+### Exercício 0: (pular se já foi feito) Configurar os pré-requisitos do laboratório
 
 Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -47,7 +45,7 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos > Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
@@ -58,7 +56,7 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
 
 #### Tarefa 3: (pular se feita) definir o branch main como branch padrão
 
-1. Vá para **Repos>Branches**.
+1. Vá para **Repos > Branches**.
 1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
 1. Clique em **Definir como branch padrão**.
 
@@ -72,7 +70,7 @@ Nesta tarefa, você importará a definição de build YAML que será usada como 
 
 Vamos começar importando o pipeline de build chamado [eshoponWeb-ci-pr.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci-pr.yml).
 
-1. Vá para **Pipelines>Pipelines**
+1. Acesse **Pipelines > Pipelines**
 1. Clique no botão **Criar Pipeline** ou **Novo Pipeline**
 1. Selecione **Repositórios Git do Azure (YAML)**
 1. Selecione o repositório **eShopOnWeb**
@@ -86,14 +84,14 @@ Vamos começar importando o pipeline de build chamado [eshoponWeb-ci-pr.yml](htt
     - **DotNet Publish**: publica o aplicativo e suas dependências em uma pasta para implantação em um sistema de hospedagem. Nesse caso, é o **Build.ArtifactStagingDirectory**.
 
 1. Clique no botão **Salvar** para salvar a definição do pipeline.
-1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Mover**. Nomeio-o como **eshoponWeb-ci-pr** e clique em **Salvar**.
+1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Mover**. Nomeio-o como **eshoponWeb-ci-pr** e clique em **Salvar**.
 
 #### Tarefa 2: Políticas de branch
 
 Nesta tarefa, você adicionará políticas à branch principal e só permitirá alterações usando Solicitações Pull que estejam em conformidade com as políticas definidas. Você deseja garantir que as alterações em um branch sejam revisadas antes de serem mescladas.
 
-1. Vá para a seção **Repositório>Branches** .
-1. Na guia **Mine** do painel de **Branches**, passe o ponteiro do mouse sobre a entrada do branch **main** para revelar o símbolo de reticências no lado direito.
+1. Vá para a seção **Repositório >Branches **.
+1. Na guia **Meus** do painel **Branches**, passe o ponteiro do mouse sobre a entrada do branch **main** para revelar o símbolo de reticências no lado direito.
 1. Clique nas reticências e, no menu pop-up, selecione **Políticas de branch**.
 1. Na guia **principal** das configurações do repositório, ative a opção **Exigir número mínimo de revisores**. Adicione **1** revisor e marque a caixa **Permitir que os solicitantes aprovem suas próprias alterações** (já que você é o único usuário em seu projeto para o laboratório)
 1. Na guia **principal** das configurações do repositório, na seção **Validação de compilação**, clique em **+** (Adicionar nova política de compilação) e na lista **Compilar pipeline**, selecione **eshoponWeb-ci-pr** e clique em **Salvar**.
@@ -132,7 +130,7 @@ Nesta tarefa, você adicionará a definição de build YAML que será usada para
 
 Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Vá para **Pipelines>Pipelines**.
+1. Acesse **Pipelines > Pipelines**.
 1. Clique no botão **Novo pipeline**.
 1. Selecione **Git do Azure Repos (YAML)**.
 1. Selecione o repositório **eShopOnWeb**.
@@ -146,6 +144,8 @@ Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://g
     - **DotNet Publish**: publica o aplicativo e suas dependências em uma pasta para implantação em um sistema de hospedagem. Nesse caso, é o **Build.ArtifactStagingDirectory**.
     - **Publicar artefato - Site**: publique o artefato do aplicativo (criado na etapa anterior) e disponibilize-o como um artefato de pipeline.
     - **Publicar artefato - Bicep**: publique o artefato de infraestrutura (arquivo Bicep) e disponibilize-o como um artefato do pipeline.
+
+1. Clique em **Executar** e aguarde até que o pipeline seja executado.
 
 #### Tarefa 2: Habilitar a integração contínua
 
@@ -172,7 +172,7 @@ A definição de pipeline de build padrão não habilita a Integração Contínu
 1. Selecione **Criar um novo branch para este commit**.
 1. Mantenha o nome do branch padrão e **Iniciar uma solicitação de pull** verificada.
 1. Clique em **Salvar**.
-1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Mover**. Nomeie-o **eshoponweb-ci** e clique em **Salvar**.
+1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Mover**. Nomeie-o **eshoponweb-ci** e clique em **Salvar**.
 1. Vá para **Repositórios > Pull requests**.
 1. Clique na no pull request **"Atualizar o eshoponweb-ci.yml para o Azure Pipelines"**.
 1. Depois que todas as validações forem bem-sucedidas, no canto superior direito clique em **Aprovar**. Agora você pode clicar em **Concluir**.
@@ -182,7 +182,7 @@ A definição de pipeline de build padrão não habilita a Integração Contínu
 
 Nesta tarefa, você criará uma solicitação de pull usando uma novo branch para mesclar uma alteração no branch **principal** protegida e acionar automaticamente o pipeline de CI.
 
-1. Navegue até a seção **Repos**.
+1. Navegue até a seção **Repositórios** e clique em **Branches**.
 1. Crie um novo branch chamado **Feature02** com base no **branch principal**.
 1. Clique no novo branch **Feature02**.
 1. Navegue até o arquivo **/eShopOnWeb/src/Web/Program.cs** e clique em **Editar** no canto superior direito.
@@ -199,7 +199,7 @@ Nesta tarefa, você criará uma solicitação de pull usando uma novo branch par
 1. A solicitação de pull mostrará alguns requisitos pendentes, com base nas políticas aplicadas à branch principal** de destino**.
 1. Depois que todas as validações forem bem-sucedidas, no canto superior direito clique em **Aprovar**. Agora, na lista suspensa Definir preenchimento** automático, **você pode clicar em **Concluir**.
 1. Na guia **Concluir solicitação de pull**, clique em **Concluir mesclagem**
-1. Volte para **Pipelines>Pipelines**, você notará que a compilação **eshoponWeb-ci** foi acionada automaticamente depois que o código foi mesclado.
+1. Volte para **Pipelines > Pipelines**; você notará que a compilação **eshoponweb-ci** foi acionada automaticamente depois que o código foi mesclado.
 1. Clique na **compilação eshoponWeb-ci** e selecione a última execução.
 1. Após sua execução bem-sucedida, clique em **Related > Published** para verificar os artefatos publicados:
     - Bíceps: o artefato de infraestrutura.
