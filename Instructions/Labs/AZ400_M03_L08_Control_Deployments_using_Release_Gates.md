@@ -6,8 +6,6 @@ lab:
 
 # Controlar as implantações usando portões de lançamento
 
-## Manual de laboratório do aluno
-
 ## Requisitos do laboratório
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
@@ -54,25 +52,23 @@ Após concluir este laboratório, você poderá:
 
 ### Exercício 0: configurar os pré-requisitos do laboratório
 
-> **Observação**: se você já criou este projeto durante laboratórios anteriores, este exercício pode ser ignorado.
+Neste exercício, você configurará os pré-requisitos para o laboratório.
 
-Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
-
-#### Tarefa 1: (pular se já feita) criar e configurar o projeto de equipe
+#### Tarefa 1: (pular se feita) criar e configurar o projeto de equipe
 
 Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser usado por vários laboratórios.
 
 1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto o nome **eShopOnWeb** e deixe os outros campos com padrões. Clique em **Criar**.
 
-   ![Criar Projeto](images/create-project.png)
+   ![Captura de tela do painel criar um novo projeto.](images/create-project.png)
 
-#### Tarefa 2: (pular se já feita) importar repositório do Git eShopOnWeb
+#### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos > Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
-   ![Importar repositório](images/import-repo.png)
+   ![Captura de tela do painel importar repositório.](images/import-repo.png)
 
 1. O repositório está organizado da seguinte forma:
    - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
@@ -81,11 +77,11 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
-1. Vá para **Repos>Branches**.
+1. Vá para **Repos > Branches**.
 1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
 1. Clique em **Definir como branch padrão**.
 
-#### Tarefa 3: (pular se já feita) configurar pipeline de CI como código com YAML no Azure DevOps
+#### Tarefa 3: Configurar pipelines de CI/CD como código com YAML no Azure DevOps
 
 Nesta tarefa, você adicionará uma definição de compilação do YAML ao projeto existente.
 
@@ -106,9 +102,9 @@ Nesta tarefa, você adicionará uma definição de compilação do YAML ao proje
 
    > **Observação**: cada tarefa do arquivo YAML está disponível para revisão, incluindo quaisquer avisos e erros.
 
-1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/mover**. Nomeie-o **eshoponweb-ci** e clique em **Salvar**.
+1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/mover**. Nomeie-o **`eshoponweb-ci`** e clique em **Salvar**.
 
-### Exercício 2: criar os recursos necessários do Azure para o pipeline de lançamento
+### Exercício 1: Criar os recursos necessários do Azure para o pipeline de lançamento
 
 #### Tarefa 1: criar dois aplicativos Web do Azure
 
@@ -126,14 +122,14 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
 
    ```bash
    REGION='centralus'
-   RESOURCEGROUPNAME='az400m04l09-RG'
+   RESOURCEGROUPNAME='az400m03l08-RG'
    az group create -n $RESOURCEGROUPNAME -l $REGION
    ```
 
 1. Para criar um plano do Serviço de Aplicativo
 
    ```bash
-   SERVICEPLANNAME='az400m04l09-sp1'
+   SERVICEPLANNAME='az400m03l08-sp1'
    az appservice plan create -g $RESOURCEGROUPNAME -n $SERVICEPLANNAME --sku S1
    ```
 
@@ -157,13 +153,13 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
 
    | Configuração        | Valor                                                                                 |
    | -------------- | ------------------------------------------------------------------------------------- |
-   | Grupo de recursos | **az400m04l09-RG**                                                                    |
+   | Grupo de recursos | **az400m03l08-RG**                                                                    |
    | Nome           | o nome do aplicativo Web DevTest que você registrou na tarefa anterior                     |
    | Região         | a mesma região do Azure na qual você implantou os aplicativos Web anteriormente na tarefa anterior |
 
 1. Clique em **Revisar + criar** e em **Criar**.
 1. Aguarde o processo de provisionamento ser concluído.
-1. No portal do Azure, navegue até o grupo de recursos **az400m04l09-RG** que você criou na tarefa anterior.
+1. No portal do Azure, navegue até o grupo de recursos **az400m03l08-RG** que você criou na tarefa anterior.
 1. Na lista de recursos, clique no aplicativo Web **DevTest**.
 1. Na página do aplicativo Web **DevTest**, no menu vertical à esquerda, na seção **Monitoramento**, clique em **Application Insights**.
 1. Na folha do **Application Insights**, clique em **Ativar o Application Insights**.
@@ -195,7 +191,7 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
 
 1. Confirme a criação da regra de alerta clicando em **Revisar+Criar** e confirme mais uma vez clicando em **Criar**. Aguarde até que a regra de alerta seja criada com êxito.
 
-### Exercício 3: configurar o pipeline de lançamento
+### Exercício 2: Configurar o pipeline de lançamento
 
 Neste exercício, você configurará um pipeline de lançamento.
 
@@ -223,7 +219,7 @@ Nesta tarefa, você configurará tarefas de lançamento como parte do Pipeline d
 1. Confirme se o Tipo de Aplicativo está definido como "Aplicativo Web no Windows". Em seguida, na lista suspensa **Nome do Serviço de Aplicativo**, selecione o nome do aplicativo Web **DevTest**.
 1. Selecione a tarefa **Implantar Serviço de Aplicativo do Azure**. No campo **Pacote ou Pasta**, atualize o valor padrão de "$(System.DefaultWorkingDirectory)/\*\*/\*.zip" para "$(System.DefaultWorkingDirectory)/\*\*/Web.zip"
 
-   > observe um ponto de exclamação ao lado da guia Tarefas. Isso é esperado, pois precisamos definir as configurações para a Etapa de Produção.
+   > **Observação**: observe um ponto de exclamação ao lado da guia Tarefas. Isso é esperado, pois precisamos definir as configurações para a Etapa de Produção.
 
 1. Abra o painel **Aplicativo e Definições de Configuração** e insira `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development` na caixa **Configurações do Aplicativo**.
 
@@ -243,13 +239,13 @@ Nesta tarefa, você configurará tarefas de lançamento como parte do Pipeline d
 
 1. No painel de navegação vertical, na seção **Pipelines**, clique em **Lançamentos** e, no **painel eshoponweb-cd**, clique na entrada que representa o lançamento mais recente.
 1. Na folha **eshoponweb-cd > Release-1**, acompanhe o progresso do lançamento e verifique se a implantação em ambos os aplicativos Web foi concluída com êxito.
-1. Alterne para a interface do portal do Azure, navegue até o grupo**az400m04l09-RG**. Na lista de recursos, clique no aplicativo Web **DevTest**. Na folha do aplicativo Web, clique em **Procurar** e verifique se a página da Web (site de comércio eletrônico) é carregada em uma nova guia do navegador da Web.
-1. Volte para a interface do portal do Azure, desta vez navegando até o grupo de recursos **az400m04l09-RG**. Na lista de recursos, clique no aplicativo Web de **Produção**. Na folha do aplicativo Web, clique em **Procurar** e verifique se a página da Web é carregada em uma nova guia do navegador da Web.
+1. Alterne para a interface do portal do Azure e navegue até o grupo de recursos **az400m03l08-RG**. Na lista de recursos, clique no aplicativo Web **DevTest**. Na folha do aplicativo Web, clique em **Procurar** e verifique se a página da Web (site de comércio eletrônico) é carregada em uma nova guia do navegador da Web.
+1. Volte para a interface do portal do Azure, desta vez navegando até o grupo de recursos **az400m03l08-RG**. Na lista de recursos, clique no aplicativo Web de **Produção**. Na folha do aplicativo Web, clique em **Procurar** e verifique se a página da Web é carregada em uma nova guia do navegador da Web.
 1. Feche a guia do navegador da Web que exibe o site **EShopOnWeb**.
 
    > **Observação**: agora o aplicativo foi configurado com CI/CD. No próximo exercício, configuraremos o Portão de qualidade como parte de um pipeline de lançamento mais avançado.
 
-### Exercício 3: configurar as restrições de lançamento
+### Exercício 3: Configurar as restrições de lançamento
 
 Neste exercício, você configurará as Restrições de Qualidade no pipeline de lançamento.
 
@@ -274,7 +270,7 @@ Nesta tarefa, você habilitará o portão pós-implantação para o ambiente Dev
 
 1. De volta ao painel **Todos os pipelines > eshoponweb-cd**, na borda direita do retângulo que representa a etapa **Ambiente do DevTest**, clique na forma oval que representa as **Condições pós-implantação**.
 1. No painel **Condições pós-implantação**, defina o controle deslizante **Portões** como **Habilitado**, clique em **+ Adicionar** e, no menu pop-up, clique em **Consultar Alertas do Azure Monitor**.
-1. No painel **Condições pós-implantação**, na seção **Consultar Alertas do Azure Monitor**, na lista suspensa **Assinatura do Azure**, selecione a entrada de **conexão de serviço** que representa a conexão com sua assinatura do Azure; e, na lista suspensa **Grupo de recursos**, selecione a entrada **az400m04l09-RG**.
+1. No painel **Condições pós-implantação**, na seção **Consultar Alertas do Azure Monitor**, na lista suspensa **Assinatura do Azure**, selecione a entrada de **conexão de serviço** que representa a conexão com sua assinatura do Azure e, na lista suspensa **Grupo de recursos**, selecione a entrada **az400m03l08-RG**.
 1. No painel **Condições pós-implantação**, expanda a seção **Avançado** e configure as seguintes opções:
 
    - Tipo de filtro: **Nenhum**
@@ -294,7 +290,7 @@ Nesta tarefa, você habilitará o portão pós-implantação para o ambiente Dev
 1. Feche o painel **Condições pós-implantação** clicando na marca **x** no canto superior direito.
 1. De volta ao painel **eshoponweb-cd**, clique em **Salvar** e, na caixa de diálogo **Salvar**, clique em **OK.**
 
-### Exercício 5: testar os portões de lançamento
+### Exercício 4: Testar os portões de lançamento
 
 Neste exercício, você testará os portões de lançamento atualizando o aplicativo, o que acionará uma implantação.
 
@@ -305,8 +301,8 @@ Nesta tarefa, você primeiro gerará alguns alertas para o aplicativo Web do Dev
 1. No Portal do Azure, navegue até o Recurso **Aplicativo Web do DevTest** implantado anteriormente.
 1. No painel Visão geral, observe o campo **URL** mostrando o Hiperlink do aplicativo Web. Clique neste link, que redirecionará você para a aplicativo Web eShopOnWeb no navegador.
 1. Para simular uma **Solicitação com falha**, adicione **/discount** à URL, o que resultará em uma mensagem de erro, já que essa página não existe. Atualize esta página várias vezes para gerar vários eventos.
-1. No Portal do Azure, no campo "Pesquisar recursos, serviços e documentos", insira **Application Insights** e selecione o Recurso **DevTest-AppInsights** criado no exercício anterior. Em seguida, navegue até **Alertas**.
-1. Haverá pelo menos **1** novo alerta na lista de resultados com **Severidade 2**. Inserir **Alertas** para abrir o Serviço de Alertas do Azure Monitor.
+1. No Portal do Azure, no campo "Pesquisar recursos, serviços e documentos", insira **`Application Insights`** e selecione o Recurso **DevTest-AppInsights** criado no exercício anterior. Em seguida, navegue até **Alertas**.
+1. Haverá pelo menos **um** novo alerta na lista de resultados com **Severidade 2**. Insira **`Alerts`** para abrir o Serviço de Alertas do Azure Monitor.
 1. Haverá pelo menos **1** Failed_Alert com **Severidade 2 – Aviso** aparecendo na lista. Isso foi acionado quando você validou o endereço URL do site não existente no exercício anterior.
 
    > **Observação:** se nenhum Alerta aparecer ainda, aguarde mais alguns minutos.
@@ -325,30 +321,8 @@ Nesta tarefa, você primeiro gerará alguns alertas para o aplicativo Web do Dev
 
    > **Observação:** se o portão falhar, feche o alerta.
 
-### Exercício 4: remover os recursos do laboratório do Azure
-
-Neste exercício, você removerá os recursos do Azure provisionados neste laboratório para eliminar cobranças inesperadas.
-
-> **Observação**: lembre-se de remover todos os recursos do Azure que acabam de ser criados e que você não usa mais. Remover recursos não utilizados garante que você não veja encargos inesperados.
-
-#### Tarefa 1: remover os recursos do laboratório do Azure
-
-Nesta tarefa, você usará o Azure Cloud Shell para remover os recursos do Azure provisionados neste laboratório para eliminar cobranças desnecessárias.
-
-1. No portal do Azure, abra a sessão **Bash** no painel **Cloud Shell**.
-1. Liste todos os grupos de recursos criados nos laboratórios deste módulo executando o seguinte comando:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m04l09-RG')].name" --output tsv
-   ```
-
-1. Exclua todos os grupos de recursos criados em todos os laboratórios deste módulo executando o seguinte comando:
-
-   ```sh
-   az group list --query "[?starts_with(name,'az400m04l09-RG')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-   ```
-
-   > **Observação**: o comando é executado de modo assíncrono (conforme determinado pelo parâmetro --nowait), portanto, embora você possa executar outro comando da CLI do Azure imediatamente depois na mesma sessão Bash, levará alguns minutos antes de o grupo de recursos ser removido.
+   > [!IMPORTANT]
+   > Lembre-se de excluir os recursos criados no portal do Azure para evitar cobranças desnecessárias.
 
 ## Revisão
 
