@@ -6,8 +6,6 @@ lab:
 
 # Habilitar sinalizadores de recursos e a configuração dinâmica
 
-## Manual de laboratório do aluno
-
 ## Requisitos do laboratório
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://learn.microsoft.com/azure/devops/server/compatibility)
@@ -29,11 +27,11 @@ Após concluir este laboratório, você poderá:
 - Habilitar a configuração dinâmica.
 - Gerenciar sinalizadores de recursos.
 
-## Tempo estimado: 60 minutos
+## Tempo estimado: 45 minutos
 
 ## Instruções
 
-### Exercício 0: configurar os pré-requisitos do laboratório
+### Exercício 0: (pular se já foi feito) Configurar os pré-requisitos do laboratório
 
 Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -47,7 +45,7 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos** , **Importar**. Na janela **Importar um repositório do Git**, cole a URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos > Arquivos**, **Importar**. Na janela **Importar um repositório do Git**, cole a URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
@@ -58,85 +56,32 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
 
 #### Tarefa 3: (pular se feita) definir o branch main como branch padrão
 
-1. Vá para **Repos>Branches**.
+1. Vá para **Repos > Branches**.
 1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
 1. Clique em **Definir como branch padrão**.
 
 ### Exercício 1: (pular se feito) importar e executar pipelines de CI/CD
 
-Neste exercício, você importará e executará o pipeline de CI, configurará a conexão de serviço com sua assinatura do Azure e, em seguida, importará e executará o pipeline de CD.
+Neste exercício, você importará pipelines de CI/CD para criar e implantar o aplicativo eShopOnWeb. O pipeline de CI já está preparado para construir o aplicativo e executar testes. O pipeline de CD implantará o aplicativo em um aplicativo Web do Azure.
 
 #### Tarefa 1: importar e executar o pipeline de CI
 
 Vamos começar importando o pipeline de CI chamado [eshoponweb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Vá até **Pipelines>Pipelines**.
+1. Acesse **Pipelines > Pipelines**.
 1. Clique no botão **Criar pipeline (se não houver pipelines)** ou no botão **Novo pipeline** (se já houver pipelines criados).
 1. Selecione **Git do Azure Repos** (Yaml).
 1. Selecione o repositório **eShopOnWeb**.
 1. Selecione **Arquivo YAML do Azure Pipelines existente**.
 1. Selecione o branch **principal** e o arquivo **/.ado/eshoponweb-ci.yml** e clique em **Continuar**.
 1. Clique no botão **Executar** para executar o pipeline.
-1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeie-o **eshoponweb-ci** e clique em **Salvar**.
+1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeie-o **eshoponweb-ci** e clique em **Salvar**.
 
-#### Tarefa 2: gerenciar a conexão de serviço
-
-Você pode criar uma conexão do Azure Pipelines com serviços externos e remotos para executar tarefas em um trabalho.
-
-Nesta tarefa, você criará uma entidade de serviço usando a CLI do Azure, que permitirá ao Azure DevOps:
-
-- Implantar recursos na sua assinatura do Azure
-- Implantar o aplicativo eShopOnWeb
-
-> **Observação**: se você já tiver uma entidade de serviço, poderá prosseguir diretamente para a próxima tarefa.
-
-Você precisará de uma entidade de serviço para implantar recursos do Azure a partir do Azure Pipelines.
-
-Uma entidade de serviço é criada automaticamente pelo Azure Pipeline quando você se conecta a uma assinatura do Azure de dentro de uma definição de pipeline ou quando cria uma nova conexão de serviço na página de configurações do projeto (opção automática). Você também pode criar manualmente a entidade de serviço a partir do portal ou usando a CLI do Azure e reutilizá-la em projetos.
-
-1. No computador do laboratório, inicie um navegador da Web, navegue até o [**Portal do Azure**](https://portal.azure.com) e entre com a conta de usuário que tem a função Proprietário na assinatura do Azure que você usará neste laboratório e tem a função de Administrador global no locatário do Microsoft Entra associado a essa assinatura.
-1. No portal do Azure, clique no ícone do **Cloud Shell**, localizado diretamente à direita da caixa de texto de pesquisa na parte superior da página.
-1. Se for solicitado que você selecione **Bash** ou **PowerShell**, selecione **Bash**.
-
-   >**Observação**: se esta for a primeira vez que você está iniciando o **Cloud Shell** e você receber a mensagem **Você não tem nenhum armazenamento montado**, selecione a assinatura que você está usando no laboratório e selecione **Criar armazenamento**.
-
-1. No prompt **Bash**, no **painel Cloud Shell**, execute os seguintes comandos para recuperar os valores do atributo ID de assinatura do Azure:
-
-    ```sh
-    subscriptionName=$(az account show --query name --output tsv)
-    subscriptionId=$(az account show --query id --output tsv)
-    echo $subscriptionName
-    echo $subscriptionId
-    ```
-
-    > **Observação**: copie ambos os valores para um arquivo de texto. Você precisará deles adiante neste laboratório.
-
-1. No prompt **Bash**, no painel **Cloud Shell**, execute o seguinte comando para criar uma entidade de serviço:
-
-    ```sh
-    az ad sp create-for-rbac --name sp-az400-azdo --role contributor --scopes /subscriptions/$subscriptionId
-    ```
-
-    > **Observação**: o comando irá gerar uma saída JSON. Copie a saída para um arquivo de texto. Você precisará dela posteriormente neste laboratório.
-
-1. Em seguida, no computador do laboratório, inicie um navegador da Web, navegue até o projeto ** eShopOnWeb** do Azure DevOps. Clique em **Configurações do Projeto>Conexões de Serviço (em Pipelines)** e **Nova Conexão de Serviço**.
-
-1. Na tela **Nova conexão de serviço**, escolha **Azure Resource Manager** e **Avançar** (talvez você precise rolar para baixo).
-
-1. Escolha a **Entidade de serviço (manual)** e clique em **Avançar**.
-
-1. Preencha os campos vazios usando as informações coletadas durante as etapas anteriores:
-    - ID e nome da assinatura
-    - ID da entidade de serviço (ou clientId), Chave (ou senha) e TenantId.
-    - Em **Nome da conexão de serviço**, digite **azure subs**. Esse nome será referenciado em pipelines YAML quando precisar de uma Conexão de Serviço do Azure DevOps para se comunicar com sua assinatura do Azure.
-
-1. Clique em **Verificar e Salvar**.
-
-#### Tarefa 3: importar e executar o pipeline de CD
+#### Tarefa 2: importar e executar o pipeline de CD
 
 Vamos importar o pipeline de CD chamado [eshoponweb-cd-webapp-code.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-cd-webapp-code.yml).
 
-1. Vá até **Pipelines>Pipelines**.
+1. Acesse **Pipelines > Pipelines**.
 1. Clique no botão **Novo pipeline**.
 1. Selecione **Git do Azure Repos (Yaml)**.
 1. Selecione o repositório **eShopOnWeb**.
@@ -155,7 +100,7 @@ Vamos importar o pipeline de CD chamado [eshoponweb-cd-webapp-code.yml](https://
     - **Recursos**: está preparado para acionar automaticamente com base na conclusão do pipeline de CI. Ele também baixa o repositório para o arquivo do Bicep.
     - **AzureResourceManagerTemplateDeployment**: implanta o Aplicativo Web do Azure usando o modelo do Bicep.
 
-1. Seu pipeline assumirá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines>Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeio como **eshoponweb-cd-webapp-code** e clique em **Salvar**.
+1. Seu pipeline assumirá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeio como **eshoponweb-cd-webapp-code** e clique em **Salvar**.
 
 ### Exercício 2: gerenciar a Configuração de Aplicativos do Azure.
 
@@ -216,8 +161,6 @@ Para se certificar de que seu site está acessando Configuração de Aplicativos
 1. Clique em **Aplicar** e, em seguida, volte ao seu site e atualize a página.
 1. Você verá sua nova mensagem em vez do valor padrão antigo.
 
-Parabéns! Nesta tarefa, você testou o **Gerenciador de Configurações** na Configuração de Aplicativos do Azure.
-
 #### Tarefa 5: testar o sinalizador de recursos
 
 Vamos continuar testando o Gerenciador de recursos.
@@ -231,32 +174,8 @@ Vamos continuar testando o Gerenciador de recursos.
 1. Você verá uma imagem com o texto "TODAS AS CAMISETAS À VENDA NESTE FIM DE SEMANA".
 1. Você pode desativar esse recurso na Configuração de Aplicativos e, em seguida, verá que a imagem desaparece.
 
-Parabéns! Nesta tarefa, você testou o **Gerenciador de recursos** na Configuração de Aplicativos do Azure.
-
-### Exercício 3: remover os recursos do laboratório do Azure
-
-Neste exercício, você removerá os recursos do Azure provisionados neste laboratório para eliminar cobranças inesperadas.
-
->**Observação**: lembre-se de remover todos os recursos do Azure que acabam de ser criados e que você não usa mais. Remover recursos não utilizados garante que você não veja encargos inesperados.
-
-#### Tarefa 1: remover os recursos do laboratório do Azure
-
-Nesta tarefa, você usará o Azure Cloud Shell para remover os recursos do Azure provisionados neste laboratório para eliminar cobranças desnecessárias.
-
-1. No portal do Azure, abra a sessão **Bash** no painel **Cloud Shell**.
-1. Liste todos os grupos de recursos criados nos laboratórios deste módulo executando o seguinte comando:
-
-    ```sh
-    az group list --query "[?starts_with(name,'AZ400-EWebShop-')].name" --output tsv
-    ```
-
-1. Exclua todos os grupos de recursos criados em todos os laboratórios deste módulo executando o seguinte comando:
-
-    ```sh
-    az group list --query "[?starts_with(name,'AZ400-EWebShop-')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    >**Observação**: o comando é executado de modo assíncrono (conforme determinado pelo parâmetro --nowait), portanto, embora você possa executar outro comando da CLI do Azure imediatamente depois na mesma sessão Bash, levará alguns minutos antes de o grupo de recursos ser removido.
+   > [!IMPORTANT]
+   > Lembre-se de excluir os recursos criados no portal do Azure para evitar cobranças desnecessárias. Certifique-se de desabilitar o pipeline **eshoponweb-cd-webapp-code** ou ele recriará um grupo de recursos excluído e os recursos associados após a próxima execução do **eshoponweb-ci**.
 
 ## Revisão
 

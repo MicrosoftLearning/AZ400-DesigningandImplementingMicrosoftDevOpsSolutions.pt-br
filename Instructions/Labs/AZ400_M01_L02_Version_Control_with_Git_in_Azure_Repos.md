@@ -6,15 +6,13 @@ lab:
 
 # Controle de versão com Git no Azure Repos
 
-## Manual de laboratório do aluno
-
 ## Requisitos do laboratório
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
 
 - **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization).
 
-- Se você não tiver o Git 2.29.2 ou posterior instalado, inicie um navegador da Web, navegue até a [página de download do Git para Windows](https://gitforwindows.org/), baixe-o e instale-o.
+- Se você não tiver o Git 2.47.0 ou posterior instalado, inicie um navegador da Web, navegue até a [página de download do Git para Windows](https://gitforwindows.org/), baixe-o e instale-o.
 - Se você ainda não tiver o Visual Studio Code instalado, navegue até a [página de download do Visual Studio Code](https://code.visualstudio.com/) na janela do navegador da Web, baixe-o e instale-o.
 - Se você ainda não tiver a extensão C# do Visual Studio instalada, navegue até a [página de instalação da extensão C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) na janela do navegador da Web e instale-a.
 
@@ -39,7 +37,7 @@ Após concluir este laboratório, você poderá:
 - Examine o histórico de alterações.
 - Trabalhe com branches usando o Visual Studio Code.
 
-## Tempo estimado: 60 minutos
+## Tempo estimado: 45 minutos
 
 ## Instruções
 
@@ -47,36 +45,7 @@ Após concluir este laboratório, você poderá:
 
 Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
-#### Tarefa 1: (pular se feita) criar e configurar o projeto de equipe
-
-Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser usado por vários laboratórios.
-
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto o nome **eShopOnWeb** e escolha **Scrum** na lista suspensa **Processo de item de trabalho**. Clique em **Criar**.
-
-    ![Criar Projeto](images/create-project.png)
-
-#### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
-
-Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
-
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos** , **Importar**. Na janela **Importar um repositório do Git**, cole a URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
-
-    ![Importar repositório](images/import-repo.png)
-
-1. O repositório está organizado da seguinte forma:
-    - A pasta **.ado** contém os pipelines YAML do Azure DevOps
-    - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces)
-    - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
-    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
-    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
-
-#### Tarefa 3: (pular se feita) definir o branch main como branch padrão
-
-1. Vá para **Repos>Branches**.
-1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
-1. Clique em **Definir como branch padrão**.
-
-#### Tarefa 3: configurar o Git e o Visual Studio Code
+#### Tarefa 1: Configurar o Git e o Visual Studio Code
 
 Nesta tarefa, você instalará e configurará o Git e o Visual Studio Code, incluindo a configuração do auxiliar de credenciais do Git para armazenar com segurança as credenciais do Git usadas para se comunicar com o Azure DevOps. Se você já tiver implementado esses pré-requisitos, poderá prosseguir diretamente para a próxima tarefa.
 
@@ -99,9 +68,40 @@ Nesta tarefa, você instalará e configurará o Git e o Visual Studio Code, incl
     git config --global user.email <johndoe@example.com>
     ```
 
+#### Tarefa 2: (pular se já foi feito) Criar e configurar o projeto de equipe
+
+Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser usado por vários laboratórios.
+
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto o nome **eShopOnWeb** e escolha **Scrum** na lista suspensa **Processo de item de trabalho**. Clique em **Criar**.
+
+    ![Captura de tela do painel Criar um novo projeto.](images/create-project.png)
+
+#### Tarefa 3: (pular se feito) Importar repositório do Git eShopOnWeb
+
+Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
+
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos** , **Importar**. Na janela **Importar um repositório do Git**, cole a URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
+
+    ![Captura de tela do painel importar repositório.](images/import-repo.png)
+
+1. O repositório está organizado da seguinte forma:
+    - A pasta **.ado** contém os pipelines YAML do Azure DevOps
+    - O contêiner da pasta **.devcontainer** está configurado para o desenvolvimento usando contêineres (localmente no VS Code ou no GitHub Codespaces)
+    - A pasta **infra** contém a infraestrutura Bicep e ARM como modelos de código usados em alguns cenários de laboratório.
+    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
+    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
+
+#### Tarefa 4: (pular se feita) Definir o branch principal como o branch padrão
+
+1. Vá para **Repos>Branches**.
+1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
+1. Clique em **Definir como branch padrão**.
+
 ### Exercício 1: clonar um repositório existente
 
-Neste exercício, você usará o Visual Studio Code para clonar o repositório do Git provisionado como parte do exercício anterior.
+Neste exercício, você usará o Visual Studio Code para confirmar alterações no branch **principal** do repositório **eShopOnWeb**.
+
+> **Observação**: o branch **principal** é o branch padrão no repositório **eShopOnWeb** e é o branch que você usará no restante do laboratório.
 
 #### Tarefa 1: clonar um repositório existente
 
@@ -112,7 +112,7 @@ Nesta tarefa, você passará pelo processo de clonagem de um repositório do Git
 
 1. No canto superior direito do painel do repositório **eShopOnWeb**, clique em **Clonar**.
 
-    ![Clonar repositório do Git](images/clone-repo.png)
+    ![Captura de tela do repositório Git clonar.](images/clone-repo.png)
 
     > **Observação**: fazer uma cópia local de um repositório do Git é chamado de *clonagem*. Todas as ferramentas de desenvolvimento mainstream oferecem suporte a isso e conseguirão se conectar ao Azure Repos para extrair a fonte mais recente com a qual trabalhar.
 
@@ -128,7 +128,7 @@ Nesta tarefa, você passará pelo processo de clonagem de um repositório do Git
 
 1. No prompt da Paleta de Comandos, execute o comando **Git: Clone**.
 
-    ![Paleta de comandos do VS Code](images/vscode-command.png)
+    ![Captura de tela da paleta de comandos no VS Code.](images/vscode-command.png)
 
     > **Observação**: para ver todos os comandos relevantes, você pode começar digitando **Git**.
 
@@ -166,9 +166,9 @@ Nesta tarefa, você usará o Visual Studio Code para confirmar alterações.
 
 1. Pressione **Ctrl+S** para salvar as alterações.
 1. Na janela Visual Studio Code, selecione a guia **CONTROLE DO CÓDIGO-FONTE** para verificar se o Git reconheceu a alteração mais recente no arquivo que reside no clone local do repositório do Git.
-1. Com a guia **CONTROLE DO CÓDIGO-FONTE** selecionada, na parte superior do painel, na caixa de texto, digite **Minha confirmação** como a mensagem de confirmação e pressione **Ctrl+Enter** para confirmá-la localmente.
+1. Com a guia **CONTROLE DO CÓDIGO-FONTE** selecionada, na caixa de texto na parte superior do painel, digite **`My commit`** como a mensagem de confirmação e pressione **Ctrl+Enter** para confirmá-la localmente.
 
-    ![Primeira confirmação](images/first-commit.png)
+    ![Captura de tela do primeiro commit.](images/first-commit.png)
 
 1. Se for perguntado se pretende preparar automaticamente as alterações e confirmá-las diretamente, clique em **Sempre**.
 
@@ -184,7 +184,7 @@ Nesta tarefa, você usará o portal do Azure DevOps para revisar confirmações.
 1. No painel de navegação vertical do portal do Azure DevOps, na seção **Repos**, selecione **Confirmações**.
 1. Verifique se a confirmação aparece na parte superior da lista.
 
-    ![Confirmações de repositório do ADO](images/ado-commit.png)
+    ![Captura de tela das confirmações do repositório ADO.](images/ado-commit.png)
 
 #### Tarefa 3: preparar alterações
 
@@ -208,9 +208,9 @@ Nesta tarefa, você explorará o uso de preparo de alterações usando o Visual 
 
     > **Observação**: isso prepara a alteração apenas para o arquivo **Program.cs**, preparando-o para confirmação sem **Constants.cs**.
 
-1. Com a guia **CONTROLE DO CÓDIGO-FONTE** selecionada, na parte superior do painel, na caixa de texto, digite **Comentários adicionados** como a mensagem de confirmação.
+1. Com a guia **CONTROLE DO CÓDIGO-FONTE** selecionada, na parte superior do painel, na caixa de texto, digite **`Added comments`** como a mensagem de confirmação.
 
-    ![Alterações preparadas](images/staged-changes.png)
+    ![Captura de tela das alterações em etapas.](images/staged-changes.png)
 
 1. Na parte superior da guia **CONTROLE DO CÓDIGO-FONTE**, clique no símbolo de reticências. No menu suspenso, selecione **Confirmar** e, no menu em cascata, selecione **Confirmar preparadas**.
 1. No canto inferior esquerdo da janela do Visual Studio Code, clique no botão **Sincronizar Alterações** para sincronizar as alterações confirmadas com o servidor e, se solicitado se deseja continuar, clique em **OK** para efetuar push e pull para e de **origem/main**.
@@ -231,7 +231,7 @@ Nesta tarefa, você verá o histórico de confirmações usando o portal do Azur
 
 1. Com a guia **CONTROLE DO CÓDIGO-FONTE** da janela do Visual Studio Code aberta, selecione **Constants.cs** representando a versão não preparada do arquivo.
 
-    ![Comparação de arquivos](images/file-comparison.png)
+    ![Captura de tela da comparação de arquivos.](images/file-comparison.png)
 
     > **Observação**: uma exibição de comparação é aberta para permitir que você localize facilmente as alterações feitas. Neste caso, é apenas um comentário.
 
@@ -239,7 +239,7 @@ Nesta tarefa, você verá o histórico de confirmações usando o portal do Azur
 1. Role para baixo até a entrada **Minha confirmação** (enviada por push antes) e passe o ponteiro do mouse sobre ela para revelar o símbolo de reticências no lado direito.
 1. Clique nas reticências, no menu suspenso, selecione **Procurar arquivos** e revise os resultados.
 
-    ![Confirmar navegação](images/commit-browse.png)
+    ![Captura de tela do confirmar navegação.](images/commit-browse.png)
 
     > **Observação**: esta exibição representa o estado da origem correspondente à confirmação, permitindo que você revise e baixe todos os arquivos de origem.
 
@@ -259,10 +259,10 @@ Nesta tarefa, você criará um branch usando o Visual Studio Code.
 1. Com a guia **CONTROLE DO CÓDIGO-FONTE** selecionada, no canto inferior esquerdo da janela do Visual Studio Code, clique em **main**.
 1. Na janela pop-up, selecione **+ Criar novo branch de...**.
 
-    ![Criar branch](images/create-branch.png)
+    ![Captura de tela da opção criar branch.](images/create-branch.png)
 
 1. Na caixa de texto **Selecionar uma referência para criar um branch**, selecione **principal** como a ramificação de referência.
-1. Na caixa de texto **Nome do branch**, digite **dev** para especificar o novo branch e pressione **Enter**.
+1. Na caixa de texto **Nome do branch**, digite **`dev`** para especificar o novo branch e pressione **Enter**.
 
     > **Observação**: neste ponto, você muda automaticamente para o branch **dev** .
 
@@ -278,22 +278,22 @@ O Git controla em qual branch você está trabalhando e garante que, quando voc�
 1. Passe o ponteiro do mouse sobre a entrada do branch **dev** para revelar o símbolo de reticências no lado direito.
 1. Clique nas reticências, no menu pop-up, selecione **Excluir branch** e, quando for solicitada a confirmação, clique em **Excluir**.
 
-    ![Excluir branch](images/delete-branch.png)
+    ![Captura de tela da opção excluir branch.](images/delete-branch.png)
 
 1. Volte para a janela do **Visual Studio Code** e, com a guia **CONTROLE DO CÓDIGO-FONTE** selecionada, no canto inferior esquerdo da janela do Visual Studio Code, clique na entrada **dev**. Isso exibirá os branches existentes na parte superior da janela do Visual Studio Code.
 1. Verifique se agora há dois branches **dev** listados.
 1. Vá para o navegador da Web exibindo a guia **Meu** dos **Branches**
 1. Na guia **Meus** do painel **Branches**, selecione a guia **Todos**.
-1. Na guia **Todos** do painel **Branches**, na caixa de texto **Pesquisar nome do branch**, digite **dev**.
+1. Na guia **Todos** do painel **Branches**, na caixa de texto **Pesquisar nome do branch**, digite **`dev`**.
 1. Revise a seção **Branches excluídos** que contém a entrada que representa o branch recém-excluído.
 1. Na seção **Branches excluídos**, passe o ponteiro do mouse sobre a entrada do branch **dev** para revelar o símbolo de reticências no lado direito.
 1. Clique nas reticências, no menu pop-up e selecione **Restaurar branch**.
 
-    ![restaurar branch](images/restore-branch.png)
+    ![Captura de tela da opção restaurar branch.](images/restore-branch.png)
 
     > **Observação**: você pode usar essa funcionalidade para restaurar um branch excluído, desde que saiba seu nome exato.
 
-#### Tarefa 4: políticas de branch
+#### Tarefa 3: Políticas de branch
 
 Nesta tarefa, você usará o portal do Azure DevOps para adicionar políticas ao branch main e permitir apenas alterações usando Solicitações de Pull que estejam em conformidade com as políticas definidas. Você deseja garantir que as alterações em um branch sejam revisadas antes de serem mescladas.
 
@@ -303,14 +303,14 @@ Para simplificar, trabalharemos diretamente no editor de repositório do navegad
 1. Na guia **Meus** do painel **Branches**, passe o ponteiro do mouse sobre a entrada do branch **main** para revelar o símbolo de reticências no lado direito.
 1. Clique nas reticências e, no menu pop-up e selecione **Políticas de branch**.
 
-    ![Políticas de branch](images/branch-policies.png)
+    ![Captura de tela da opção políticas de branch.](images/branch-policies.png)
 
 1. Na guia **main** das configurações do repositório, ative a opção **Exigir número mínimo de revisores**. Adicione **1** revisor e marque a caixa **Permitir que os solicitantes aprovem suas próprias alterações** (já que você é o único usuário no projeto para o laboratório)
 1. Na guia **main** das configurações do repositório, ative a opção **Verificar itens de trabalho vinculados** e deixe-a com a opção **Obrigatório**.
 
-    ![Configurações de política](images/policy-settings.png)
+    ![Captura de tela das configurações de política.](images/policy-settings.png)
 
-#### Tarefa 5: testar a política de branch
+#### Tarefa 4: Testar a política de branch
 
 Nesta tarefa, você usará o portal do Azure DevOps para testar a política e criar sua primeira solicitação de pull.
 
@@ -324,11 +324,11 @@ Nesta tarefa, você usará o portal do Azure DevOps para testar a política e cr
 
 1. Clique em **Confirmar > Confirmar**. Você verá um aviso: as alterações no branch main só podem ser feitas usando uma solicitação de pull.
 
-    ![Confirmação de política negada](images/policy-denied.png)
+    ![Captura de tela da confirmação de política negada.](images/policy-denied.png)
 
 1. Clique em **Cancelar** para ignorar a confirmação.
 
-#### Tarefa 6: trabalhar com solicitações de pull
+#### Tarefa 5: Trabalhar com solicitações de pull
 
 Nesta tarefa, você usará o portal do Azure DevOps para criar uma Solicitação de pull, usando o branch **dev** para mesclar uma alteração no branch **main** protegido. Um item de trabalho do Azure DevOps deve ser vinculado às alterações para poder rastrear trabalhos pendentes com a atividade de código.
 
@@ -344,7 +344,7 @@ Nesta tarefa, você usará o portal do Azure DevOps para criar uma Solicitação
 1. Clique em **Confirmar > Confirmar** (deixe a mensagem de confirmação padrão). Desta vez, a confirmação funciona, o branch **dev** não tem políticas.
 1. Uma mensagem será exibida, propondo a criação de uma Solicitação de pull (já que o branch **dev** agora está à frente nas alterações, em comparação com o **main**). Clique em **Criar uma Solicitação de pull**.
 
-    ![Criar uma Solicitação de Pull](images/create-pr.png)
+    ![Captura de tela da opção criar uma solicitação de pull.](images/create-pr.png)
 
 1. Na guia **Nova solicitação de pull**, deixe os padrões e clique em **Criar**.
 1. A solicitação de pull mostrará alguns requisitos com falha/pendentes, com base nas políticas aplicadas ao nosso branch **main** de destino.
@@ -353,7 +353,7 @@ Nesta tarefa, você usará o portal do Azure DevOps para criar uma Solicitação
 
 1. Nas opções do lado direito, clique no botão **+** ao lado de **Itens de trabalho**. Vincule o item de trabalho criado anteriormente à Solicitação de Pull clicando nele. Você verá um dos requisitos mudará de status.
 
-    ![Vincular itens de trabalho](images/link-wit.png)
+    ![Captura de tela do item de trabalho do link.](images/link-wit.png)
 
 1. Em seguida, abra a guia **Arquivos** para revisar as alterações propostas. Em uma Solicitação de pull mais completa, você seria capaz de revisar arquivos um a um (marcados como revisados) e abrir comentários para linhas que podem não estar claras (passar o mouse sobre o número da linha dá a opção de postar um comentário).
 1. Volte para a guia **Visão geral** e, no canto superior direito, clique em **Aprovar**. Todos os requisitos mudarão para verde. Agora você pode clicar em **Concluir**.
@@ -364,13 +364,13 @@ Nesta tarefa, você usará o portal do Azure DevOps para criar uma Solicitação
 
 1. Clique em **Concluir mesclagem**
 
-#### Tarefa 7: aplicar marcas
+#### Tarefa 6: Aplicar marcas
 
 A equipe de produto decidiu que a versão atual do site deve ser lançada como v1.1.0-beta.
 
 1. No painel de navegação vertical do portal do Azure DevOps, na seção **Repos**, selecione **Maarcas**.
 1. No painel **Marcas** , clique em **Nova**.
-1. No painel **Criar uma marca**, na caixa de texto **Nome**, digite **v1.1.0-beta**. Na lista suspensa **Baseado em**, deixe a entrada **main** selecionada. Na caixa de texto **Descrição**, digite **Versão beta v1.1.0** e clique em **Criar**.
+1. No painel **Criar marca** na caixa de texto **Nome**, digite **`v1.1.0-beta`**. Na lista suspensa **Com base em**, deixe a entrada **principal** selecionada. Na caixa de texto **Descrição**, digite **`Beta release v1.1.0`** e clique em **Criar**.
 
     > **Observação**: agora você marcou o repositório nesta versão (a confirmação mais recente é vinculada à marca). Você pode marcar confirmações por vários motivos, e o Azure DevOps oferece a flexibilidade de editá-las e excluí-las, bem como gerenciar suas permissões.
 
@@ -382,15 +382,15 @@ Ao percorrer os diferentes laboratórios de curso na ordem em que são apresenta
 1. Na guia **Minerar** do painel **Branches**, passe o ponteiro do mouse sobre a entrada do branch **principal** para revelar o símbolo de reticências (o “...“) no lado direito.
 1. Clique nas reticências e, no menu pop-up, selecione **Políticas de branch**.
 
-    ![Configurações de política](images/policy-settings.png)
+    ![Captura de tela das configurações de política.](images/policy-settings.png)
 
 1. Na guia **principal** das configurações do repositório, desabilite a opção para **Exigir número mínimo de revisores**.
 1. Na guia **principal** das configurações do repositório, desabilite a opção para **Verificar se há itens de trabalho vinculados**.
 
-    ![Políticas de branch](images/branch-policies.png)
+    ![Captura de tela das políticas de branch.](images/branch-policies.png)
 
 1. Agora você desabilitou/removeu as políticas de branch do branch principal.
 
 ## Revisão
 
-Neste laboratório, você usou o portal do Azure DevOps para gerenciar branches e repositórios.
+Neste laboratório, você aprendeu a usar o Git para controle de versão no Azure Repos.

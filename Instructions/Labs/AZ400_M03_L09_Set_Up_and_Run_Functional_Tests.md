@@ -6,8 +6,6 @@ lab:
 
 # Configurar e executar testes funcionais
 
-## Manual de laboratório do aluno
-
 ## Requisitos do laboratório
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
@@ -30,11 +28,11 @@ Depois de concluir este laboratório, você poderá configurar um pipeline de CI
 - Testes de integração
 - Testes funcionais
 
-## Tempo estimado: 60 minutos
+## Tempo estimado: 20 minutos
 
 ## Instruções
 
-### Exercício 0: configurar os pré-requisitos do laboratório
+### Exercício 0: (pular se já foi feito) Configurar os pré-requisitos do laboratório
 
 Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
 
@@ -48,7 +46,7 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 Nesta tarefa, você importará o repositório Git do eShopOnWeb que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos > Arquivos**, **Importar um repositório**. Selecione **Importar**. Na janela **Importar um repositório do Git**, cole a seguinte URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps.
@@ -59,7 +57,7 @@ Nesta tarefa, você importará o repositório Git do eShopOnWeb que será usado 
 
 #### Tarefa 3: (pular se feita) definir o branch main como branch padrão
 
-1. Vá para **Repos>Branches**.
+1. Vá para **Repos > Branches**.
 1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
 1. Clique em **Definir como branch padrão**.
 
@@ -73,7 +71,7 @@ Nesta tarefa, você adicionará a definição de build YAML que será usada para
 
 Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
-1. Vá para **Pipelines>Pipelines**.
+1. Acesse **Pipelines > Pipelines**.
 1. Clique no botão **Novo pipeline**.
 1. Selecione **Git do Azure Repos (YAML)**.
 1. Selecione o repositório **eShopOnWeb**.
@@ -123,7 +121,7 @@ Você pode notar que a tarefa Testes de Unidade já faz parte do pipeline.
 
 1. Clique em **Salvar**, no painel **Salvar**, clique em **Salva**r novamente para confirmar as mudanças diretamente no branch principal.
 
-#### Tarefa 4: verificar o resumo dos testes
+#### Tarefa 3: Verificar o resumo dos testes
 
 1. Clique em **Executar** e, na guia **Executar pipeline**, clique em **Executar** novamente.
 
@@ -131,14 +129,14 @@ Você pode notar que a tarefa Testes de Unidade já faz parte do pipeline.
 
 1. Depois de concluído, a guia **Teste** será exibida como parte da execução de pipeline. Clique nela para conferir o resumo. É semelhante ao mostrado abaixo:
 
-    ![Resumo dos testes](images/AZ400_M05_L09_Tests_Summary.png)
+    ![Captura de tela do resumo dos testes.](images/AZ400_M05_L09_Tests_Summary.png)
 
 1. Para obter mais detalhes, na parte inferior da página, a tabela mostra uma lista dos diferentes testes de execução.
 
-    >**Observação**: se a tabela estiver vazia, você precisará redefinir os filtros para ter todos os detalhes sobre a execução dos testes.
+    > **Observação**: se a tabela estiver vazia, você precisará redefinir os filtros para ter todos os detalhes sobre a execução dos testes.
 
-    ![Tabela de testes](images/AZ400_M05_L09_Tests_Table.png)
+    ![Captura de tela da tabela de testes.](images/AZ400_M05_L09_Tests_Table.png)
 
 ## Revisão
 
-Neste laboratório, você aprendeu a configurar e executar diferentes tipos de teste usando Azure Pipelines e .Net.
+Neste laboratório, você aprendeu a configurar e executar diferentes tipos de teste usando o Azure Pipelines e o .NET.

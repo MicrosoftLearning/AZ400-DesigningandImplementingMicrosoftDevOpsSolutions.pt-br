@@ -6,8 +6,6 @@ lab:
 
 # Monitore o desempenho do aplicativo com o Azure Load Testing
 
-## Manual de laboratório do aluno
-
 ## Requisitos do laboratório
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://docs.microsoft.com/azure/devops/server/compatibility)
@@ -42,7 +40,7 @@ Após concluir este laboratório, você poderá:
 
 ### Exercício 0: configurar os pré-requisitos do laboratório
 
-Neste exercício, você configurará os pré-requisitos para o laboratório, que consistem em um novo projeto do Azure DevOps com um repositório baseado no [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb).
+Neste exercício, você configurará os pré-requisitos para o laboratório.
 
 #### Tarefa 1: (pular se feita) criar e configurar o projeto de equipe
 
@@ -50,15 +48,15 @@ Nesta tarefa, você criará um projeto **eShopOnWeb** do Azure DevOps para ser u
 
 1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps. Clique em **Novo projeto**. Dê ao seu projeto o nome **eShopOnWeb** e escolha **Scrum** na lista suspensa **Processo de item de trabalho**. Clique em **Criar**.
 
-    ![Criar Projeto](images/create-project.png)
+    ![Captura de tela do painel Criar um novo projeto.](images/create-project.png)
 
 #### Tarefa 2: (pular se feita) importar repositório do Git eShopOnWeb
 
 Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado por vários laboratórios.
 
-1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos>Arquivos** , **Importar**. Na janela **Importar um repositório do Git**, cole a URL https://github.com/MicrosoftLearning/eShopOnWeb.git e clique em **Importar**:
+1. No computador do laboratório, em uma janela do navegador, abra sua organização do Azure DevOps e o projeto **eShopOnWeb** criado anteriormente. Clique em **Repos > Arquivos**, **Importar**. Na janela **Importar um repositório do Git**, cole a URL <https://github.com/MicrosoftLearning/eShopOnWeb.git> e clique em **Importar**:
 
-    ![Importar repositório](images/import-repo.png)
+    ![Captura de tela do painel importar repositório.](images/import-repo.png)
 
 1. O repositório está organizado da seguinte forma:
     - A pasta **.ado** contém os pipelines YAML do Azure DevOps
@@ -67,23 +65,25 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
     - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
     - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
-1. Vá para **Repos>Branches**.
+#### Tarefa 3: (pular se feita) definir o branch main como branch padrão
+
+1. Vá para **Repos > Branches**.
 1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
 1. Clique em **Definir como branch padrão**.
 
-#### Tarefa 3: Criar recursos do Azure
+#### Tarefa 4: Criar recursos do Azure
 
 Nesta tarefa, você criará um aplicativo Web do Azure usando o Cloud Shell no portal do Azure.
 
-1. No computador do laboratório, inicie um navegador da Web, navegue até o [**Portal do Azure**](https://portal.azure.com) e entre com a conta de usuário que tem a função Proprietário na assinatura do Azure que você usará neste laboratório e tem a função de Administrador global no locatário do Microsoft Entra associado a essa assinatura.
+1. No computador do laboratório, inicie um navegador da Web, navegue até o [**Portal do Azure**](https://portal.azure.com) e conecte-se.
 1. No portal do Azure, na barra de ferramentas, clique no ícone do **Cloud Shell** localizado ao lado da caixa de pesquisa.
 1. Se for solicitado que você selecione **Bash** ou **PowerShell**, selecione **Bash**.
-    >**Observação**: se esta for a primeira vez que você está iniciando o **Cloud Shell** e você receber a mensagem **Você não tem nenhum armazenamento montado**, selecione a assinatura que você está usando no laboratório e selecione **Criar armazenamento**.
+    > **Observação**: se esta for a primeira vez que você está iniciando o **Cloud Shell** e você receber a mensagem **Você não tem nenhum armazenamento montado**, selecione a assinatura que você está usando no laboratório e selecione **Criar armazenamento**.
 
 1. No prompt  **Bash**, no painel **Cloud Shell**, execute o seguinte comando para criar um grupo de recursos (substitua o espaço reservado `<region>` pelo nome da região do Azure mais próxima de você, como 'eastus').
 
     ```bash
-    RESOURCEGROUPNAME='az400m09l16-RG'
+    RESOURCEGROUPNAME='az400m08l14-RG'
     LOCATION='<region>'
     az group create --name $RESOURCEGROUPNAME --location $LOCATION
     ```
@@ -91,7 +91,7 @@ Nesta tarefa, você criará um aplicativo Web do Azure usando o Cloud Shell no p
 1. Execute o comando a seguir para criar um plano do Serviço de Aplicativo.
 
     ```bash
-    SERVICEPLANNAME='az400l16-sp'
+    SERVICEPLANNAME='az400l14-sp'
     az appservice plan create --resource-group $RESOURCEGROUPNAME \
         --name $SERVICEPLANNAME --sku B3
     ```
@@ -109,62 +109,7 @@ Nesta tarefa, você criará um aplicativo Web do Azure usando o Cloud Shell no p
 
 Neste exercício, você vai configurar pipelines de CI/CD como código com YAML no Azure DevOps.
 
-#### Tarefa 1: (pular se feita) criar uma conexão de serviço para implantação
-
-Nesta tarefa, você criará uma entidade de serviço usando a CLI do Azure, que permitirá ao Azure DevOps:
-
-- Implantar recursos na assinatura do Azure
-- Ter acesso de leitura sobre os segredos do Key Vault criados posteriormente.
-
-> **Observação**: se você já tiver uma entidade de serviço, poderá prosseguir diretamente para a próxima tarefa.
-
-Você precisará de uma entidade de serviço para implantar recursos do Azure a partir do Azure Pipelines. Como vamos recuperar segredos em um pipeline, precisaremos conceder permissão ao serviço quando criarmos o Azure Key Vault.
-
-Uma entidade de serviço é criada automaticamente pelo Azure Pipelines quando você se conecta a uma assinatura do Azure de dentro de uma definição de pipeline ou quando cria uma nova Conexão de Serviço na página de configurações do projeto (opção automática). Você também pode criar manualmente a entidade de serviço a partir do portal ou usando a CLI do Azure e reutilizá-la em projetos.
-
-1. No computador do laboratório, inicie um navegador da Web, navegue até o [**Portal do Azure**](https://portal.azure.com) e entre com a conta de usuário que tem a função Proprietário na assinatura do Azure que você usará neste laboratório e tem a função de Administrador global no locatário do Microsoft Entra associado a essa assinatura.
-1. No portal do Azure, clique no ícone do **Cloud Shell**, localizado diretamente à direita da caixa de texto de pesquisa na parte superior da página.
-1. Se for solicitado que você selecione **Bash** ou **PowerShell**, selecione **Bash**.
-
-   >**Observação**: se esta for a primeira vez que você está iniciando o **Cloud Shell** e você receber a mensagem **Você não tem nenhum armazenamento montado**, selecione a assinatura que você está usando no laboratório e selecione **Criar armazenamento**.
-
-1. No prompt **Bash**, no painel **Cloud Shell**, execute os seguintes comandos para recuperar os valores da ID de assinatura do Azure e dos atributos de nome de assinatura:
-
-    ```bash
-    az account show --query id --output tsv
-    az account show --query name --output tsv
-    ```
-
-    > **Observação**: copie ambos os valores para um arquivo de texto. Você precisará deles adiante neste laboratório.
-
-1. No prompt **Bash**, no painel **Cloud Shell**, execute o seguinte comando para criar uma entidade de serviço (substitua **myServicePrincipalName** por qualquer cadeia de caracteres exclusiva que consista em letras e dígitos) e **mySubscriptionID** pela sua subscriptionId do Azure:
-
-    ```bash
-    az ad sp create-for-rbac --name myServicePrincipalName \
-                         --role contributor \
-                         --scopes /subscriptions/mySubscriptionID
-    ```
-
-    > **Observação**: o comando irá gerar uma saída JSON. Copie a saída para um arquivo de texto. Você precisará dela posteriormente neste laboratório.
-
-1. Em seguida, no computador do laboratório, inicie um navegador da Web, navegue até o projeto ** eShopOnWeb** do Azure DevOps. Clique em **Configurações do Projeto>Conexões de Serviço (em Pipelines)** e **Nova Conexão de Serviço**.
-
-    ![Nova conexão de serviço](images/new-service-connection.png)
-
-1. Na tela **Nova conexão de serviço**, escolha **Azure Resource Manager** e **Avançar** (talvez você precise rolar para baixo).
-
-1. **Escolha Service Principal (manual)** e clique em **Next**.
-
-1. Preencha os campos vazios usando as informações coletadas durante as etapas anteriores:
-    - ID e nome da assinatura.
-    - ID da entidade de serviço (appId), chave da entidade de serviço (senha) e ID do locatário (locatário).
-    - Em **Nome da conexão de serviço**, digite **azure subs**. Esse nome será referenciado em pipelines YAML quando precisar de uma Conexão de Serviço do Azure DevOps para se comunicar com sua assinatura do Azure.
-
-    ![Conexão de serviço do Azure](images/azure-service-connection.png)
-
-1. Clique em **Verificar e Salvar**.
-
-#### Tarefa 2: Adicionar uma definição de compilação e implantação YAML
+#### Tarefa 1: adicionar uma definição de compilação e implantação do YAML
 
 Nesta tarefa, você adicionará uma definição de compilação do YAML ao projeto existente.
 
@@ -251,7 +196,7 @@ Nesta tarefa, você adicionará uma definição de compilação do YAML ao proje
     - Valide que o **Tipo de Serviço de Aplicativo** aponta para o Aplicativo Web no Windows.
     - Na lista suspensa **Nome do Serviço de Aplicativo**, selecione o nome do aplicativo Web implantado anteriormente no laboratório (**az400eshoponweb...).
     - na caixa de texto **Pacote ou pasta**, **atualize** o Valor Padrão para `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-    - Expanda **Definições de aplicativo e configuração** e adicione o valor `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
+    - Expanda **Definições de aplicativo e configuração** e, na caixa de texto Configurações do aplicativo, adicione os seguintes pares de chave-valor: `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`.
 1. Confirme as configurações no painel Assistente clicando no botão **Adicionar** .
 
     > **Observação**: isso adicionará automaticamente a tarefa de implantação à definição de pipeline YAML.
@@ -271,15 +216,15 @@ Nesta tarefa, você adicionará uma definição de compilação do YAML ao proje
 
     > **Observação**: o parâmetro **packageForLinux** é enganoso no contexto deste laboratório, mas é válido para Windows ou Linux.
 
-1. Antes de salvar as atualizações no arquivo yml, dê a ele um nome mais claro. Na parte superior da janela do editor yaml, ele mostra **EShopOnweb/azure-pipelines-#.yml**. (em que # é um número, normalmente 1, mas pode ser diferente em sua configuração.) Selecione **esse nome de arquivo** e renomeie-o para **m09l16-pipeline.yml**
+1. Antes de salvar as atualizações no arquivo yml, dê a ele um nome mais claro. Na parte superior da janela do editor yaml, ele mostra **EShopOnweb/azure-pipelines-#.yml**. (em que # é um número, normalmente 1, mas pode ser diferente em sua configuração.) Selecione **esse nome de arquivo** e renomeie-o para **m08l14-pipeline.yml**
 
-1. Clique em **Salvar**, no painel **Salvar**, clique em **Salvar** novamente para confirmar a alteração diretamente no branch principal.
+1. Clique em **Salvar**. No painel **Salvar**, clique em **Salvar** novamente para confirmar a alteração diretamente no branch main.
 
     > **Observação**: como nosso CI-YAML original não foi configurado para acionar automaticamente uma nova compilação, temos que iniciar esta manualmente.
 
 1. No menu Azure DevOps à esquerda, navegue até **Pipelines** e selecione **Pipelines** novamente. Em seguida, selecione **Todos** para abrir todas as definições de pipeline, não apenas as recentes.
 
-    > **Observação**: se você manteve todos os pipelines anteriores de exercícios de laboratório anteriores, este novo pipeline pode ter reutilizado um nome de sequência padrão **eShopOnWeb (#)** para o pipeline, conforme mostrado na captura de tela abaixo. Selecione um pipeline (provavelmente aquele com o número de sequência mais alto, selecione Editar e validar aponta para o arquivo de código m09l16-pipeline.yml).
+    > **Observação**: se você manteve todos os pipelines anteriores de exercícios de laboratório anteriores, este novo pipeline pode ter reutilizado um nome de sequência padrão **eShopOnWeb (#)** para o pipeline, conforme mostrado na captura de tela abaixo. Selecione um pipeline (provavelmente aquele com o número de sequência mais alto, clique em Editar e validar aponta para o arquivo de código m08l14-pipeline.yml).
 
     ![Captura de tela do Azure Pipelines mostrando execuções do eShopOnWeb](images/m3/eshoponweb-m9l16-pipeline.png)
 
@@ -315,13 +260,13 @@ Neste exercício, você implantará um Recurso de Teste de Carga do Azure no Azu
 Nesta tarefa, você implantará um novo recurso de Teste de Carga do Azure em sua assinatura do Azure.
 
 1. No Portal do Azure (<https://portal.azure.com>), navegue até **Criar recurso do Azure**.
-1. No campo de pesquisa "Serviços de Pesquisa e marketplace", insira **Teste de Carga do Azure**.
+1. No campo de pesquisa "Serviços de Pesquisa e marketplace", insira **`Azure Load Testing`**.
 1. Nos resultados da pesquisa, selecione **Teste de Carga do Azure** (publicado pela Microsoft).
 1. Na página Teste de Carga do Azure, clique em **Criar** para iniciar o processo de implantação.
 1. Na página "Criar um recurso de teste de carga", forneça os detalhes necessários para a implantação do recurso:
    - **Assinatura**: selecione sua assinatura do Azure
    - **Grupo de recursos**: selecione o Grupo de recursos usado para implantar o Serviço de Aplicativo Web no exercício anterior
-   - **Nome**: eShopOnWebLoadTesting
+   - **Nome**: `eShopOnWebLoadTesting`
    - **Região**: selecione uma região próxima à sua região
 
     > **Observação**: o serviço Teste de Carga do Azure não está disponível em todas as regiões do Azure.
@@ -337,7 +282,8 @@ Nesta tarefa, você implantará um novo recurso de Teste de Carga do Azure em su
 
 Nesta tarefa, você criará diferentes testes de Teste de Carga do Azure, usando diferentes definições de configuração de carga.
 
-1. De dentro da folha **eShopOnWebLoadTesting** do recurso do Teste de Carga do Azure, navegue até **Testes**. Clique na opção de menu **+Criar** e selecione **Criar um teste baseado em URL**.
+1. De dentro da folha **eShopOnWebLoadTesting** do recurso do Teste de Carga do Azure, navegue até **Testes** em **Testes**. Clique na opção de menu **+Criar** e em **Criar um teste baseado em URL**.
+1. Desmarque a caixa de seleção **Ativar configurações avançadas** para exibir as configurações avançadas.
 1. Conclua os seguintes parâmetros e configurações para criar um teste de carga:
    - **URL de Teste**: Insira a URL do Serviço de Aplicativo do Azure que você implantou no exercício anterior (az400eshoponweb...azurewebsites.net), **incluindo https://**
    - **Especificar carga**: usuários virtuais
@@ -382,27 +328,24 @@ Comece a automatizar os testes de carga no Teste de Carga do Azure adicionando-o
 
 Depois de concluir este exercício, você terá um fluxo de trabalho de CI/CD configurado para executar um teste de carga com o Teste de Carga do Azure.
 
-#### Tarefa 1: identificar detalhes da conexão do serviço ADO
+#### Tarefa 1: Identificar detalhes da conexão do serviço Azure DevOps
 
-Nesta tarefa, você concederá as permissões necessárias à entidade de serviço da Conexão de Serviço do Azure DevOps.
+Nesta tarefa, você concederá as permissões necessárias à Conexão de Serviço do Azure DevOps.
 
-1. No Portal do **Azure DevOps**(<https://dev.azure.com>), navegue até oprojeto **eShopOnWeb**.
+1. No Portal do **Azure DevOps**(<https://aex.dev.azure.com>), navegue até oprojeto **eShopOnWeb**.
 1. Selecione **Configurações do projeto** no canto inferior esquerdo.
 1. Na seção **Pipelines**, selecione **Conexões de serviço**.
 1. Observe a Conexão de Serviço, com o nome de sua Assinatura do Azure que você usou para implantar os Recursos do Azure no início do exercício de laboratório.
-1. **Selecione a Conexão de serviço**. Na guia **Visão geral**, navegue até **Detalhes** e selecione **Gerenciar entidade de serviço**.
-1. Isso redireciona você para o portal do Azure, de onde ele abre os detalhes da **entidade de serviço** para o objeto de identidade.
-1. Copie o valor de **Nome de exibição** (formatado como Name_of_ADO_Organization_eShopOnWeb_-b86d9ae1-7552-4b75-a1e0-27fb2ea7f9f4), pois você precisará dele nas próximas etapas.
+1. **Selecione a Conexão de serviço**. Na guia **Visão geral**, navegue até **Detalhes** e clique em **Gerenciar funções da conexão de serviço**.
+1. O Portal do Azure será aberto, de onde ele abre os detalhes do grupo de recursos na folha de controle de acesso (IAM).
 
-#### Tarefa 2: conceder permissões para a entidade de serviço
+#### Tarefa 2: Conceder permissões ao recurso de Teste de Carga do Azure
 
-O Teste de Carga do Azure usa o Azure RBAC para conceder permissões e executar atividades específicas no recurso de teste de carga. Para executar um teste de carga a partir do pipeline de CI/CD, conceda a função **Colaborador de Teste de Carga** à entidade de serviço.
+O Teste de Carga do Azure usa o Azure RBAC para conceder permissões e executar atividades específicas no recurso de teste de carga. Para executar um teste de carga a partir do pipeline de CI/CD, conceda a função **Colaborador de Teste de Carga** à conexão de serviço do Azure DevOps.
 
-1. No **portal do Azure**, acesse seu recurso **Teste de Carga do Azure**.
-1. Selecione **Controle de acesso (IAM)** > Adicionar atribuição de função.
+1. Selecione **+ Adicionar** e **Adicionar atribuição de função**.
 1. Na guia **Função**, selecione **Colaborador de Teste de Carga** na lista de funções de trabalho.
-1. Na **guia Membros**, selecione **Selecionar membros** e, em seguida, use o **nome de exibição** que você copiou anteriormente para pesquisar a entidade de serviço.
-1. Selecione a **entidade de serviço** e, em seguida, selecione **Selecionar**.
+1. Na guia **Membros**, clique em + **Selecionar membros**, localize e selecione sua conta de usuário e clique em **Selecionar**.
 1. Na **guia Examinar + atribuir**, selecione **Examinar + atribuir** para adicionar a atribuição de função.
 
 Agora você pode usar a conexão de serviço na definição de fluxo de trabalho do Azure Pipelines para acessar o recurso de teste de carga do Azure.
@@ -422,7 +365,7 @@ Execute as etapas a seguir para baixar os arquivos de entrada de um teste de car
    - *config.yaml*: o arquivo de configuração YAML de teste de carga. Faça referência a esse arquivo na definição de fluxo de trabalho de CI/CD.
    - *quick_test.jmx*: o script de teste do JMeter
 
-1. Confirme todos os arquivos de entrada extraídos no repositório de controle do código-fonte. Para fazer isso, navegue até o **Portal do Azure DevOps**(<https://dev.azure.com>) e navegue até o projeto **eShopOnWeb** do DevOps.
+1. Confirme todos os arquivos de entrada extraídos no repositório de controle do código-fonte. Para fazer isso, navegue até o **Portal do Azure DevOps**(<https://aex.dev.azure.com/>) e navegue até o projeto **eShopOnWeb** do DevOps.
 1. Selecione **Repositório**. Na estrutura de pastas do código-fonte, observe a subpasta **testes**. Observe as reticências (...) e selecione **Novo > Pasta**.
 1. especifique **jmeter** como nome da pasta e **placeholder.txt** para o nome do arquivo (Observação: uma pasta não pode ser criada como vazia)
 1. Clique em **Confirmar** para confirmar a criação do arquivo de espaço reservado e da pasta jmeter.
@@ -431,8 +374,6 @@ Execute as etapas a seguir para baixar os arquivos de entrada de um teste de car
 1. Clique em **Confirmar** para confirmar o carregamento do arquivo no controle do código-fonte.
 
 #### Tarefa 4: atualizar o arquivo de definição YAML do fluxo de trabalho CI/CD
-
-Nesta tarefa, você importará a extensão do Teste de Carga do Azure —  Marketplace do Azure DevOps, bem como atualizará o pipeline de CI/CD existente com a tarefa AzureLoadTest.
 
 1. Para criar e executar um teste de carga, a definição de fluxo de trabalho do Azure Pipelines usa a extensão **Tarefa de Teste de Carga do Azure** do Azure DevOps Marketplace. Abra a [extensão de tarefa do Teste de Carga do Azure](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) no Azure DevOps Marketplace e selecione **Obter gratuitamente**.
 1. Selecione sua organização do Azure DevOps e escolha **Instalar** a extensão.
@@ -443,7 +384,7 @@ Nesta tarefa, você importará a extensão do Teste de Carga do Azure —  Marke
    - Assinatura do Azure: selecione a assinatura que executa seus recursos do Azure
    - Arquivo de teste de carga: "$(Build.SourcesDirectory)/tests/jmeter/config.yaml"
    - Grupo de Recursos do Teste de Carga: o Grupo de Recursos que contém seus Recursos de Teste de Carga do Azure
-   - Nome do recurso de teste de carga: ESHopOnWebLoadTesting
+   - Nome do recurso de teste de carga: `eShopOnWebLoadTesting`
    - Nome da execução do teste de carga: ado_run
    - Descrição da execução do teste de carga: teste de carga do ADO
 
@@ -454,7 +395,7 @@ Nesta tarefa, você importará a extensão do Teste de Carga do Azure —  Marke
     ```yml
          - task: AzureLoadTest@1
           inputs:
-            azureSubscription: 'AZURE DEMO SUBSCRIPTION(b86d9ae1-1234-4b75-a8e7-27fb2ea7f9f4)'
+            azureSubscription: 'AZURE DEMO SUBSCRIPTION'
             loadTestConfigFile: '$(Build.SourcesDirectory)/tests/jmeter/config.yaml'
             resourceGroup: 'az400m05l11-RG'
             loadTestResource: 'eShopOnWebLoadTesting'
@@ -565,34 +506,12 @@ Nesta tarefa, você usará critérios de falha de teste de carga para receber al
 
 1. Como a última linha da saída do teste de carga diz **##[error]TestResult: FAILED**; como definimos um **FailCriteria** com um tempo médio de resposta de > de 300 ou uma porcentagem de erro de > de 20, agora vendo um tempo médio de resposta superior a 300, a tarefa será sinalizada como falha.
 
-    > Observação: Imagine que, em um cenário da vida real, você validaria o desempenho do Serviço de Aplicativo e, se o desempenho estivesse abaixo de um determinado limite, o que normalmente significa que há mais carga no Aplicativo Web, você poderia disparar uma nova implantação para um Serviço de Aplicativo do Azure adicional. Como não podemos controlar o tempo de resposta para ambientes de laboratório do Azure, decidimos reverter a lógica para garantir a falha.
+    > **Observação**: imagine que, em um cenário da vida real, você validaria o desempenho do Serviço de Aplicativo e, se o desempenho estivesse abaixo de um determinado limite, o que normalmente significa que há mais carga no Aplicativo Web, você poderia disparar uma nova implantação para um Serviço de Aplicativo do Azure adicional. Como não podemos controlar o tempo de resposta para ambientes de laboratório do Azure, decidimos reverter a lógica para garantir a falha.
 
 1. O status FAILED da tarefa de pipeline, na verdade, reflete um ÊXITO da validação dos critérios de requisito do Teste de Carga do Azure.
 
-### Exercício 3: remover os recursos do laboratório do Azure
-
-Neste exercício, você removerá os recursos do Azure provisionados neste laboratório para eliminar cobranças inesperadas.
-
-> **Observação**: lembre-se de remover todos os recursos do Azure que acabam de ser criados e que você não usa mais. Remover recursos não utilizados garante que você não veja encargos inesperados.
-
-#### Tarefa 1: remover os recursos do laboratório do Azure
-
-Nesta tarefa, você usará o Azure Cloud Shell para remover os recursos do Azure provisionados neste laboratório para eliminar cobranças desnecessárias.
-
-1. No portal do Azure, abra a sessão **Bash** no painel **Cloud Shell**.
-1. Liste todos os grupos de recursos criados nos laboratórios deste módulo executando o seguinte comando:
-
-    ```sh
-    az group list --query "[?starts_with(name,'az400m09l16')].name" --output tsv
-    ```
-
-1. Exclua todos os grupos de recursos criados em todos os laboratórios deste módulo executando o seguinte comando:
-
-    ```sh
-    az group list --query "[?starts_with(name,'az400m09l16')].[name]" --output tsv | xargs -L1 bash -c 'az group delete --name $0 --no-wait --yes'
-    ```
-
-    >**Observação**: o comando é executado de modo assíncrono (conforme determinado pelo parâmetro --nowait), portanto, embora você possa executar outro comando da CLI do Azure imediatamente depois na mesma sessão Bash, levará alguns minutos antes de o grupo de recursos ser removido.
+   > [!IMPORTANT]
+   > Lembre-se de excluir os recursos criados no portal do Azure para evitar cobranças desnecessárias.
 
 ## Revisão
 
