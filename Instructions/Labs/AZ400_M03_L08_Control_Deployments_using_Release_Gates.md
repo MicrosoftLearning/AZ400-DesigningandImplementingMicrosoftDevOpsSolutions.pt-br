@@ -121,7 +121,7 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
    > **Observação**: possíveis locais podem ser encontrados executando o seguinte comando, use o **Nome** em `<region>` : `az account list-locations -o table`
 
    ```bash
-   REGION='centralus'
+   REGION='<region>'
    RESOURCEGROUPNAME='az400m03l08-RG'
    az group create -n $RESOURCEGROUPNAME -l $REGION
    ```
