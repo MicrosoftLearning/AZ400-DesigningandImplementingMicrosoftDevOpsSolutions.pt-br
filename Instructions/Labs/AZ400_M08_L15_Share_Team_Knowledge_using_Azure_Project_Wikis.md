@@ -43,11 +43,11 @@ Nesta tarefa, você publicará um branch de um repositório do Azure DevOps como
 > **Observação**: se o wiki publicado corresponder a uma versão do produto, você poderá publicar novas branches à medida que lança novas versões do produto.
 
 1. No menu vertical à esquerda, clique em **Repos**, na seção superior do painel **Arquivos**, verifique se o repositório **eShopOnWeb** está selecionado (escolha-o na lista suspensa, na parte superior com o ícone do Git). Na lista suspensa de branches (na parte superior de "Arquivos" com o ícone de branch), selecione **principal** e revise o conteúdo do branch principal.
-1. À esquerda do painel **Arquivos**, na listagem da pasta repo e da hierarquia de arquivos, expanda a pasta **src** e navegue até a subpasta para **Web -> wwwroot -> images**. Na subpasta **Imagens**, localize a entrada **brand.png**, passe o mouse com o ponteiro do mouse sobre sua extremidade direita para revelar o símbolo de reticências verticais (três pontos) que representa o menu **Mais**, clique em **Download** para baixar o **arquivo brand.png**para a pasta local **Downloads** no computador do laboratório.
+1. À esquerda do painel **Arquivos**, na listagem da pasta repositório e da hierarquia de arquivos, expanda a pasta **src** e navegue até a subpasta **Web -> wwwroot -> images**. Na subpasta **Imagens**, localize a entrada **brand.png**, passe o mouse com o ponteiro do mouse sobre sua extremidade direita para revelar o símbolo de reticências verticais (três pontos) que representa o menu **Mais**, clique em **Download** para baixar o **arquivo brand.png**para a pasta local **Downloads** no computador do laboratório.
 
     > **Observação**: você usará essa imagem no próximo exercício.
 
-1. Armazenaremos os arquivos de origem do Wiki em uma pasta separada dentro da estrutura de pastas atual do Repos. Em **Repos**, selecione **Arquivos**. Observe o título do repositório **eShopOnWeb** na parte superior da estrutura de pastas. **Selecione as reticências (3 pontos),** escolha **Novo/Pasta** e forneça **Documentos** como título para o nome da Nova pasta. Como um repositório não permite que você crie uma pasta vazia, forneça **READ.ME ** como Novo nome de arquivo.
+1. Armazenaremos os arquivos de origem do Wiki em uma pasta separada dentro da estrutura de pastas atual do Repos. Em **Repos**, selecione **Arquivos**. Observe o título do repositório **eShopOnWeb** na parte superior da estrutura de pastas. **Selecione as reticências (três pontos)**, escolha **Novo/Pasta** e forneça **`Documents`** como título para o nome da Nova pasta. Como um repositório não permite que você crie uma pasta vazia, forneça **`READ.ME`** como Novo nome de arquivo.
 1. Confirme a criação da pasta e do arquivo **pressionando o botão Criar**.
 1. O arquivo READ.ME será aberto no modo de exibição interno. Como isso é armazenado 'como código', você precisa **confirmar** as alterações clicando no **botão Confirmar**. Na janela Confirmar, confirme mais uma vez pressionando **Confirmar**.
 1. No menu vertical do Azure DevOps no lado esquerdo, clique em **Visão geral**, na seção **Visão geral**, selecione **Wiki**, selecione **Publicar código como wiki*.
@@ -58,7 +58,7 @@ Nesta tarefa, você publicará um branch de um repositório do Azure DevOps como
     | Repositório | **eShopOnWeb** |
     | Branch | **main** |
     | Pasta | **/Documentos** |
-    | Nome Wiki | **eShopOnWeb (Documentos)** |
+    | Nome Wiki | **`eShopOnWeb (Documents)`** |
 
     > **Observação**: isso abrirá automaticamente a seção Wiki e publicará **o editor**, onde você pode fornecer um título de página Wiki, bem como adicionar o conteúdo real. Observe que você é encorajado a usar o formato MarkDown, mas use a faixa de opções para ajudá-lo com parte da sintaxe de layout MarkDown.
 
@@ -173,7 +173,7 @@ Nesta tarefa, você gerenciará o wiki do projeto recém-criado.
 
 > **Observação**: você começará revertendo a alteração mais recente para a página wiki.
 
-1. No computador de laboratório, com o portal do Azure DevOps exibindo o **painel Wiki** do projeto **eShopOnWeb** e o conteúdo do wiki **Design do Projeto** selecionado, no canto superior direito, clique no símbolo de reticências verticais e, no menu suspenso, clique em **Exibir revisões**.
+1. No computador de laboratório, com o portal do Azure DevOps exibindo o **painel do Wiki** do projeto **eShopOnWeb** e o conteúdo do wiki **Design do Projeto** selecionado, no canto superior direito, clique no símbolo de reticências verticais e, no menu suspenso, clique em **Exibir revisões**.
 1. No painel **Revisões**, clique na entrada que representa a alteração mais recente.
 1. No painel resultante, examine a comparação entre a versão anterior e a atual do documento, clique em **Reverter**, quando for solicitada a confirmação, clique em **Reverter** novamente e clique em **Procurar Página**.
 1. De volta ao painel **Design do Projeto**, verifique se a alteração foi revertida com êxito.

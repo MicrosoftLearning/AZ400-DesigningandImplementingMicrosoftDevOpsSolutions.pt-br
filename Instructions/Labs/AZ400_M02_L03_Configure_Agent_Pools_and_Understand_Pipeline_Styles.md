@@ -216,7 +216,7 @@ Neste exercício, você criará uma VM (máquina virtual) do Azure e a usará pa
    - Aceite a pasta de trabalho do agente padrão (_work).
    - Insira **Y** para configurar o agente a ser executado como serviço.
    - Insira **Y** para habilitar SERVICE_SID_TYPE_UNRESTRICTED para o serviço do agente.
-   - Insira **NT AUTHORITY\SYSTEM** para definir o contexto de segurança do serviço.
+   - Insira **`NT AUTHORITY\SYSTEM`** para definir o contexto de segurança do serviço.
 
    > [!IMPORTANT]
    > Em geral, você deve seguir o princípio do privilégio mínimo ao configurar o contexto de segurança do serviço.
