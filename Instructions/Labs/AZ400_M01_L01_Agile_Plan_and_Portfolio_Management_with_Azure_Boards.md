@@ -283,7 +283,7 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
 
 1. Na seção **Critérios de** regra, na **lista suspensa**, selecione **Atividade **, na lista suspensa**Operador**, selecione**=**, e, na lista suspensa **Valor** selecione **Desenvolvimento**.
 
-    ![Captura das configurações de estilo do quadro.](images/m1/EShop-WEB-styles_v2.jpg)
+    ![Captura das configurações de estilo do quadro.](images/m1/EShop-WEB-styles_v2.JPG)
 
 1. Clique em **Salvar** para salvar e fechar as configurações.
 

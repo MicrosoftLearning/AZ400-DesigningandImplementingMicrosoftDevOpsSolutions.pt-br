@@ -113,7 +113,7 @@ Nesta tarefa, você criará a Entidade de Serviço do Azure usada pelo GitHub pa
 
 1. Em uma janela do navegador, volte para o repositório do GitHub **eShopOnWeb**.
 1. Na página do repositório, vá para **Configurações**, clique em **Segredos e variáveis > Ações**. Clique em **Novo segredo do repositório**
-    - Nome : **AZURE_CREDENTIALS**
+    - Nome: **`AZURE_CREDENTIALS`**
     - Segredo: **cole o objeto JSON copiado anteriormente** (o GitHub é capaz de manter vários segredos com o mesmo nome, usados pela ação [azure/login](https://github.com/Azure/login) )
 
 1. Clique em **Adicionar segredo**. Agora, o GitHub Actions poderá fazer referência à entidade de serviço, usando o segredo do repositório.
@@ -159,7 +159,7 @@ Nesta tarefa, você usará ambientes do GitHub para solicitar aprovação manual
 1. Na seção de trabalho de **implantação**, há uma referência a um **ambiente** chamado **Desenvolvimento**. Os [ambientes](https://docs.github.com/en/actions/deployment/targeting-different-environments/using-environments-for-deployment) usados pelo GitHub adicionam regras de proteção (e segredos) para seus destinos.
 
 1. Na página do repositório, vá para **Configurações**, abra **Ambientes** e clique em **Novo ambiente**.
-1. Dê o nome de **Desenvolvimento** e clique em **Configurar Ambiente**.
+1. Dê-lhe o nome **`Development`** e clique em **Configurar Ambiente**.
 
     > **Observação**: se um ambiente chamado **Desenvolvimento** já existir na lista **Ambientes**, abra a configuração clicando no nome do ambiente.  
 

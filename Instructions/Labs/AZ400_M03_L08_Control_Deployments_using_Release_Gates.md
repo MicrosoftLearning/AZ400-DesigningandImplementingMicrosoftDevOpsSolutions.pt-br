@@ -147,7 +147,7 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
 
 #### Tarefa 2: configurar um recurso do Application Insights
 
-1. No portal do Azure, use a caixa de texto **Procurar recursos, serviços e documentos** na parte superior da página para pesquisar o **Application Insights** e, na lista de resultados, selecione **Application Insights**.
+1. No portal do Azure, use a caixa de texto **Procurar recursos, serviços e documentos** na parte superior da página para pesquisar por **`Application Insights`** e, na lista de resultados, selecione **Application Insights**.
 1. Na folha **Application Insights**, selecione **+ Criar**.
 1. Na folha **Application Insights**, na guia **Noções básicas**, especifique as seguintes configurações (deixe outras pessoas com seus valores padrão):
 
@@ -203,9 +203,9 @@ Nesta tarefa, você configurará tarefas de lançamento como parte do Pipeline d
 1. Clique em **Novo pipeline**.
 1. Na janela **Selecionar um modelo**, **escolha****Implantação do Serviço de Aplicativo do Azure** (Implante seu aplicativo no Serviço de Aplicativo do Azure. Escolha entre Aplicativo Web no Windows, Linux, contêineres, aplicativos de funções ou WebJobs) na lista de modelos **Em destaque**.
 1. Clique em **Aplicar**.
-1. Na janela **Etapa** exibida, atualize o nome padrão da etapa "Etapa 1" para **DevTest**. Feche a janela pop-up usando o botão **X**. Agora você está no editor gráfico do Pipeline de lançamento, mostrando a Etapa DevTest.
-1. Na parte superior da página, renomeie o pipeline atual de **Novo pipeline de lançamento** para **eshoponweb-cd**.
-1. Passe o mouse sobre a Etapa DevTest e clique no botão **Clonar** para copiar essa etapa para uma Etapa adicional. Nomeie esta Etapa **Produção**.
+1. Na janela **Etapa** exibida, atualize o nome padrão da etapa "Etapa 1" para **`DevTest`**. Feche a janela pop-up usando o botão **X**. Agora você está no editor gráfico do Pipeline de lançamento, mostrando a Etapa DevTest.
+1. Na parte superior da página, renomeie o pipeline atual de **Novo pipeline de lançamento** para **`eshoponweb-cd`**.
+1. Passe o mouse sobre a Etapa DevTest e clique no botão **Clonar** para copiar essa etapa para uma Etapa adicional. Nomeie esta etapa como **`Production`**.
 
    > **Observação**: o pipeline agora contém duas etapas chamadas **DevTest** e **Produção**.
 
