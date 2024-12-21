@@ -13,7 +13,6 @@ Para se preparar para os laboratórios, é crucial ter seu ambiente configurado 
 - **Configurar uma Assinatura do Azure:** se você ainda não tiver uma assinatura do Azure, crie uma seguindo as instruções nesta página ou visite [https://azure.microsoft.com/free](https://azure.microsoft.com/free) para se inscrever gratuitamente.
 
 - **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização do Azure DevOps que possa usar para os laboratório, crie uma seguindo as instruções disponíveis nesta página ou em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
-  
 - [Página de download do Git for Windows](https://gitforwindows.org/). Ele será instalado como parte dos pré-requisitos deste laboratório.
 
 - [Visual Studio Code](https://code.visualstudio.com/). Ele será instalado como parte dos pré-requisitos deste laboratório.
@@ -38,13 +37,13 @@ Para se preparar para os laboratórios, é crucial ter seu ambiente configurado 
 
 1. Na caixa suspensa à esquerda, escolha **Diretório padrão** em vez de **Conta Microsoft**.
 
-1. Se solicitado (*"Precisamos de mais alguns detalhes"*), forneça seu nome, endereço de email e local e clique em **Continuar**.
+1. Se solicitado (_"Precisamos de mais alguns detalhes"_), forneça seu nome, endereço de email e local e clique em **Continuar**.
 
 1. De volta a `https://aex.dev.azure.com` com **Diretório padrão** selecionado, clique no botão azul **Criar nova organização**.
 
-1. Aceite os *Termos de Serviço* clicando em **Continuar**.
+1. Aceite os _Termos de Serviço_ clicando em **Continuar**.
 
-1. Se solicitado *("Quase concluído")*, deixe o nome da organização do Azure DevOps como padrão (precisa ser um nome globalmente exclusivo) e escolha um local de hospedagem próximo a você na lista.
+1. Se solicitado _("Quase concluído")_, deixe o nome da organização do Azure DevOps como padrão (precisa ser um nome globalmente exclusivo) e escolha um local de hospedagem próximo a você na lista.
 
 1. Quando a organização recém-criada for aberta no **Azure DevOps**, selecione **Configurações da organização** no canto inferior esquerdo.
 
@@ -54,7 +53,7 @@ Para se preparar para os laboratórios, é crucial ter seu ambiente configurado 
 
 1. Depois que a tela mostrar a ID de Assinatura do Azure vinculada na parte superior, altere o número de **Trabalhos paralelos pagos** de **CI/CD hospedado pela MS** de 0 para **1**. Depois selecione o botão **SALVAR** na parte inferior.
 
-   > **Observação**: talvez você **aguarde alguns minutos antes de usar os recursos de CI/CD** para que as novas configurações sejam refletidas no back-end. Caso contrário, você ainda verá a mensagem *"Nenhum paralelismo hospedado foi comprado ou concedido"*.
+   > **Observação**: talvez você **aguarde alguns minutos antes de usar os recursos de CI/CD** para que as novas configurações sejam refletidas no back-end. Caso contrário, você ainda verá a mensagem _"Nenhum paralelismo hospedado foi comprado ou concedido"_.
 
 1. Em **Configurações da Organização**, vá para a seção **Pipelines** e clique em **Configurações**.
 
@@ -81,6 +80,7 @@ Primeiro, você criará um projeto **eShopOnWeb** do Azure DevOps para ser usado
 1. Abra o navegador e navegue até a organização do Azure DevOps.
 
 1. Selecione a opção **Novo projeto** e use as seguintes configurações:
+
    - nome: **eShopOnWeb**
    - visibilidade: **Particular**
    - Avançado: Controle de Versão: **Git**
@@ -112,7 +112,7 @@ Agora, você importará o eShopOnWeb para seu repositório do git.
    - A pasta **.github** contém definições de fluxo de trabalho YAML do GitHub.
    - A pasta **src** contém o site do .NET 8 usado em cenários de laboratório.
 
-1. Deixe a janela do navegador da Web aberta.  
+1. Deixe a janela do navegador da Web aberta.
 
 1. Vá para **Repos > Branches**.
 
@@ -138,18 +138,21 @@ Você precisará criar uma conexão de serviço no Azure DevOps, que permitirá 
 
 1. Na folha **Nova conexão de serviço**, escolha **Azure Resource Manager** e **Avançar** (talvez seja necessário rolar para baixo).
 
-1. Selecione **Federação de identidade de carga de trabalho (automática)** e **Avançar**.
+1. Selecione **Registro de aplicativo (automático)** na caixa suspensa **Tipo de identidade**.
 
-   > **Observação**: você também pode usar a **federação de identidade de carga de trabalho (manual)** se preferir configurar manualmente a conexão de serviço. Siga as etapas na [documentação do Azure DevOps](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure) para criar a conexão de serviço manualmente.
+1. Selecione **Federação de identidade da carga de trabalho** e **Assinatura** em **Nível de escopo**.
+
+   > **Observação**: você também pode usar o **Registro de aplicativo ou a identidade gerenciada (manual)** se preferir configurar manualmente a conexão de serviço. Siga as etapas na [documentação do Azure DevOps](https://learn.microsoft.com/azure/devops/pipelines/library/connect-to-azure) para criar a conexão de serviço manualmente.
 
 1. Preencha os campos vazios usando as informações:
-    - **Assinatura**: Selecione sua assinatura do Azure.
-    - **Grupo de recursos**: selecione o grupo de recursos onde você quer implantar os recursos. Se você não tiver um grupo de recursos, poderá criar um no portal do Azure seguindo as instruções em [Gerenciar grupos de recursos do Azure usando o portal do Azure](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
-    - **Nome da conexão de serviço**: Tipo **`azure subs`**. Esse nome será referenciado em pipelines YAML para acessar a sua assinatura do Azure.
+
+   - **Assinatura**: Selecione sua assinatura do Azure.
+   - **Grupo de recursos**: selecione o grupo de recursos onde você quer implantar os recursos. Se você não tiver um grupo de recursos, poderá criar um no portal do Azure seguindo as instruções em [Gerenciar grupos de recursos do Azure usando o portal do Azure](https://learn.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal).
+   - **Nome da conexão de serviço**: Tipo **`azure subs`**. Esse nome será referenciado em pipelines YAML para acessar a sua assinatura do Azure.
 
 1. Verifique se a opção **Conceder permissão de acesso a todos os pipelines** está desmarcada e clique em **Salvar**.
 
-   > **Observação**: a opção **Conceder permissão de acesso a todos os pipelines** não é recomendada para ambientes de produção. Ela só é usada neste laboratório para simplificar a configuração do pipeline.
+   > **Importante**: a opção **Conceder permissão de acesso a todos os pipelines** não é recomendada para ambientes de produção. Ela só é usada neste laboratório para simplificar a configuração do pipeline.
 
    > **Observação**: se você vir uma mensagem de erro indicando que não tem as permissões necessárias para criar uma conexão de serviço, tente novamente ou configure a conexão de serviço manualmente.
 
