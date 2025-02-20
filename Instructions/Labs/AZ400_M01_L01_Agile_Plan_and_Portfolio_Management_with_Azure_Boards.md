@@ -375,7 +375,7 @@ Para maximizar a capacidade de uma equipe de fornecer consistentemente software 
 
     > **Observação**: à medida que sua equipe atualiza o status do trabalho à medida que ele progride de uma etapa para a outra, é útil que eles concordem com o que **significa feito** . Ao especificar os **critérios Definição de concluído** para cada coluna Kanban, você ajuda a compartilhar as tarefas essenciais a serem concluídas antes de mover um item para uma etapa downstream.
 
-1. Na guia **QA Aprovado**, na parte inferior do painel, na caixa de texto **Definição de Concluído**, digite **`Passes \*\*all\*\* tests`**.
+1. Na guia **QA Aprovado**, na parte inferior do painel, na caixa de texto **Definição de Concluído**, digite **`Passes **all** tests`**.
 1. Clique em **Salvar** para salvar e fechar as configurações.
 
     ![Captura de tela da coluna de divisão de configurações e definição da definição de concluído.](images/m1/dd_v1.png)
