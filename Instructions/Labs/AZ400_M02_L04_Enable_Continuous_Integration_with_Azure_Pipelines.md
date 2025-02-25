@@ -168,7 +168,7 @@ A definição de pipeline de build padrão não habilita a Integração Contínu
 
     Como você habilitou as Políticas de branch, você precisa passar por uma solicitação de pull para atualizar seu código.
 
-1. Clique no botão **Salvar** (não em **Salvar e executar**) para salvar a definição de pipeline.
+1. Clique no botão **Validar e salvar** para validar e salvar a definição do pipeline.
 1. Selecione **Criar um novo branch para este commit**.
 1. Mantenha o nome do branch padrão e **Iniciar uma solicitação de pull** verificada.
 1. Clique em **Salvar**.

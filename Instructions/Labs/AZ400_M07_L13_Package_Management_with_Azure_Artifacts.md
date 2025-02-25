@@ -144,23 +144,23 @@ Nesta tarefa, você criará e publicará um pacote NuGet personalizado desenvolv
 1. Na estação de trabalho de laboratório, abra o menu Iniciar e procure **Windows PowerShell**. Em seguida, no menu em cascata, clique em **Abrir o Windows PowerShell como administrador**.
 1. **No Administrador: Janela do Windows PowerShell**, navegue até a pasta eShopOnWeb.Shared executando o seguinte comando:
 
-   ```text
+   ```powershell
    cd c:\eShopOnWeb\eShopOnWeb.Shared
    ```
 
    > **Observação**: A pasta **eShopOnWeb.Shared** é o local do arquivo **eShopOnWeb.Shared.csproj**. Se você escolheu um local ou nome de projeto diferente, navegue até esse local.
 
-1. Execute o seguinte comando para criar um arquivo **.nupkg** no projeto.
+1. Execute o seguinte para criar um arquivo **.nupkg** no projeto (altere o valor do espaço reservado `XXXXXX` com uma cadeia de caracteres exclusiva).
 
    ```powershell
-   dotnet pack .\eShopOnWeb.Shared.csproj
+   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXX.Shared
    ```
 
    > **Observação**: O comando **dotnet pack** cria o projeto e cria um pacote NuGet na pasta **bin\Release**. Se você não tiver uma pasta **Versão**, poderá usar a pasta **Depurar**.
 
    > **Observação**: desconsidere quaisquer avisos exibidos na janela **Administrador: Windows PowerShell**.
 
-   > **Observação**: o dotnet pack cria um pacote mínimo com base nas informações que ele pode identificar do projeto. Por exemplo, observe que o nome é **eShopOnWeb.Shared.1.0.0.nupkg**. Esse número de versão foi recuperado do assembly.
+   > **Observação**: o dotnet pack cria um pacote mínimo com base nas informações que ele pode identificar do projeto. O argumento `-p:PackageId=eShopOnWeb-XXXXXX.Shared` permite que você crie um pacote com um nome específico usando o nome contido no projeto. Por exemplo, se você substituir a cadeia de caracteres `12345` pelo espaço reservado `XXXXXX`, o nome do pacote será **eShopOnWeb-12345.Shared.1.0.0.nupkg**. O número de versão foi recuperado do assembly.
 
 1. Na janela do PowerShell, execute o seguinte comando para abrir a pasta **bin\Release**:
 

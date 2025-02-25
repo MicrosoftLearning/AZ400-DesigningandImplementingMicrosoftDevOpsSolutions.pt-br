@@ -243,8 +243,8 @@ Nesta tarefa, você adicionará a entrega contínua à definição baseada em YA
       - repository: self
         trigger: none
 
-   stages:
-   - stage: Build
+  stages:
+  - stage: Build
     displayName: Build .Net Core Solution
     jobs:
     - job: Build
