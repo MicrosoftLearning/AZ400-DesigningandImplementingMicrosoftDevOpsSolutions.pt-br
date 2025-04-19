@@ -378,6 +378,11 @@ Execute as etapas a seguir para baixar os arquivos de entrada de um teste de car
 1. Na **Estrutura de pastas**, navegue até a nova subpasta jmeter** criada**. Clique nas **reticências (...)** e selecione **Carregar arquivo(s).**
 1. Usando a opção **Procurar**, navegue até o local do arquivo zip extraído e selecione **config.yaml** e **quick_test.jmx**.
 1. Clique em **Confirmar** para confirmar o carregamento do arquivo no controle do código-fonte.
+1. Em Repos, navegue até a subpasta **/tests/jmeter** criada.
+1. Abra o arquivo **config.yaml** de Teste de Carga. Clique em **Editar** para permitir a edição do arquivo.
+1. Substitua os atributos **displayName** e **testId** pelo valor **ado_load_test**
+
+  ![Captura de tela do arquivo de configuração editado.](images/config_edit.png)
 
 #### Tarefa 4: atualizar o arquivo de definição YAML do fluxo de trabalho CI/CD
 
@@ -467,7 +472,7 @@ Nesta tarefa, você usará critérios de falha de teste de carga para receber al
 1. No Azure DevOps, navegue até o projeto eShopOnWeb e abra **Repos**.
 1. Em Repos, navegue até a subpasta **/tests/jmeter** criada e usada anteriormente.
 1. Abra o arquivo \*config.yaml* de Teste de Carga. Clique em **Editar\*\* para permitir a edição do arquivo.
-1. Substitua `failureCriteria: []` pelo seguinte snippet de código:
+1. Substitua `failureCriteria: []` se estiver presente, caso contrário, acrescente o seguinte trecho de código:
 
    ```text
    failureCriteria:
