@@ -65,7 +65,7 @@ Cada novo projeto é configurado com uma equipe padrão, cujo nome corresponde a
 
 1. Clique no ícone de engrenagem rotulado **Configurações do projeto** localizado no canto inferior esquerdo da página **Configurações do projeto**.
 
-    ![Captura de tela da página configurações do Azure DevOps.](images/m1/project_settings_v1.png)
+    ![Captura de tela da página configurações do Azure DevOps.](images/m1/project_settings_v1.png) 
 
 1. Na seção **Geral**, selecione a guia **Teams**. Já existe uma equipe padrão neste projeto, **Equipe do eShopOnWeb**, mas você criará uma nova para este laboratório. Clique em **Nova equipe**.
 
@@ -279,9 +279,9 @@ A lista de pendências do sprint deverá conter todas as informações de que a 
 1. Clique no **ícone Configurar engrenagem de configurações** da equipe (diretamente à direita do ícone do funil).
 1. No painel **Configurações**, selecione a guia **Estilos**, clique em **+Adicionar regra de estilo**. Na etiqueta **Nome da regra**, na caixa de texto **Nome** digite **`Development`**, e, na lista suspensa **Cor**, clique no retângulo verde.
 
-    > **Observação**: isso colorirá todos os cartões de verde se eles atenderem aos critérios de regra definidos diretamente abaixo, na seção Critérios de **regra** .
+    > **Observação**: isso colorirá todos os cartões de verde se eles atenderem aos critérios de regra definidos diretamente abaixo do nome da regra.
 
-1. Na seção **Critérios de** regra, na **lista suspensa**, selecione **Atividade **, na lista suspensa**Operador**, selecione**=**, e, na lista suspensa **Valor** selecione **Desenvolvimento**.
+1. Na seção debaixo do nome da regra, na lista suspensa **Campo**, selecione **Atividade**; na lista suspensa **Operador**, selecione **=** e, na lista suspensa **Valor**, selecione **Desenvolvimento**.
 
     ![Captura das configurações de estilo do quadro.](images/m1/EShop-WEB-styles_v2.JPG)
 
@@ -428,7 +428,9 @@ Os dashboards permitem que as equipes visualizem o status e monitorem o progress
 
 1. **No painel Configuração**, clique em **Fechar** sem fazer alterações.
 1. De volta ao painel **Adicionar widget**, na caixa de texto **Pesquisar**, digite **`sprint`** novamente para localizar widgets existentes que se concentram em sprints. Na lista de resultados, selecione **Capacidade** da Sprint e clique em **Adicionar**.
+
     > **Observação**: se o widget mostrar "Definir capacidade para usar o widget de capacidade de sprint", você poderá clicar no link **Definir capacidade** para definir a capacidade. Defina a atividade como Desenvolvimento e a Capacidade como 1. Clique em **Salvar** e volte para o painel.
+    
 1. **No modo de exibição Dashboard**, na parte superior do painel, clique em **Edição concluída**.
 
     ![Captura de tela do painel com dois novos widgets.](images/m1/EShop-WEB-finished_dashboard_v1.png)
