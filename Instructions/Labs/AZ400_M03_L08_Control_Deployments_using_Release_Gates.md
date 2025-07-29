@@ -114,7 +114,7 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
 1. No portal do Azure, clique no ícone do **Cloud Shell**, localizado diretamente à direita da caixa de texto de pesquisa na parte superior da página.
 1. Se for solicitado que você selecione **Bash** ou **PowerShell**, selecione **Bash**.
 
-   > **Observação**: se esta for a primeira vez que você está iniciando o **Cloud Shell** e você receber a mensagem **Você não tem nenhum armazenamento montado**, selecione a assinatura que você está usando no laboratório e selecione **Criar armazenamento**.
+   > **Observação**: Se esta for a primeira vez que você está iniciando o **Cloud Shell** e for exibida a mensagem **Você não tem armazenamento montado**, selecione a assinatura que está usando neste laboratório e clique em **Aplicar**.
 
 1. No prompt **Bash**, no painel **Cloud Shell**, execute o seguinte comando para criar um grupo de recursos (substitua o espaço reservado de variável `<region>` pelo nome da região do Azure que hospedará os dois aplicativos Web do Azure, por exemplo, "westeurope" ou "centralus" ou qualquer outra região disponível de sua escolha):
 
@@ -142,6 +142,8 @@ Nesta tarefa, você criará dois aplicativos Web do Azure que representam os amb
    ```
 
    > **Observação**: registre o nome do aplicativo Web DevTest. Você precisará dela posteriormente neste laboratório.
+
+   > **Observação**: Se você encontrar o erro "A assinatura não está registrada para usar o namespace 'Microsoft.Web'", execute o seguinte comando para registrar o provedor de recursos Microsoft.Web: `az provider register --namespace Microsoft.Web` e aguarde a conclusão do registro antes de criar os aplicativos web.
 
 1. Aguarde até que o processo de provisionamento dos Recursos de Serviços de Aplicativo Web seja concluído e feche o painel do **Cloud Shell** .
 

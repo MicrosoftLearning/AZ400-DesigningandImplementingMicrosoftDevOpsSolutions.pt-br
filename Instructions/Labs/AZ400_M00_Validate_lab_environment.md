@@ -152,7 +152,9 @@ Você precisará criar uma conexão de serviço no Azure DevOps, que permitirá 
 
 1. Verifique se a opção **Conceder permissão de acesso a todos os pipelines** está desmarcada e clique em **Salvar**.
 
-   > **Importante**: a opção **Conceder permissão de acesso a todos os pipelines** não é recomendada para ambientes de produção. Ela só é usada neste laboratório para simplificar a configuração do pipeline.
+   > **Importante:** A opção **Conceder acesso a todos os pipelines** não é recomendada para ambientes de produção. Selecionar essa opção significa conceder acesso à conexão de serviço a todos os pipelines do projeto. Não selecionar a opção permite aprovar o acesso à conexão de serviço na primeira execução de cada pipeline.
+
+   > **Observação**: Se a opção **Conceder permissão de acesso a todos os pipelines** estiver desativada (cinza) e não puder ser alterada, continue com o laboratório.
 
    > **Observação**: se você vir uma mensagem de erro indicando que não tem as permissões necessárias para criar uma conexão de serviço, tente novamente ou configure a conexão de serviço manualmente.
 

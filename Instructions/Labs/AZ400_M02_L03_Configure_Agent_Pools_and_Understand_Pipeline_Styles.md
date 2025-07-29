@@ -76,7 +76,7 @@ Neste exercício, você criará uma VM (máquina virtual) do Azure e a usará pa
 
 1. Selecione o botão **Criar**.
 
-1. Selecione **Máquina virtual do Azure com uma configuração predefinida**.
+1. Selecione as **Predefinições**.
 
     ![Captura de tela da criação de uma máquina virtual com uma configuração predefinida.](images/create-virtual-machine-preset.png)
 
@@ -143,6 +143,8 @@ Neste exercício, você criará uma VM (máquina virtual) do Azure e a usará pa
 
    > **Observação**: siga as instruções de instalação para instalar o agente.
 
+   > **Observação**: O nome do arquivo zip que você baixou com o botão **Baixar** deve ser semelhante ao seguinte `vsts-agent-win-x64-X.YYY.Z.zip`(no momento da redação deste laboratório, o nome do arquivo é `vsts-agent-win-x64-4.255.0.zip`). O nome do arquivo será usado posteriormente em um dos comandos de instalação do agente.
+
 1. Inicie uma sessão do PowerShell e execute os comandos a seguir para criar um **agente** nomeado de pasta.
 
    ```powershell
@@ -154,10 +156,12 @@ Neste exercício, você criará uma VM (máquina virtual) do Azure e a usará pa
 1. Execute o seguinte comando para extrair o conteúdo dos arquivos do instalador do agente baixado:
 
    ```powershell
-   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-3.245.0.zip", "$PWD")
+   Add-Type -AssemblyName System.IO.Compression.FileSystem ; [System.IO.Compression.ZipFile]::ExtractToDirectory("$HOME\Downloads\vsts-agent-win-x64-4.255.0.zip", "$PWD")
    ```
 
    > **Observação**: se você baixou o agente em um local diferente (ou a versão baixada difere), ajuste o comando acima de acordo.
+
+   > **Observação**: Verifique se o nome do arquivo zip especificado dentro do comando `ExtractToDirectory` é o mesmo que o nome do arquivo zip que você baixou anteriormente.
 
 #### Tarefa 4: Criar um token PAT
 
@@ -208,7 +212,7 @@ Neste exercício, você criará uma VM (máquina virtual) do Azure e a usará pa
 
 1. Para configurar o agente, execute as seguintes ações quando solicitado:
 
-   - Insira a URL da organização do Azure DevOps (**URL do servidor**) no formato `https://aex.dev.azure.com`{nome da sua organização}.
+   - Insira a URL da organização do Azure DevOps (**URL do servidor**) no formato `https://dev.azure.com/{your organization name}`.
    - Aceite o tipo de autenticação padrão (**`PAT`**).
    - Insira o valor do token PAT que você criou na etapa anterior.
    - Insira o nome do pool de agentes **`eShopOnWebSelfPool`** que você criou anteriormente neste exercício.
@@ -240,7 +244,7 @@ Neste exercício, você criará uma VM (máquina virtual) do Azure e a usará pa
    > [!IMPORTANT]
    > Para que o agente possa criar e implantar recursos do Azure a partir dos pipelines do Azure DevOps (que você percorrerá nos próximos laboratórios), é necessário instalar a CLI do Azure no sistema operacional da VM do Azure que está hospedando o agente.
 
-1. Inicie um navegador da Web e navegue até a página [Instalar a CLI do Azure no Windows](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update).
+1. Abra um navegador da Web e acesse a página `https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli&pivots=msi#install-or-update`.
 
 1. Baixe e instale a CLI do Azure.
 
@@ -306,7 +310,7 @@ Nesta tarefa, você criará um pipeline baseado em YAML para o projeto **eShopOn
     ![Captura de tela mostrando a sintaxe do pool YAML.](images/eshoponweb-ci-pr-agent-pool.png)
 
 1. No painel de edição do **eShopOnWeb**, no canto superior direito do painel, clique em **Validar e salvar**. Em seguida, clique em **Salvar**.
-1. No painel de edição **eShopOnWeb**, no canto superior direito do painel, clique em **Executar pipeline**.
+1. No painel de edição **eShopOnWeb**, no canto superior direito do painel, clique em **Executar**.
 
     > **Observação**: o pipeline será executado no pool de agentes auto-hospedado que você criou no exercício anterior.
 1. Abra a execução do pipeline e monitore o trabalho até sua conclusão.

@@ -109,6 +109,10 @@ Nesta tarefa, você criará um módulo de modelo de armazenamento **storage.bice
    }
    ```
 
+1. Alterar o valor padrão do parâmetro `publicIPAllocationMethod` de `Dynamic` para `Static` na linha 20
+
+1. Alterar o valor padrão do parâmetro `publicIpSku` de `Basic` para `Standard` na linha 27
+
 1. Confirme o arquivo, mas ainda iremos usá-lo.
 
    ![Captura de tela do botão de commit de arquivo](./images/m06/commit.png)
@@ -138,9 +142,9 @@ Nesta tarefa, você criará um módulo de modelo de armazenamento **storage.bice
    output storageURI string = storageAccount.properties.primaryEndpoints.blob
    ```
 
-#### Tarefa 3: modificar o modelo main para usar o módulo de modelo
+#### Tarefa 3: Modificar o modelo simple-windows-vm para usar o módulo de modelo
 
-Nesta tarefa, você modificará o modelo main para fazer referência ao módulo de modelo criado na tarefa anterior.
+Nesta tarefa, você irá modificar o modelo `simple-windows-vm.bicep` para fazer referência ao módulo de modelo criado na tarefa anterior.
 
 1. Navegue de volta para o arquivo `simple-windows-vm.bicep` e clique no botão **Editar** mais uma vez.
 
@@ -202,6 +206,8 @@ Neste laboratório, você criará um pipeline YAML do Azure DevOps para implanta
 
 1. Aguarde até que a implantação seja concluída e veja os resultados.
    ![Captura de tela da implantação bem-sucedida de recurso no Azure usando pipelines YAML.](./images/m06/deploy.png)
+
+   > **Observação**: Lembre-se de conceder permissão ao pipeline para usar a conexão de serviço criada anteriormente.
 
    > [!IMPORTANT]
    > Lembre-se de excluir os recursos criados no portal do Azure para evitar cobranças desnecessárias.
