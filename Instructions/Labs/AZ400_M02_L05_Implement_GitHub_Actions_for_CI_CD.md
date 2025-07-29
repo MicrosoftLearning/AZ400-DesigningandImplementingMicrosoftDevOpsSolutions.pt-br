@@ -58,7 +58,7 @@ Nesta tarefa, você criará um repositório do GitHub público vazio e importar�
 
     | Campo | Valor |
     | --- | --- |
-    | URL de clone do seu repositório antigo| <https://github.com/MicrosoftLearning/eShopOnWeb> |
+    | A URL do seu repositório de origem| <https://github.com/MicrosoftLearning/eShopOnWeb> |
     | Proprietário | O alias da sua conta |
     | Nome do repositório | eShopOnWeb |
     | Privacidade | **Público** |
@@ -83,7 +83,7 @@ Nesta tarefa, você criará a Entidade de Serviço do Azure usada pelo GitHub pa
 1. Na guia **Criar um grupo de recursos**, dê o seguinte nome ao seu Grupo de recursos: **rg-eshoponweb-NAME** (substitua NOME por algum alias exclusivo). Clique em **Revisar + Criar > Criar**.
 1. No Portal do Azure, abra o **Cloud Shell** (ao lado da barra de pesquisa).
 
-    > **Observação**: se esta é a primeira vez que você abre o Cloud Shell, você precisa configurar o [armazenamento persistente](https://learn.microsoft.com/azure/cloud-shell/persisting-shell-storage)
+    > **Observação**: se o portal do Azure solicitar que você crie um armazenamento, você pode escolher a opção **Nenhuma conta de armazenamento necessária**, selecionar sua assinatura e clicar no botão **Aplicar**
 
 1. Verifique se o terminal está sendo executado no modo **Bash** e execute o seguinte comando, substituindo **SUBSCRIPTION-ID** e **RESOURCE-GROUP** por seus próprios identificadores (ambos podem ser encontrados na página **Visão geral** do Grupo de recursos):
 
@@ -132,7 +132,7 @@ Nesta tarefa, você modificará o fluxo de trabalho do GitHub fornecido e o exec
     - Substitua **NAME** em **WEBAPP-NAME** por algum alias exclusivo. Ele será usado para criar um site globalmente exclusivo usando o Serviço de Aplicativo do Azure.
 1. Leia o fluxo de trabalho com atenção. Comentários são fornecidos para ajudar a entender.
 
-1. Clique em **Iniciar commit** e **Confirmar Alterações**, deixando os padrões (alterando o branch main). O fluxo de trabalho será executado automaticamente.
+1. Clique em **Confirmar alterações...** no canto superior direito e depois em **Confirmar alterações...**, deixando as opções padrão (alterando a ramificação principal). O fluxo de trabalho será executado automaticamente.
 
 #### Tarefa 3: revisar a execução do fluxo de trabalho do GitHub
 

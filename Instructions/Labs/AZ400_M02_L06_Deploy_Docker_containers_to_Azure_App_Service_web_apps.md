@@ -122,6 +122,8 @@ Nesta tarefa, você importará e executará o pipeline de CD.
 
 1. Abra a execução do pipeline. Se você vir a mensagem "Este pipeline precisa de permissão para acessar um recurso antes que essa execução possa continuar a Implentar", clique em **Exibir**, **Permitir** e **Permitir** novamente. Isso permitirá que o pipeline acesse a assinatura do Azure.
 
+    > **Importante**: Se você não autorizar o pipeline ao configurar, encontrará erros de permissão durante a execução. As mensagens de erro comuns incluem "Este pipeline precisa de permissão para acessar um recurso" ou "Falha na execução do pipeline devido a permissões insuficientes". Para resolver isso, navegue até a execução de pipeline, clique em **Exibir** ao lado da solicitação de permissão e clique em **Permitir** para conceder o acesso necessário à sua assinatura e recursos do Azure.
+
     > **Observação**: a implantação pode levar alguns minutos para ser concluída.
 
     > [!IMPORTANT]
@@ -138,6 +140,8 @@ Nesta tarefa, você importará e executará o pipeline de CD.
 1. No Portal do Azure, navegue até o Grupo de Recursos criado recentemente, agora você verá três recursos (Serviço de Aplicativo, Plano do Serviço de Aplicativo e Registro de Contêiner).
 
 1. Navegue até o Serviço de Aplicativo e clique em **Procurar**, isso o levará ao site.
+
+1. Verifique se o aplicativo eShopOnWeb está sendo executado com êxito. Uma vez confirmado, você concluiu o laboratório com êxito.
 
 > [!IMPORTANT]
 > Lembre-se de excluir os recursos criados no portal do Azure para evitar cobranças desnecessárias.

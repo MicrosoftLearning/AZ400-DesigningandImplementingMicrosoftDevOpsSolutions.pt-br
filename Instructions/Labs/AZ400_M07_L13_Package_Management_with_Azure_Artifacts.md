@@ -125,7 +125,7 @@ Nesta tarefa, você criará e publicará um pacote NuGet personalizado desenvolv
 
    > **Observação**: agora criaremos um assembly compartilhado que será publicado como um pacote NuGet para que outras equipes possam integrá-lo e manter-se atualizadas sem precisar trabalhar diretamente com a origem do projeto.
 
-1. Na página **Modelos de projetos recentes** do painel **Criar um novo projeto**, use a caixa de texto de pesquisa para localizar o modelo **Biblioteca de Classes**, selecione o modelo para C# e clique em **Avançar**.
+1. No painel **Criar um novo projeto**, use a caixa de pesquisa para localizar o modelo de **Biblioteca de classes**, selecione o modelo para C# que tem como alvo o .NET ou .NET Standard, e clique em **Avançar**.
 1. Na página **Biblioteca de Classes** do painel **Criar um novo projeto**, especifique as seguintes configurações e clique em **Criar**:
 
    | Configuração       | Valor                    |
@@ -153,7 +153,7 @@ Nesta tarefa, você criará e publicará um pacote NuGet personalizado desenvolv
 1. Execute o seguinte para criar um arquivo **.nupkg** no projeto (altere o valor do espaço reservado `XXXXXX` com uma cadeia de caracteres exclusiva).
 
    ```powershell
-   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXX.Shared
+   dotnet pack .\eShopOnWeb.Shared.csproj -p:PackageId=eShopOnWeb-XXXXXX.Shared
    ```
 
    > **Observação**: O comando **dotnet pack** cria o projeto e cria um pacote NuGet na pasta **bin\Release**. Se você não tiver uma pasta **Versão**, poderá usar a pasta **Depurar**.
@@ -171,10 +171,10 @@ Nesta tarefa, você criará e publicará um pacote NuGet personalizado desenvolv
 1. Execute o seguinte para publicar o pacote no feed **eShopOnWebShared**. Substitua a origem pela URL que você copiou anteriormente da URL de **origem** do Visual Studio `https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json`
 
    ```powershell
-   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb.Shared.1.0.0.nupkg"
+   dotnet nuget push --source "https://pkgs.dev.azure.com/Azure-DevOps-Org-Name/_packaging/eShopOnWebShared/nuget/v3/index.json" --api-key az "eShopOnWeb-XXXXXX.Shared.1.0.0.nupkg"
    ```
 
-   > **Importante**: Você precisa instalar o provedor de credenciais para que o seu sistema operacional possa se autenticar com o Azure DevOps. Você pode encontrar as instruções de instalação no [Provedor de credenciais do Azure Artifacts](https://go.microsoft.com/fwlink/?linkid=2099625). Você pode fazer a instalação executando o seguinte comando na janela do PowerShell: `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"`
+   > **Importante**: Se você receber um erro de autorização (401 Não autorizado), será necessário instalar o provedor de credenciais para o seu sistema operacional para poder autenticar-se com o Azure DevOps. Você pode encontrar as instruções de instalação no [Provedor de credenciais do Azure Artifacts](https://go.microsoft.com/fwlink/?linkid=2099625). Você pode fazer a instalação executando o seguinte comando na janela do PowerShell: `iex "& { $(irm https://aka.ms/install-artifacts-credprovider.ps1) } -AddNetfx"`
 
    > **Observação**: você precisa fornecer uma **chave de API**, que pode ser qualquer cadeia de caracteres não vazia. Estamos usando **az** aqui. Quando solicitado, entre na sua organização do Azure DevOps.
 
@@ -194,7 +194,7 @@ Além de desenvolver seus próprios pacotes, por que não usar a biblioteca de p
 
 Nesta tarefa, usaremos um pacote de exemplo genérico "Newtonsoft.Json", mas você pode usar a mesma abordagem para outros pacotes na biblioteca.
 
-1. Na mesma janela do PowerShell usada na tarefa anterior para enviar por push o novo pacote, navegue até a pasta **eShopOnWeb.Shared** (`cd..`) e execute o seguinte comando **dotnet** para instalar o pacote de exemplo:
+1. Na mesma janela do PowerShell usada na tarefa anterior para enviar por push o novo pacote, navegue até a pasta **eShopOnWeb.Shared** (`cd ../..`) e execute o seguinte comando **dotnet** para instalar o pacote de exemplo:
 
    ```powershell
    dotnet add package Newtonsoft.Json

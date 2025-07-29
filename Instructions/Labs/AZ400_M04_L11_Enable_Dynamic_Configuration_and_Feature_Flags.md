@@ -94,6 +94,8 @@ Vamos importar o pipeline de CD chamado [eshoponweb-cd-webapp-code.yml](https://
 
 1. Clique em **Salvar e Executar** e aguarde até que o pipeline seja executado com êxito.
 
+    > **Observação**: Você deve clicar em **Salvar e Executar** duas vezes. Se a janela Trabalhos exibir uma mensagem de permissão necessária, selecione **Implantar** na janela Trabalhos, selecione **Exibir** e, em seguida, **Permitir** duas vezes para concluir a execução do pipeline.
+
     > **Observação**: a implantação pode levar alguns minutos para ser concluída.
 
     A definição de CD consiste nas seguintes tarefas:
@@ -128,8 +130,8 @@ Se você quiser saber como implementar isso em seu aplicativo, dê uma olhada ne
 1. Na seção **Configurações**, clique em **Identidade**, alterne o status para **Ativado** na seção **Sistema Atribuído**, clique em **salvar > sim** e aguarde alguns segundos para que a operação seja concluída.
 1. Volte para o serviço Configuração de Aplicativos e clique em **Controle de acesso** e em **Adicionar atribuição de função**.
 1. Na seção **Função**, selecione **Leitor de Dados da Configuração de Aplicativos**.
-1. Na seção **Membros**, marque **Gerenciar Identidade** e selecione a identidade gerenciada do seu Aplicativo Web (eles devem ter o mesmo nome).
-1. Clique em **Revisar e atribuir**.
+1. Na seção **Membros**, verifique **Gerenciar Identidade** e clique em **+ Selecionar membros**. No campo **Identidade Gerenciada**, selecione **Serviço de Aplicativo (1)**, selecione seu serviço de aplicativo e clique em **Selecionar**.
+1. Clique em **Examinar e atribuir** duas vezes para concluir a atribuição de função.
 
 #### Tarefa 3: configurar o aplicativo Web
 

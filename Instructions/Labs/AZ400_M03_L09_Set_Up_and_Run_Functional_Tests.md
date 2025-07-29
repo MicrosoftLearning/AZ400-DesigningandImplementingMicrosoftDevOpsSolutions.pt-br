@@ -72,7 +72,7 @@ Nesta tarefa, você adicionará a definição de build YAML que será usada para
 Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.ado/eshoponweb-ci.yml).
 
 1. Acesse **Pipelines > Pipelines**.
-1. Clique no botão **Novo pipeline**.
+1. Clique no botão **Novo Pipeline** (ou **Criar Pipeline** se você não tiver nenhum pipeline).
 1. Selecione **Git do Azure Repos (YAML)**.
 1. Selecione o repositório **eShopOnWeb**.
 1. Selecione **Arquivo YAML do Azure Pipelines existente**.
@@ -85,7 +85,7 @@ Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://g
     - **DotNet Publish**: publica o aplicativo e suas dependências em uma pasta para implantação em um sistema de hospedagem. Nesse caso, é o **Build.ArtifactStagingDirectory**.
     - **Publicar artefato - Site**: publique o artefato do aplicativo (criado na etapa anterior) e disponibilize-o como um artefato de pipeline.
     - **Publicar artefato - Bicep**: publique o artefato de infraestrutura (arquivo Bicep) e disponibilize-o como um artefato do pipeline.
-1. Clique no botão **Salvar** (não em **Salvar e executar**) para salvar a definição de pipeline.
+1. Clique no botão **Salvar** (e não em **Salvar e executar**) na parte superior direita da página para salvar a definição do pipeline. Você pode encontrar o botão **Salvar** clicando na seta à direita do botão **Salvar e Executar** (ou **Executar**).
 
 #### Tarefa 2: adicionar testes ao pipeline de CI
 
@@ -95,6 +95,7 @@ Você pode notar que a tarefa Testes de Unidade já faz parte do pipeline.
 
 - Os **testes de unidade** testam uma única parte da lógica do aplicativo. Ainda podemos descrevê-lo listando algumas das coisas que ele não é. Um teste de unidade não testa como o código funciona com as dependências ou a infraestrutura – é para isso que servem os testes de integração.
 
+1. Edite o pipeline criado na tarefa anterior pressionando o botão **Editar**.
 1. Agora você precisa adicionar a tarefa Testes de Integração após a tarefa Testes de Unidade:
 
     ```YAML
@@ -119,7 +120,7 @@ Você pode notar que a tarefa Testes de Unidade já faz parte do pipeline.
 
     > Os **Testes funcionais** são escritos da perspectiva do usuário e verificam a correção do sistema com base em seus requisitos. Diferente dos testes de integração que são escritos da perspectiva do desenvolvedor, para verificar se alguns componentes do sistema funcionam corretamente juntos.
 
-1. Clique em **Salvar**, no painel **Salvar**, clique em **Salva**r novamente para confirmar as mudanças diretamente no branch principal.
+1. Clique no botão **Validar e Salvar** e, se a validação for bem-sucedida, clique em **Salvar** novamente para confirmar as alterações diretamente na ramificação principal.
 
 #### Tarefa 3: Verificar o resumo dos testes
 

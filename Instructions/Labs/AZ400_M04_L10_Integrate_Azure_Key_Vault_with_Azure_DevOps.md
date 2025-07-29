@@ -10,6 +10,8 @@ lab:
 
 - Este laboratório requer o **Microsoft Edge** ou um [navegador com suporte do Azure DevOps.](https://learn.microsoft.com/azure/devops/server/compatibility)
 
+- **Conclua a validação do ambiente de laboratório:** Antes de iniciar este laboratório, verifique se você concluiu o [Validação do ambiente do laboratório](AZ400_M00_Validate_lab_environment.md), que configura a organização do Azure DevOps, o projeto e a conexão de serviço necessários para este laboratório.
+
 - **Configurar uma organização do Azure DevOps:** se você ainda não tiver uma organização Azure DevOps que possa usar para este laboratório, crie uma seguindo as instruções disponíveis em [Criar uma organização ou coleção de projetos](https://learn.microsoft.com/azure/devops/organizations/accounts/create-organization).
 - Identifique uma assinatura existente do Azure ou crie uma.
 
@@ -88,9 +90,9 @@ Nesta tarefa, você importará, modificará e executará uma definição de pipe
 
 1. Na definição de pipeline YAML, personalize o nome do grupo de recursos substituindo **NOME** em **AZ400-EWebShop-NOME** por um valor exclusivo e substitua **ID-DA-ASSINATURA** pela sua subscriptionId do Azure.
 
-1. Clique em **Salvar e Executar** e aguarde até que o pipeline seja executado com êxito.
+1. Clique em **Salvar e Executar** e aguarde até que o pipeline seja executado com êxito. Talvez seja necessário clicar em **Salvar e Executar** uma segunda vez para concluir o processo de criação e execução do pipeline.
 
-    > **Importante**: se você vir a mensagem "Este pipeline precisa de permissão para acessar recursos antes que esta execução possa continuar para o Docker Compose para ACI", clique em Exibir, Permitir e Permitir novamente. Isso é necessário para permitir que o pipeline crie o recurso.
+    > **Importante**: se você vir a mensagem "Este pipeline precisa de permissão para acessar recursos antes que esta execução possa continuar para o Docker Compose para ACI", clique em Exibir, Permitir e Permitir novamente. Isso é necessário para permitir que o pipeline crie o recurso. Você deve clicar no trabalho de build para ver a mensagem permissão.
 
     > **Observação**: o build poderá levar alguns minutos para ser concluído. A definição de build consiste nas seguintes tarefas:
     - **AzureResourceManagerTemplateDeployment** usa **bicep** para implantar um Registro de Contêiner do Azure.
@@ -129,10 +131,10 @@ Para esse cenário de laboratório, teremos uma ACI (Instância de Contêiner) d
 
 1. Na guia **Configuração de acesso** da folha **Criar um Key Vault**, selecione **Política de acesso do Vault** e, na seção **Políticas de acesso**, clique em **+ Criar** para configurar uma nova política.
 
-    > **Observação**: você precisa proteger o acesso aos cofres de chaves permitindo apenas aplicativos e usuários autorizados. Para acessar os dados no cofre, você precisará fornecer permissões de leitura (Obter/Listar) para a entidade de serviço criada anteriormente que será usada para autenticação no pipeline.
+    > **Observação**: você precisa proteger o acesso aos cofres de chaves permitindo apenas aplicativos e usuários autorizados. Para acessar os dados do cofre, você precisará conceder permissões de leitura (Get/List) à conexão de serviço que foi criada durante a validação do ambiente do laboratório, para autenticação no pipeline.
 
     1. Na folha **Permissão**, abaixo de **Permissões de segredo**, marque as permissões **Obter** e **Listar** . Clique em **Avançar**.
-    2. Na folha **Entidade**, procure a **Entidade de Serviço criada anteriormente** usando a ID ou o Nome fornecido, e selecione-a na lista. Clique em **Avançar**, **Avançar**, **Criar** (política de acesso).
+    2. Na folha **Principal**, pesquise sua **Conexão de serviço da assinatura do Azure** (criada durante a validação do ambiente do laboratório, normalmente chamada de "azure subs") e selecione-a na lista. Você pode encontrar o nome da entidade de serviço no Azure DevOps em Configurações do Projeto > Conexões de serviço > azure subs > Gerenciar entidade de serviço. Se você encontrar um erro de permissões ao selecionar a assinatura do Azure, clique no botão **Autorizar**, que criará automaticamente a política de acesso para você no cofre de chaves. Clique em **Avançar**, **Avançar**, **Criar** (política de acesso).
     3. Na folha **Revisar + criar**, clique em **Criar**.
 
 1. De volta à folha **Criar um Key Vault**, clique em **Revisar + Criar > Criar**
@@ -148,7 +150,7 @@ Para esse cenário de laboratório, teremos uma ACI (Instância de Contêiner) d
     | --- | --- |
     | Opções de upload | **Manual** |
     | Nome | **acr-secret** |
-    | Valor | Senha de acesso do ACR copiada na tarefa anterior |
+    | Valor secreto | Senha de acesso do ACR copiada na tarefa anterior |
 
 #### Tarefa 3: criar um grupo de variáveis conectado ao Azure Key Vault
 
@@ -189,8 +191,8 @@ Nesta tarefa, você importará, personalizará e executará um pipeline de CD pa
     - **YOUR-ACR.azurecr.io** e **ACR-USERNAME** com seu servidor de login do ACR (ambos precisam do nome do ACR, pode ser revisado no ACR > Chaves de acesso).
     - **AZ400-EWebShop-NAME** pelo nome do grupo de recursos definido antes no laboratório.
 
-1. Clique em **Salvar e Executar**.
-1. Abra o pipeline e aguarde a execução.
+1. Clique em **Salvar e Executar**. Talvez seja necessário clicar em **Salvar e Executar** uma segunda vez para concluir o processo de criação e execução do pipeline. Você deve clicar no trabalho de build para ver as mensagens de permissão.
+1. Abra o pipeline e aguarde até que ele seja executado com êxito.
 
     > **Importante**: se você vir a mensagem "Este pipeline precisa de permissão para acessar recursos antes que esta execução possa continuar para o Docker Compose para ACI", clique em Exibir, Permitir e Permitir novamente. Isso é necessário para permitir que o pipeline crie o recurso.
 
@@ -198,6 +200,8 @@ Nesta tarefa, você importará, personalizará e executará um pipeline de CD pa
     - **Recursos**: é preparado para acionar automaticamente com base na conclusão do pipeline de CI. Também faz o download do repositório para o arquivo bicep.
     - **Variáveis (para o estágio Implantar)** se conecta ao grupo de variáveis para consumir o segredo **acr-secret** do Azure Key Vault.
     - **AzureResourceManagerTemplateDeployment** implanta a Instância de Contêiner do Azure (ACI) usando o modelo bicep e fornece os parâmetros de logon do ACR para permitir que a ACI baixe a imagem de contêiner criada anteriormente do Registro de Contêiner do Azure (ACR).
+
+1. Para verificar os resultados da implantação do pipeline, no portal do Azure, pesquise e selecione o grupo de recursos **AZ400-EWebShop-NAME**. Na lista de recursos, verifique se a instância de contêiner do **az400eshop** foi criada pelo pipeline.
 
 1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Remover**. Nomeie-o **eshoponweb-cd-aci** e clique em **Salvar**.
 
