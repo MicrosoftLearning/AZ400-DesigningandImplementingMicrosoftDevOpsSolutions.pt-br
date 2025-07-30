@@ -61,6 +61,8 @@ Nesta tarefa, você importará o repositório eShopOnWeb do Git que será usado 
 1. Passe o mouse sobre o branch **main** e clique nas reticências à direita da coluna.
 1. Clique em **Definir como branch padrão**.
 
+    > **Observação**: se a ramificação principal já for a ramificação padrão, a opção **Definir como ramificação padrão** estará esmaecida. Nesse caso, continue com as instruções
+
 #### Tarefa 3: Criar recursos do Azure
 
 Nesta tarefa, você usará o portal do Azure para criar um aplicativo Web do Azure.
@@ -69,13 +71,7 @@ Nesta tarefa, você usará o portal do Azure para criar um aplicativo Web do Azu
 1. No portal do Azure, na barra de ferramentas, clique no ícone do **Cloud Shell** localizado ao lado da caixa de pesquisa.
 1. Se for solicitado que você selecione **Bash** ou **PowerShell**, selecione **Bash**.
 
-   > **Observação**: se esta for a primeira vez que você está iniciando o **Cloud Shell** e você receber a mensagem **Você não tem nenhum armazenamento montado**, selecione a assinatura que você está usando no laboratório e selecione **Criar armazenamento**.
-
-   > **Observação**: para obter uma lista de regiões e seus alias, execute o seguinte comando no Azure Cloud Shell – Bash:
-
-   ```bash
-   az account list-locations -o table
-   ```
+   > **Observação**: Se esta for a primeira vez que você está iniciando o **Cloud Shell** e for exibido o pop-up **Introdução**, selecione **Nenhuma conta de armazenamento necessária**, escolha a assinatura que você está usando neste laboratório e clique em **Aplicar**.
 
 1. No prompt **Bash**, no painel do **Cloud Shell**, execute o seguinte comando para criar um grupo de recursos (substitua o espaço reservado `<region>` pelo nome da região do Azure mais próxima de você, como "centralus", "westeurope" ou outra região de escolha).
 
@@ -88,12 +84,14 @@ Nesta tarefa, você usará o portal do Azure para criar um aplicativo Web do Azu
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
-1. Execute o comando a seguir para criar um plano do Serviço de Aplicativo.
+1. Execute o comando a seguir para criar um plano do Windows App.
 
    ```bash
    SERVICEPLANNAME='az400m03l07-sp1'
    az appservice plan create --resource-group $RESOURCEGROUPNAME --name $SERVICEPLANNAME --sku B3
    ```
+
+    > **Observação**: Se você receber um erro como "A assinatura não está registrada para usar o namespace 'Microsoft.Web'" ao executar o comando anterior, execute o seguinte `az provider register --namespace Microsoft.Web` e, em seguida, execute novamente o comando que gerou o erro.
 
 1. Crie um aplicativo Web com um nome exclusivo.
 
@@ -163,7 +161,7 @@ Nesta tarefa, você adicionará a entrega contínua à definição baseada em YA
    - na lista suspensa **Assinatura do Azure**, selecione a assinatura do Azure na qual você implantou os recursos do Azure anteriormente no laboratório, clique em **Autorizar** e, quando solicitado, autentique-se usando a mesma conta de usuário usada durante a implantação de recursos do Azure.
    - na lista suspensa **Nome do Serviço de Aplicativo**, selecione o nome do aplicativo Web implantado anteriormente no laboratório.
    - na caixa de texto **Pacote ou pasta**, **atualize** o Valor Padrão para `$(Build.ArtifactStagingDirectory)/**/Web.zip`.
-   - Em **Definições de Aplicativo e Configuração**, adicione `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
+   - Abra a seção **Definições e Configurações de Aplicativo** e, na caixa de texto **Configurações do aplicativo**, adicione `-UseOnlyInMemoryDatabase true -ASPNETCORE_ENVIRONMENT Development`
 
 1. Confirme as configurações no painel Assistente clicando no botão **Adicionar** .
 
@@ -211,12 +209,12 @@ Nesta tarefa, você adicionará a entrega contínua à definição baseada em YA
 
    > **Observação**: aqui você também pode querer adicionar uma linha vazia antes e depois para facilitar a leitura.
 
-1. Clique em **Salvar**. No painel **Salvar**, clique em **Salvar** novamente para confirmar a alteração diretamente no branch main.
+1. Clique em **Validar e salvar** e, no painel **Validar e salvar**, clique novamente em **Salvar** para confirmar a alteração diretamente na ramificação principal.
 
    > **Observação**: como nosso CI-YAML original não foi configurado para acionar automaticamente uma nova compilação, temos que iniciar esta manualmente.
 
 1. No menu Azure DevOps à esquerda, navegue até **Pipelines** e selecione **Pipelines** novamente.
-1. Abra o pipeline **eShopOnWeb_MultiStageYAML** e clique em **Executar Pipeline**.
+1. Abra o pipeline **eShopOnWeb_MultiStageYAML** e clique em **Executar pipeline**.
 1. Confirme a opção **Executar** no painel exibido.
 1. Duas fases diferentes são exibidas, **Compilar solução .Net Core** e **Implantar no aplicativo Web do Azure**.
 1. Aguarde até que o pipeline seja iniciado e conclua a fase Compilar.
@@ -228,7 +226,7 @@ Nesta tarefa, você adicionará a entrega contínua à definição baseada em YA
 
 1. Clique em **Exibição**.
 1. No painel **Aguardando revisão**, clique em **Permitir**.
-1. Valide a mensagem na janela **pop-up Permitir** e confirme clicando em **Permitir**.
+1. Valide a mensagem na janela **Permitir acesso?** e confirme clicando em **Permitir**.
 1. Isso inicia a Fase Implantar. Aguarde a conclusão.
 
    > **Observação**: se a implantação falhar devido a um problema com a sintaxe do pipeline YAML, use isso como referência:
@@ -408,10 +406,9 @@ Os Pipelines do YAML como Código não têm Portões de Versão/Qualidade como t
 1. Clique em **Executar Pipeline** para disparar uma nova execução de pipeline; confirme clicando em **Executar**.
 1. Assim como antes, a Fase de build começa como esperado. Aguarde a conclusão.
 1. Em seguida, como temos o _environment:approvals_ configurado para a Fase de build, ele solicitará uma confirmação de aprovação antes de começar.
-1. Isso é visível na exibição Pipeline, onde diz **Aguardando (0/1 verificação aprovada).** Uma mensagem de notificação também é exibida dizendo que a **aprovação precisa ser revisada antes que essa execução possa continuar a Implantar em um Aplicativo Web do Azure**.
-1. Clique no botão **Exibir** ao lado da mensagem.
-1. No painel exibido **Verificações e validações manuais para Implantar no Aplicativo Web do Azure**, clique na mensagem **Aguardando Aprovação**.
-1. Clique em **Aprovar**.
+1. Isso é visível na visualização do Pipeline, onde aparece a mensagem **Aguardando (1 verificação em andamento)**. Uma mensagem de notificação também é exibida dizendo **1 aprovação precisa ser revisada antes que esta execução possa continuar para Implantar em um Aplicativo Web do Azure**.
+1. Clique no botão **Examinar** ao lado da mensagem.
+1. No painel que aparece **Aguardando revisão**, clique no botão **Aprovar**.
 1. Isso permite que a Fase de build inicie e implante com êxito o código-fonte do Aplicativo Web do Azure.
 
    > **Observação:** embora este exemplo tenha usado apenas as aprovações, saiba que as outras verificações, como o Azure Monitor, a API REST, etc., podem ser usadas de maneira semelhante
