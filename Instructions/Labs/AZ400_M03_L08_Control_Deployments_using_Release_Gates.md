@@ -202,6 +202,7 @@ Neste exercício, você configurará um pipeline de lançamento.
 Nesta tarefa, você configurará tarefas de lançamento como parte do Pipeline de lançamento.
 
 1. No projeto **eShopOnWeb** no portal do Azure DevOps, no painel de navegação vertical, selecione **Pipelines** e, na seção **Pipelines**, clique em **Lançamentos**.
+   > **Observação**: Se a seção **Versões** não estiver visível, é provável que a opção **Desabilitar a criação de pipelines de versão clássicos** esteja definida como **Ativada** na seção **Configurações do Projeto** > **Pipelines** > **Configurações** > **Geral** section.
 1. Clique em **Novo pipeline**.
 1. Na janela **Selecionar um modelo**, **escolha****Implantação do Serviço de Aplicativo do Azure** (Implante seu aplicativo no Serviço de Aplicativo do Azure. Escolha entre Aplicativo Web no Windows, Linux, contêineres, aplicativos de funções ou WebJobs) na lista de modelos **Em destaque**.
 1. Clique em **Aplicar**.

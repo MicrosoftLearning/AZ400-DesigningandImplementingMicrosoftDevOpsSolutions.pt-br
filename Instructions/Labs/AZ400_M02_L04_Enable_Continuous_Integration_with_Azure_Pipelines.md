@@ -83,7 +83,7 @@ Vamos começar importando o pipeline de build chamado [eshoponWeb-ci-pr.yml](htt
     - **DotNet Test**: driver de teste do .NET usado para executar testes de unidade.
     - **DotNet Publish**: publica o aplicativo e suas dependências em uma pasta para implantação em um sistema de hospedagem. Nesse caso, é o **Build.ArtifactStagingDirectory**.
 
-1. Clique no botão **Salvar** para salvar a definição do pipeline.
+1. No painel **Revisar seu pipeline YAML**, clique no símbolo de acento circunflexo para baixo ao lado do botão **Executar**, clique em **Salvar**.
 1. Seu pipeline terá um nome com base no nome do projeto. Vamos **renomear** o pipeline para melhor identificá-lo. Vá até **Pipelines > Pipelines** e clique no pipeline criado recentemente. Clique nas reticências e na opção **Renomear/Mover**. Nomeio-o como **eshoponWeb-ci-pr** e clique em **Salvar**.
 
 #### Tarefa 2: Políticas de branch
@@ -151,7 +151,7 @@ Vamos começar importando o pipeline de CI chamado [eshoponWeb-ci.yml](https://g
 
 A definição de pipeline de build padrão não habilita a Integração Contínua.
 
-1. Clique no botão **Editar** no canto superior direito.
+1. Clique na opção **Editar pipeline** no menu de reticências próximo ao botão **Executar novo** no canto superior direito
 1. Agora, você precisa substituir as linhas **# trigger:** e **# - main** pelo seguinte código:
 
     ```YAML
