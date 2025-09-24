@@ -89,7 +89,7 @@ Nesta tarefa, você criará um aplicativo Web do Azure usando o Cloud Shell no p
    az group create --name $RESOURCEGROUPNAME --location $LOCATION
    ```
 
-1. Execute o comando a seguir para criar um plano do Serviço de Aplicativo.
+1. Execute o comando a seguir para criar um plano do Windows App.
 
    ```bash
    SERVICEPLANNAME='az400l14-sp'
