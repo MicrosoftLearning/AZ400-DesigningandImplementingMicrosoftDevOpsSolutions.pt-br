@@ -295,7 +295,7 @@ Nesta tarefa, você adicionará a entrega contínua à definição baseada em YA
         pool:
           vmImage: 'windows-latest'
         steps:
-        - task: DownloadBuildArtifacts@0
+        - task: DownloadBuildArtifacts@1
           inputs:
             buildType: 'current'
             downloadType: 'single'
