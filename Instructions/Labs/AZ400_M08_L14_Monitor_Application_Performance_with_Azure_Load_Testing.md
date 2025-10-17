@@ -204,7 +204,7 @@ Nesta tarefa, você adicionará uma definição de compilação do YAML ao proje
 1. O snippet de código adicionado ao editor deve ser semelhante ao abaixo, refletindo seu nome para os parâmetros azureSubscription e WebappName:
 
    ```yml
-   - task: AzureRmWebAppDeployment@4
+   - task: AzureRmWebAppDeployment@5
      inputs:
        ConnectionType: "AzureRM"
        azureSubscription: "SERVICE CONNECTION NAME"
@@ -228,7 +228,7 @@ Nesta tarefa, você adicionará uma definição de compilação do YAML ao proje
 
    ![Captura de tela do Azure Pipelines mostrando execuções do eShopOnWeb](images/m3/eshoponweb-m9l16-pipeline.png)
 
-1. Confirme para executar esse pipeline clicando em **Executar** no painel exibido e confirme clicando em **Executar** mais uma vez.
+1. Confirme a execução desse pipeline clicando em **Executar pipeline** no painel exibido e confirme clicando em **Executar** mais uma vez.
 1. Duas fases diferentes são exibidas, **Compilar solução .Net Core** e **Implantar no aplicativo Web do Azure**.
 1. Aguarde a conclusão da execução de pipeline.
 
@@ -389,8 +389,8 @@ Execute as etapas a seguir para baixar os arquivos de entrada de um teste de car
 1. Para criar e executar um teste de carga, a definição de fluxo de trabalho do Azure Pipelines usa a extensão **Tarefa de Teste de Carga do Azure** do Azure DevOps Marketplace. Abra a [extensão de tarefa do Teste de Carga do Azure](https://marketplace.visualstudio.com/items?itemName=AzloadTest.AzloadTesting) no Azure DevOps Marketplace e selecione **Obter gratuitamente**.
 1. Selecione sua organização do Azure DevOps e escolha **Instalar** a extensão.
 1. No Portal e Projeto do Azure DevOps, navegue até **Pipelines** e selecione o pipeline criado no início deste exercício. Clique em **Editar**.
-1. No script YAML, navegue até a **linha 56** e pressione ENTER/RETURN para adicionar uma nova linha vazia. (isso é logo antes da Fase Implantar do arquivo YAML).
-1. Na linha 57, selecione o Assistente de Tarefas à direita e procure **Teste de Carga do Azure**.
+1. No script YAML, navegue até a **linha 64** e pressione ENTER/RETURN para adicionar uma nova linha vazia. (isso é logo antes da Fase Implantar do arquivo YAML).
+1. Na linha 65, selecione o Assistente de Tarefas no lado direito e pesquise por **Teste de Carga do Azure** (posicione o cursor no recuo do nível de tarefa anterior).
 1. Conclua o painel gráfico com as configurações corretas do seu cenário:
 
    - Assinatura do Azure: selecione a assinatura que executa seus recursos do Azure
@@ -424,12 +424,12 @@ Execute as etapas a seguir para baixar os arquivos de entrada de um teste de car
    ```
 
 1. Se o recuo do snippet YAML estiver com erros (sublinhado ondulado vermelho), corrija-o adicionando dois espaços ou uma tabulação para posicionar o snippet corretamente.
-1. Com ambos os trechos adicionados ao pipeline de CI/CD, **salve** as alterações.
+1. Com os dois trechos adicionados ao pipeline de CI/CD, clique em **Validar e salvar** e, em seguida, **Salve** as alterações.
 1. Depois de salvo, clique em **Executar** para acionar o pipeline.
 1. Confirme o branch (main) e clique no botão **Executar** para iniciar a execução do pipeline.
-1. Na página de status do pipeline, clique na fase **Compilar** para abrir os detalhes do log das diferentes tarefas no pipeline.
+1. Na página de status do pipeline, clique na fase **Implantar** para abrir os detalhes do log das diferentes tarefas no pipeline.
 1. Aguarde até que o pipeline inicie a Fase Compilar e chegue à tarefa **AzureLoadTest** no fluxo do pipeline.
-1. Enquanto a tarefa estiver em execução, navegue até o **Teste de Carga do Azure** no Portal do Azure e veja como o pipeline cria um novo RunTest, chamado **adoloadtest1**. Você pode selecioná-lo para mostrar os valores de resultado do trabalho TestRun.
+1. Enquanto a tarefa estiver em execução, navegue até o **Teste de Carga do Azure** no Portal do Azure e veja como o pipeline cria um RunTest chamado **ado_load_test**. Você pode selecioná-lo para mostrar os valores de resultado do trabalho TestRun.
 1. Navegue de volta para a exibição Execução de Pipeline de CI/CD do Azure DevOps, em que a **tarefa AzureLoadTest** foi concluída com êxito. Os valores resultantes do teste de carga também ficarão visíveis na saída de log detalhado.
 
    ```text
